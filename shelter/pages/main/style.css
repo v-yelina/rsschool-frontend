@@ -1,0 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 25px;
+  color: #4c4c4c;
+}
+
+.header,
+.main,
+.footer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+h1,
+h2 {
+  font-family: Georgia, serif;
+  font-size: 35px;
+  line-height: 45.5px;
+  font-weight: 400;
+  color: #545454;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 90px 0 100px;
+}
+
+.about figure {
+  margin-left: 175px;
+}
+
+.about .text {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  max-width: 430px;
+}
