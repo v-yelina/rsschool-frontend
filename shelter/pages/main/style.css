@@ -2,6 +2,8 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
 }
 
 body {
@@ -26,6 +28,45 @@ h2 {
   line-height: 45.5px;
   font-weight: 400;
   color: #545454;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 57px 20px 63px;
+  background: url(../../assets/img/noise_transparent@2x.png),
+    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%)
+      /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */,
+    #211f20;
+}
+
+header .logo {
+  display: flex;
+  flex-direction: column;
+  height: 60px;
+}
+
+.header .logo .title {
+  font-size: 32px;
+  line-height: 35px;
+  font-family: Georgia, serif;
+  color: #f1cdb3;
+}
+
+.header .logo .subtitle {
+  font-size: 13px;
+  align-self: center;
+  color: white;
+}
+
+.header .page-nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+}
+.header .page-nav a {
+  color: #cdcdcd;
 }
 
 .about {
