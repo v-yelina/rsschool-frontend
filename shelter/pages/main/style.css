@@ -9,7 +9,7 @@
 body {
   font-family: Arial, sans-serif;
   font-size: 15px;
-  line-height: 25px;
+  line-height: 24px;
   color: #4c4c4c;
 }
 
@@ -45,6 +45,7 @@ h2 {
 .header .logo {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   height: 60px;
 }
 
@@ -52,12 +53,14 @@ h2 {
   font-size: 32px;
   line-height: 35px;
   font-family: Georgia, serif;
+  letter-spacing: 0.06em;
   color: #f1cdb3;
 }
 
 .header .logo .subtitle {
   font-size: 13px;
-  align-self: center;
+  line-height: 15px;
+  letter-spacing: 0.1em;
   color: white;
 }
 
@@ -67,7 +70,7 @@ h2 {
   gap: 35px;
 }
 .header .page-nav a {
-  color: white;
+  color: #cdcdcd;
 }
 
 .not-only {
