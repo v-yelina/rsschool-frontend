@@ -112,13 +112,15 @@ h2 {
 }
 
 .about {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  justify-content: center;
+  gap: 120px;
   padding: 90px 0 100px;
 }
 
 .about figure {
-  margin-left: 175px;
+  width: 300px;
+  height: 408px;
 }
 
 .about .text {
@@ -126,4 +128,9 @@ h2 {
   flex-direction: column;
   gap: 25px;
   max-width: 430px;
+}
+
+.about .text h2 {
+  letter-spacing: 0.06em;
+  max-width: 370px;
 }
