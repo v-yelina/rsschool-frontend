@@ -18,7 +18,6 @@ body {
 .footer {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 40px;
 }
 
 h1,
@@ -30,6 +29,7 @@ h2 {
   color: #545454;
 }
 .header-container {
+  padding: 0 40px;
   height: 908px;
   background: url(../../assets/img/noise_transparent@2x.png),
     radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
@@ -103,19 +103,25 @@ h2 {
   letter-spacing: 0.06em;
   font-family: Georgia, serif;
   border-radius: 30px;
+  color: #292929;
 }
 
 .btn-beige {
   background-color: #f1cdb3;
-  color: #292929;
   border: none;
+}
+
+.btn-white {
+  background-color: transparent;
+  border: 2px solid #f1cdb3;
 }
 
 .about {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 120px;
-  padding: 90px 0 100px;
+  padding: 80px 0 100px;
 }
 
 .about figure {
@@ -133,4 +139,73 @@ h2 {
 .about .text h2 {
   letter-spacing: 0.06em;
   max-width: 370px;
+}
+
+.friends {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  background-color: #f6f6f6;
+  padding: 80px 40px 100px;
+}
+
+.friends .title {
+  display: flex;
+  gap: 0;
+  flex-direction: column;
+  max-width: 400px;
+  text-align: center;
+  height: max-content;
+}
+
+.friends .title h2 {
+  letter-spacing: 0.06em;
+}
+
+.pet-pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  font-family: Georgia, serif;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+}
+
+.friends article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 30px;
+  background-color: #fafafa;
+}
+
+.btn-arrow {
+  background-image: url("../../assets/icons/Arrow.svg");
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: 14px;
+  width: 52px;
+  background-position: center;
+  height: 52px;
+  border: 2px solid #f1cdb3;
+  border-radius: 50%;
+  align-self: center;
+}
+
+.arrow-right {
+  transform: rotate(-180deg);
+}
+
+.slider {
+  display: flex;
+  gap: 53px;
+}
+
+.pet-cards {
+  display: flex;
+  gap: 90px;
 }
