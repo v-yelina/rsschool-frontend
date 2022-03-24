@@ -20,7 +20,6 @@ body {
   margin: 0 auto;
 }
 
-h1,
 h2 {
   font-family: Georgia, serif;
   font-size: 35px;
@@ -44,7 +43,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 57px 0px 63px;
+  padding: 62px 0px 63px;
 }
 
 .header .logo {
@@ -60,6 +59,7 @@ h2 {
   font-family: Georgia, serif;
   letter-spacing: 0.06em;
   color: #f1cdb3;
+  font-weight: 400;
 }
 
 .header .logo .subtitle {
@@ -73,6 +73,16 @@ h2 {
   display: flex;
   flex-direction: row;
   gap: 35px;
+}
+
+.page-nav ul li:active {
+  color: #fafafa;
+  border-bottom: 3px solid #f1cdb3;
+}
+
+.active-link {
+  color: #fafafa;
+  border-bottom: 3px solid #f1cdb3;
 }
 .header .page-nav a {
   color: #cdcdcd;
@@ -89,11 +99,13 @@ h2 {
   padding: 163px 0 243px;
 }
 
-.not-only .text h1 {
+.not-only .text h2 {
   font-size: 44px;
-  line-height: 57.2px;
+  line-height: 57px;
   width: 310px;
   color: #fff;
+  font-weight: 400;
+  letter-spacing: normal;
 }
 
 .not-only .text p {
