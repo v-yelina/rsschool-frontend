@@ -24,7 +24,7 @@ h1,
 h2 {
   font-family: Georgia, serif;
   font-size: 35px;
-  line-height: 45.5px;
+  line-height: 45px;
   font-weight: 400;
   color: #545454;
 }
@@ -208,4 +208,49 @@ h2 {
 .pet-cards {
   display: flex;
   gap: 90px;
+}
+
+.help {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 60px;
+  padding: 80px 87px 100px;
+}
+
+.help .title {
+  max-width: 310px;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+
+.help-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 120px;
+  row-gap: 55px;
+  max-width: 1030px;
+  justify-content: center;
+}
+
+.help-items article {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.help-items article img {
+  width: 60px;
+  height: 60px;
+}
+
+.help-items article h3 {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  line-height: 23px;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  width: max-content;
 }
