@@ -112,7 +112,7 @@ h2 {
 
 .btn-beige {
   background-color: #f1cdb3;
-  border: none;
+  border: 2px solid #f1cdb3;
 }
 
 .btn-white {
@@ -124,6 +124,12 @@ h2 {
   background-color: transparent;
   border: 2px solid #cdcdcd;
   color: #cdcdcd;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #fddcc4;
+  border: 2px solid #fddcc4;
 }
 
 .friends {
