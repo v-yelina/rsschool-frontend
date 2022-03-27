@@ -41,6 +41,7 @@ h2 {
 .header .logo {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   height: 60px;
 }
@@ -64,7 +65,7 @@ h2 {
 .header .page-nav ul {
   display: flex;
   flex-direction: row;
-  gap: 35px;
+  gap: 35.2px;
 }
 
 .page-nav ul li:active {
@@ -88,6 +89,7 @@ h2 {
   font-family: Georgia, serif;
   border-radius: 30px;
   color: #292929;
+  max-height: 52px;
 }
 
 .btn-arrow {
@@ -170,17 +172,33 @@ h2 {
   background-color: #fafafa;
 }
 
+.friends article:hover {
+  cursor: pointer;
+}
+
+.friends article:hover .btn {
+  cursor: pointer;
+  background-color: #fddcc4;
+  border: 2px solid #fddcc4;
+}
+
 .pet-cards {
   display: flex;
   flex-wrap: wrap;
   column-gap: 40px;
-  row-gap: 30px;
+  row-gap: 29px;
   border-radius: 10px;
 }
 
 .nav-buttons {
   display: flex;
   gap: 20px;
+}
+
+.nav-buttons .btn-white:hover {
+  cursor: pointer;
+  background-color: #fddcc4;
+  border: 2px solid #fddcc4;
 }
 
 .footer {
@@ -193,7 +211,7 @@ h2 {
   padding-bottom: 0px;
 }
 
-.footer span {
+.footer a {
   color: #f1cdb3;
   font-size: 20px;
   font-family: Georgia, "Times New Roman", Times, serif;
