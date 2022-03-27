@@ -35,12 +35,21 @@ h2 {
   background: url(../../assets/img/noise_transparent@2x.png),
     radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
 }
+.header-container {
+  height: 908px;
+  background: url(../../assets/img/noise_transparent@2x.png),
+    radial-gradient(100% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20;
+}
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD
   padding: 60px 0px 60px;
+=======
+  padding: 57px 0px 63px;
+>>>>>>> 8e155d305e9b3810ca3a794e81b33c0749c0c944
 }
 
 .header .logo {
@@ -83,7 +92,45 @@ h2 {
   border-bottom: 3px solid #f1cdb3;
 }
 .header .page-nav a {
-  color: #cdcdcd;
+  color: white;
+}
+
+.not-only {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 42px;
+}
+
+.not-only .text {
+  width: 460px;
+  padding: 163px 0 243px;
+}
+
+.not-only .text h1 {
+  font-size: 44px;
+  line-height: 57.2px;
+  width: 310px;
+  color: #fff;
+}
+
+.not-only .text p {
+  margin: 42px 0;
+  columns: #cdcdcd;
+}
+
+.btn {
+  padding: 15px 45px;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: 0.06em;
+  font-family: Georgia, serif;
+  border-radius: 30px;
+}
+
+.btn-beige {
+  background-color: #f1cdb3;
+  color: #292929;
+  border: none;
 }
 
 .not-only {
