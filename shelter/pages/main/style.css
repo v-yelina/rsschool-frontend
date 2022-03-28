@@ -45,11 +45,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-<<<<<<< HEAD
   padding: 60px 0px 60px;
-=======
-  padding: 57px 0px 63px;
->>>>>>> 8e155d305e9b3810ca3a794e81b33c0749c0c944
 }
 
 .header .logo {
