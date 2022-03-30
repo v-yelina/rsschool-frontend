@@ -20,6 +20,10 @@
   text-decoration: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, sans-serif;
   font-size: 15px;
@@ -104,6 +108,7 @@ h2 {
   border-radius: 30px;
   color: var(--color-dark-3xl);
   max-height: 52px;
+  transition: 0.3s;
 }
 
 .btn-arrow {
