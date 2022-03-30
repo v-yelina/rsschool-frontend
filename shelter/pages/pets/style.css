@@ -1,3 +1,17 @@
+:root {
+  --color-primary: #f1cdb3;
+  --color-primary-light: #fddcc4;
+  --color-dark-s: #cdcdcd;
+  --color-dark-m: #b2b2b2;
+  --color-dark-l: #545454;
+  --color-dark-xl: #4c4c4c;
+  --color-dark-2xl: #444444;
+  --color-dark-3xl: #292929;
+  --color-light-xl: #ffffff;
+  --color-light-l: #f6f6f6;
+  --color-light-s: #fafafa;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -10,7 +24,7 @@ body {
   font-family: Arial, sans-serif;
   font-size: 15px;
   line-height: 24px;
-  color: #4c4c4c;
+  color: var(--color-dark-xl);
 }
 
 .header-container,
@@ -25,7 +39,7 @@ h2 {
   font-size: 35px;
   line-height: 45px;
   font-weight: 400;
-  color: #545454;
+  color: var(--color-dark-l);
   letter-spacing: 0.06em;
 }
 
@@ -52,14 +66,14 @@ h2 {
   font-family: Georgia, serif;
   letter-spacing: 0.06em;
   font-weight: 400;
-  color: #545454;
+  color: var(--color-dark-l);
 }
 
 .header .logo .subtitle {
   font-size: 13px;
   line-height: 15px;
   letter-spacing: 0.1em;
-  color: #292929;
+  color: var(--color-dark-3xl);
 }
 
 .header .page-nav ul {
@@ -69,16 +83,16 @@ h2 {
 }
 
 .page-nav ul li:active {
-  color: #292929;
-  border-bottom: 3px solid #f1cdb3;
+  color: var(--color-dark-3xl);
+  border-bottom: 3px solid var(--color-primary);
 }
 
 .active-link {
-  color: #292929;
-  border-bottom: 3px solid #f1cdb3;
+  color: var(--color-dark-3xl);
+  border-bottom: 3px solid var(--color-primary);
 }
 .header .page-nav a {
-  color: #545454;
+  color: var(--color-dark-l);
 }
 
 .btn {
@@ -88,7 +102,7 @@ h2 {
   letter-spacing: 0.06em;
   font-family: Georgia, serif;
   border-radius: 30px;
-  color: #292929;
+  color: var(--color-dark-3xl);
   max-height: 52px;
 }
 
@@ -99,13 +113,13 @@ h2 {
   width: 52px;
   background-position: center;
   height: 52px;
-  border: 2px solid #f1cdb3;
+  border: 2px solid var(--color-primary);
   border-radius: 50%;
   align-self: center;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 20px;
   line-height: 23px;
-  color: #292929;
+  color: var(--color-dark-3xl);
 }
 
 .arrow-right {
@@ -113,25 +127,25 @@ h2 {
 }
 
 .btn-beige {
-  background-color: #f1cdb3;
-  border: 2px solid #f1cdb3;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
 
 .btn-white {
   background-color: transparent;
-  border: 2px solid #f1cdb3;
+  border: 2px solid var(--color-primary);
 }
 
 .btn-grey {
   background-color: transparent;
-  border: 2px solid #cdcdcd;
-  color: #cdcdcd;
+  border: 2px solid var(--color-dark-s);
+  color: var(--color-dark-s);
 }
 
 .btn:hover {
   cursor: pointer;
-  background-color: #fddcc4;
-  border: 2px solid #fddcc4;
+  background-color: var(--color-primary-light);
+  border: 2px solid var(--color-primary-light);
 }
 
 .friends {
@@ -139,7 +153,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 60px;
-  background-color: #f6f6f6;
+  background-color: var(--color-light-l);
   padding: 80px 40px 100px;
 }
 
@@ -169,7 +183,7 @@ h2 {
   align-items: center;
   gap: 30px;
   padding-bottom: 30px;
-  background-color: #fafafa;
+  background-color: var(--color-light-s);
 }
 
 .friends article:hover {
@@ -178,8 +192,8 @@ h2 {
 
 .friends article:hover .btn {
   cursor: pointer;
-  background-color: #fddcc4;
-  border: 2px solid #fddcc4;
+  background-color: var(--color-primary-light);
+  border: 2px solid var(--color-primary-light);
 }
 
 .pet-cards {
@@ -197,8 +211,8 @@ h2 {
 
 .nav-buttons .btn-white:hover {
   cursor: pointer;
-  background-color: #fddcc4;
-  border: 2px solid #fddcc4;
+  background-color: var(--color-primary-light);
+  border: 2px solid var(--color-primary-light);
 }
 
 .footer {
@@ -212,7 +226,7 @@ h2 {
 }
 
 .footer a {
-  color: #f1cdb3;
+  color: var(--color-primary);
   font-size: 20px;
   font-family: Georgia, "Times New Roman", Times, serif;
   line-height: 23px;
@@ -232,7 +246,7 @@ h2 {
 }
 
 .footer h2 {
-  color: #ffffff;
+  color: var(--color-light-xl);
 }
 
 .footer .contact {

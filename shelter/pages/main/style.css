@@ -1,3 +1,17 @@
+:root {
+  --color-primary: #f1cdb3;
+  --color-primary-light: #fddcc4;
+  --color-dark-s: #cdcdcd;
+  --color-dark-m: #b2b2b2;
+  --color-dark-l: #545454;
+  --color-dark-xl: #4c4c4c;
+  --color-dark-2xl: #444444;
+  --color-dark-3xl: #292929;
+  --color-light-xl: #ffffff;
+  --color-light-l: #f6f6f6;
+  --color-light-s: #fafafa;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -10,7 +24,7 @@ body {
   font-family: Arial, sans-serif;
   font-size: 15px;
   line-height: 24px;
-  color: #4c4c4c;
+  color: var(--color-dark-xl);
 }
 
 .header-container,
@@ -25,7 +39,7 @@ h2 {
   font-size: 35px;
   line-height: 45px;
   font-weight: 400;
-  color: #545454;
+  color: var(--color-dark-l);
   letter-spacing: 0.06em;
 }
 
@@ -61,7 +75,7 @@ h2 {
   line-height: 35px;
   font-family: Georgia, serif;
   letter-spacing: 0.06em;
-  color: #f1cdb3;
+  color: var(--color-primary);
   font-weight: 400;
 }
 
@@ -79,13 +93,13 @@ h2 {
 }
 
 .page-nav ul li:active {
-  color: #fafafa;
-  border-bottom: 3px solid #f1cdb3;
+  color: var(--color-light-s);
+  border-bottom: 3px solid var(--color-primary);
 }
 
 .active-link {
-  color: #fafafa;
-  border-bottom: 3px solid #f1cdb3;
+  color: var(--color-light-s);
+  border-bottom: 3px solid var(--color-primary);
 }
 .header .page-nav a {
   color: white;
@@ -111,7 +125,7 @@ h2 {
 
 .not-only .text p {
   margin: 42px 0;
-  columns: #cdcdcd;
+  columns: var(--color-dark-s);
 }
 
 .btn {
@@ -124,8 +138,8 @@ h2 {
 }
 
 .btn-beige {
-  background-color: #f1cdb3;
-  color: #292929;
+  background-color: var(--color-primary);
+  color: var(--color-dark-3xl);
   border: none;
 }
 
@@ -151,7 +165,7 @@ h2 {
 
 .not-only .text p {
   margin: 42px 0;
-  color: #cdcdcd;
+  color: var(--color-dark-s);
 }
 
 .btn {
@@ -162,25 +176,25 @@ h2 {
   letter-spacing: 0.06em;
   font-family: Georgia, serif;
   border-radius: 30px;
-  color: #292929;
+  color: var(--color-dark-3xl);
   max-width: max-content;
   max-height: 52px;
 }
 
 .btn-beige {
-  background-color: #f1cdb3;
-  border: 2px solid #f1cdb3;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
 
 .btn-white {
   background-color: transparent;
-  border: 2px solid #f1cdb3;
+  border: 2px solid var(--color-primary);
 }
 
 .btn:hover {
   cursor: pointer;
-  background-color: #fddcc4;
-  border: 2px solid #fddcc4;
+  background-color: var(--color-primary-light);
+  border: 2px solid var(--color-primary-light);
 }
 
 .about {
@@ -212,7 +226,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 60px;
-  background-color: #f6f6f6;
+  background-color: var(--color-light-l);
   padding: 80px 40px 100px;
 }
 
@@ -242,7 +256,7 @@ h2 {
   align-items: center;
   gap: 30px;
   padding-bottom: 30px;
-  background-color: #fafafa;
+  background-color: var(--color-light-s);
 }
 
 .btn-arrow {
@@ -253,7 +267,7 @@ h2 {
   width: 52px;
   background-position: center;
   height: 52px;
-  border: 2px solid #f1cdb3;
+  border: 2px solid var(--color-primary);
   border-radius: 50%;
   align-self: center;
 }
@@ -324,7 +338,7 @@ h2 {
   align-items: center;
   gap: 30px;
   padding: 80px 0px 100px;
-  background-color: #f6f6f6;
+  background-color: var(--color-light-l);
 }
 .donation figure {
   height: 261px;
@@ -353,7 +367,7 @@ h2 {
   gap: 15px;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: italic;
-  background-color: #f1cdb3;
+  background-color: var(--color-primary);
   padding: 10px 15px;
   border-radius: 10px;
   width: max-content;
@@ -362,7 +376,7 @@ h2 {
   font-size: 20px;
   line-height: 115%;
   letter-spacing: 0.06em;
-  color: #545454;
+  color: var(--color-dark-l);
 }
 
 .card-num img {
@@ -373,7 +387,7 @@ h2 {
   font-size: 12px;
   font-style: italic;
   line-height: 18px;
-  color: #b2b2b2;
+  color: var(--color-dark-m);
 }
 
 .footer {
@@ -387,7 +401,7 @@ h2 {
 }
 
 .footer a {
-  color: #f1cdb3;
+  color: var(--color-primary);
   font-size: 20px;
   font-family: Georgia, "Times New Roman", Times, serif;
   line-height: 23px;
@@ -407,7 +421,7 @@ h2 {
 }
 
 .footer h2 {
-  color: #ffffff;
+  color: var(--color-light-xl);
 }
 
 .footer .contact {
