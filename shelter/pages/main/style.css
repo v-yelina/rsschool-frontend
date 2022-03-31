@@ -71,7 +71,8 @@ h2 {
   border: 2px solid var(--color-primary);
 }
 
-.btn:hover {
+.btn:hover,
+.btn-arrow:hover {
   cursor: pointer;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);

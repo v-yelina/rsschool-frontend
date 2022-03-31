@@ -144,16 +144,19 @@ h2 {
   border: 2px solid var(--color-primary);
 }
 
-.btn-grey {
-  background-color: transparent;
-  border: 2px solid var(--color-dark-s);
-  color: var(--color-dark-s);
-}
-
-.btn:hover {
+.btn:hover,
+.btn-arrow:hover {
   cursor: pointer;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);
+}
+
+.btn-grey,
+.btn-grey:hover {
+  background-color: transparent;
+  border: 2px solid var(--color-dark-s);
+  color: var(--color-dark-s);
+  cursor: inherit;
 }
 
 .friends {
