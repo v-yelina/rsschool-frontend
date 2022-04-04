@@ -162,15 +162,14 @@ h2 {
   transition: 0.3s;
 }
 
+.not-only {
+  display: flex;
+  gap: 42px;
+}
+
 .not-only .text p {
   margin: 42px 0;
   columns: var(--color-dark-s);
-}
-
-.not-only {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 42px;
 }
 
 .not-only .text {
@@ -392,6 +391,7 @@ h2 {
 
 .footer .location {
   gap: 33px;
+  max-width: 302px;
 }
 
 .footer h2 {
@@ -408,4 +408,105 @@ h2 {
   display: flex;
   gap: 20px;
   align-items: center;
+}
+
+@media (max-width: 1279px) {
+  .header-container {
+    padding: 0 30px;
+    height: 1165px;
+  }
+
+  .header {
+    padding: 30px 0 60px;
+  }
+
+  .not-only {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .not-only .text {
+    width: 460px;
+    padding: 0 0 100px;
+    align-self: center;
+  }
+
+  .not-only .text .btn {
+    margin: 0 auto;
+  }
+
+  .not-only figure {
+    margin-left: 100px;
+    max-width: 569px;
+    align-self: flex-end;
+  }
+
+  .not-only figure img {
+    width: 100%;
+  }
+
+  .about {
+    flex-direction: column;
+    padding: 80px 165px 100px 166px;
+    gap: 80px;
+  }
+
+  .about .text {
+    order: -1;
+  }
+
+  .friends {
+    padding: 80px 30px 100px;
+  }
+
+  .slider .hidden {
+    display: none;
+  }
+
+  .pet-cards,
+  .slider {
+    gap: initial;
+  }
+
+  .pet-cards {
+    margin: 0 12px;
+  }
+
+  .pet-cards .first {
+    margin-right: 40px;
+  }
+
+  .help {
+    padding: 80px 69px 100px;
+  }
+  .help-items {
+    gap: 55px 60px;
+    justify-content: space-between;
+  }
+
+  .help-items article {
+    width: 169px;
+  }
+
+  .donation {
+    flex-direction: column;
+    padding: 80px 132px 100px 131px;
+    gap: 60px;
+  }
+
+  .donation .info {
+    order: -1;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    padding: 30px 63px 0;
+    gap: 59px;
+    justify-content: center;
+  }
+
+  .footer .contact,
+  .footer .location {
+    padding-top: 0;
+  }
 }
