@@ -89,17 +89,24 @@ h2 {
   gap: 35.2px;
 }
 
+.page-nav a {
+  color: var(--color-dark-l);
+}
+
 .page-nav ul li:active {
-  color: var(--color-dark-3xl);
   border-bottom: 3px solid var(--color-primary);
 }
 
-.active-link {
+.page-nav ul li:active a {
   color: var(--color-dark-3xl);
+}
+
+.active-link {
   border-bottom: 3px solid var(--color-primary);
 }
-.header .page-nav a {
-  color: var(--color-dark-l);
+
+.active-link a {
+  color: var(--color-dark-3xl);
 }
 
 .btn {
@@ -115,11 +122,8 @@ h2 {
 }
 
 .btn-arrow {
-  background-repeat: no-repeat;
   background-color: transparent;
-  background-size: 14px;
   width: 52px;
-  background-position: center;
   height: 52px;
   border: 2px solid var(--color-primary);
   border-radius: 50%;
@@ -128,10 +132,6 @@ h2 {
   font-size: 20px;
   line-height: 23px;
   color: var(--color-dark-3xl);
-}
-
-.arrow-right {
-  transform: rotate(-180deg);
 }
 
 .btn-beige {
@@ -145,10 +145,17 @@ h2 {
 }
 
 .btn:hover,
-.btn-arrow:hover {
+.btn-arrow:hover,
+.btn-beige:active {
   cursor: pointer;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);
+}
+
+.btn-beige:hover {
+  cursor: inherit;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
 }
 
 .btn-grey,
@@ -156,7 +163,7 @@ h2 {
   background-color: transparent;
   border: 2px solid var(--color-dark-s);
   color: var(--color-dark-s);
-  cursor: inherit;
+  cursor: no-drop;
 }
 
 .friends {

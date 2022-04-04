@@ -148,18 +148,25 @@ h2 {
   transition: 0.3s;
 }
 
+.page-nav a {
+  color: var(--color-dark-s);
+  transition: 0.3s;
+}
+
 .page-nav ul li:active {
-  color: var(--color-light-s);
   border-bottom: 3px solid var(--color-primary);
 }
 
-.active-link {
+.page-nav ul li:active a {
   color: var(--color-light-s);
+}
+
+.active-link {
   border-bottom: 3px solid var(--color-primary);
 }
-.header .page-nav a {
-  color: white;
-  transition: 0.3s;
+
+.active-link a {
+  color: var(--color-light-s);
 }
 
 .not-only {
@@ -222,6 +229,16 @@ h2 {
   gap: 60px;
   background-color: var(--color-light-l);
   padding: 80px 40px 100px;
+}
+
+.friends article:hover {
+  cursor: pointer;
+}
+
+.friends article:hover .btn {
+  cursor: pointer;
+  background-color: var(--color-primary-light);
+  border: 2px solid var(--color-primary-light);
 }
 
 .friends-title {
