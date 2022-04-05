@@ -29,6 +29,7 @@ body {
   font-size: 15px;
   line-height: 24px;
   color: var(--color-dark-xl);
+  cursor: url("../../assets/icons/cursor-normal.svg"), default;
 }
 
 .header-container,
@@ -73,7 +74,7 @@ h2 {
 
 .btn:hover,
 .btn-arrow:hover {
-  cursor: pointer;
+  cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);
 }
@@ -232,11 +233,11 @@ h2 {
 }
 
 .friends article:hover {
-  cursor: pointer;
+  cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
 }
 
 .friends article:hover .btn {
-  cursor: pointer;
+  cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);
 }

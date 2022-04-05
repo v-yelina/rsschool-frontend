@@ -19,6 +19,9 @@
   list-style: none;
   text-decoration: none;
 }
+a:hover {
+  cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
+}
 
 html {
   scroll-behavior: smooth;
@@ -29,6 +32,7 @@ body {
   font-size: 15px;
   line-height: 24px;
   color: var(--color-dark-xl);
+  cursor: url("../../assets/icons/cursor-normal.svg"), default;
 }
 
 .header-container,
@@ -147,7 +151,7 @@ h2 {
 .btn:hover,
 .btn-arrow:hover,
 .btn-beige:active {
-  cursor: pointer;
+  cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);
 }
@@ -163,7 +167,7 @@ h2 {
   background-color: transparent;
   border: 2px solid var(--color-dark-s);
   color: var(--color-dark-s);
-  cursor: no-drop;
+  cursor: url(../../assets/icons/cursor-inactive.svg), no-drop;
 }
 
 .friends {
@@ -205,11 +209,11 @@ h2 {
 }
 
 .friends article:hover {
-  cursor: pointer;
+  cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
 }
 
 .friends article:hover .btn {
-  cursor: pointer;
+  cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);
 }
@@ -228,7 +232,7 @@ h2 {
 }
 
 .nav-buttons .btn-white:hover {
-  cursor: pointer;
+  cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);
 }
