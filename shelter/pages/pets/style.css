@@ -19,6 +19,7 @@
   list-style: none;
   text-decoration: none;
 }
+
 a:hover {
   cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
 }
@@ -95,6 +96,10 @@ h2 {
 
 .page-nav a {
   color: var(--color-dark-l);
+}
+
+.page-nav a:hover {
+  color: var(--color-dark-3xl);
 }
 
 .page-nav ul li:active {
@@ -209,6 +214,8 @@ h2 {
 }
 
 .friends article:hover {
+  background-color: var(--color-light-xl);
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
   cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
 }
 

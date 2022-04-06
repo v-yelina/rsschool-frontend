@@ -154,6 +154,10 @@ h2 {
   transition: 0.3s;
 }
 
+.page-nav a:hover {
+  color: var(--color-light-s);
+}
+
 .page-nav ul li:active {
   border-bottom: 3px solid var(--color-primary);
 }
@@ -232,8 +236,15 @@ h2 {
   padding: 80px 40px 100px;
 }
 
+.friends article {
+  background-color: var(--color-light-s);
+  border-radius: 10px;
+}
+
 .friends article:hover {
   cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
+  background-color: var(--color-light-xl);
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
 }
 
 .friends article:hover .btn {
