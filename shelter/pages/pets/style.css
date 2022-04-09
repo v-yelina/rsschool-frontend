@@ -118,6 +118,11 @@ h2 {
   color: var(--color-dark-3xl);
 }
 
+.active-link:hover,
+.active-link a:hover {
+  cursor: url("../../assets/icons/cursor-normal.svg"), default;
+}
+
 .btn {
   padding: 14px 44px;
   font-size: 17px;
@@ -210,6 +215,7 @@ h2 {
   align-items: center;
   gap: 30px;
   padding-bottom: 30px;
+  border-radius: 10px;
   background-color: var(--color-light-s);
 }
 
