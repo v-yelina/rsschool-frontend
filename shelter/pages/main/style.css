@@ -474,6 +474,10 @@ h2 {
   align-items: center;
 }
 
+.footer figure img {
+  display: block;
+}
+
 @media (max-width: 1279px) {
   .header-container {
     padding: 0 30px;
