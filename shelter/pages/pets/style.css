@@ -326,6 +326,10 @@ h2 {
   align-items: center;
 }
 
+.footer figure img {
+  display: block;
+}
+
 @media (max-width: 1279px) {
   .header {
     padding: 30px;
