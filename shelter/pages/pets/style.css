@@ -1,3 +1,33 @@
+@font-face {
+  font-family: "Arial";
+  src: url("../../assets/fonts/arial/arial-regular.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Arial";
+  src: url("../../assets/fonts/arial/arial-bold.ttf") format("ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Georgia";
+  src: url("../../assets/fonts/georgia/georgia-regular.ttf") format("ttf"),
+    url("../assets/fonts/Georgia.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Georgia";
+  src: url("../../assets/fonts/georgia/georgia-italic.ttf") format("ttf"),
+    url("../assets/fonts/Georgia.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
 :root {
   --color-primary: #f1cdb3;
   --color-primary-light: #fddcc4;
@@ -294,4 +324,40 @@ h2 {
   display: flex;
   gap: 20px;
   align-items: center;
+}
+
+@media (max-width: 1279px) {
+  .header {
+    padding: 30px;
+  }
+
+  .friends {
+    gap: 30px;
+    padding: 60px 30px 70px;
+  }
+
+  .pet-cards {
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  article.hidden {
+    display: none;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    padding: 30px 62px 0;
+    gap: 58px;
+    justify-content: center;
+  }
+
+  .footer .contact,
+  .footer .location {
+    padding-top: 0;
+  }
+
+  .location {
+    max-width: 302px;
+  }
 }
