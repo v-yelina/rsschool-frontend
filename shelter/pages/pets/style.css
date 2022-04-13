@@ -207,7 +207,8 @@ h2 {
   background-color: transparent;
   border: 2px solid var(--color-dark-s);
   color: var(--color-dark-s);
-  cursor: url(../../assets/icons/cursor-inactive.svg), no-drop;
+  /* cursor: url(../../assets/icons/cursor-inactive.svg), no-drop; */
+  cursor: url("../../assets/icons/cursor-normal.svg"), default;
 }
 
 .friends {
