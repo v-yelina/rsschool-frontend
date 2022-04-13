@@ -397,7 +397,7 @@ h2 {
   line-height: 17px;
 }
 
-.donation .card-num {
+.card-num {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -409,7 +409,7 @@ h2 {
   border-radius: 10px;
   width: max-content;
 }
-.card-num a {
+.card-num span {
   font-size: 20px;
   line-height: 115%;
   letter-spacing: 0.06em;
