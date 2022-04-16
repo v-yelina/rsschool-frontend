@@ -220,14 +220,14 @@ h2 {
 }
 
 .not-only .text {
-  width: 460px;
+  max-width: 460px;
   padding: 163px 0 243px;
 }
 
 .not-only-title {
   font-size: 44px;
   line-height: 57px;
-  width: 310px;
+  max-width: 310px;
   color: #fff;
   font-weight: 400;
   letter-spacing: normal;
@@ -247,8 +247,12 @@ h2 {
 }
 
 .about figure {
-  width: 300px;
+  max-width: 300px;
   height: 408px;
+}
+
+.about figure img {
+  width: 100%;
 }
 
 .about .text {
@@ -355,8 +359,8 @@ h2 {
 }
 
 .help-items article img {
-  width: 60px;
-  height: 60px;
+  max-width: 60px;
+  max-height: 60px;
 }
 
 .help-items article h3 {
@@ -365,7 +369,7 @@ h2 {
   line-height: 23px;
   letter-spacing: 0.06em;
   font-weight: 400;
-  width: max-content;
+  max-width: max-content;
 }
 
 .donation {
@@ -388,7 +392,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 380px;
+  max-width: 380px;
 }
 
 .donation .info .text {
@@ -407,7 +411,7 @@ h2 {
   background-color: var(--color-primary);
   padding: 10px 15px;
   border-radius: 10px;
-  width: max-content;
+  max-width: max-content;
 }
 .card-num span {
   font-size: 20px;
@@ -417,7 +421,7 @@ h2 {
 }
 
 .card-num img {
-  width: 30px;
+  max-width: 30px;
 }
 
 .donation .legal {
@@ -476,6 +480,7 @@ h2 {
 
 .footer figure img {
   display: block;
+  width: 100%;
 }
 
 @media (max-width: 1279px) {
@@ -494,7 +499,7 @@ h2 {
   }
 
   .not-only .text {
-    width: 460px;
+    max-width: 460px;
     padding: 0 0 100px;
     align-self: center;
   }
@@ -553,7 +558,7 @@ h2 {
   }
 
   .help-items article {
-    width: 169px;
+    max-width: 169px;
   }
 
   .donation {
@@ -576,5 +581,193 @@ h2 {
   .footer .contact,
   .footer .location {
     padding-top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  h2,
+  .not-only-title {
+    font-size: 25px;
+    line-height: 32px;
+  }
+
+  .header-container {
+    padding: 0;
+    max-height: 823px;
+  }
+
+  .header {
+    padding: 30px 53px 0 10px;
+  }
+
+  .page-nav {
+    display: none;
+  }
+
+  .burger-closed {
+    display: block;
+    max-width: 30px;
+    max-height: 22px;
+  }
+
+  .not-only {
+    padding: 60px 10px 0px;
+  }
+
+  .not-only .text {
+    padding-bottom: 105px;
+    text-align: center;
+  }
+
+  .not-only-title {
+    max-width: 200px;
+    margin: 0 auto;
+    letter-spacing: 0.06em;
+  }
+
+  .not-only figure {
+    margin-left: 40px;
+  }
+
+  .about {
+    padding: 42px 10px;
+    gap: 42px;
+  }
+
+  .about figure {
+    max-width: 260px;
+    max-height: 353px;
+  }
+
+  .about-title {
+    text-align: center;
+  }
+
+  .about .text p {
+    text-align: justify;
+  }
+
+  .friends {
+    padding: 42px 10px;
+    gap: 42px;
+  }
+
+  .slider {
+    max-width: 270px;
+    row-gap: 20px;
+    column-gap: 80px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .pet-cards {
+    flex-direction: column;
+    order: -1;
+    margin: 0;
+  }
+
+  .pet-cards article,
+  .pet-cards .first {
+    margin: 0;
+  }
+
+  article.hidden-320 {
+    display: none;
+  }
+
+  .help {
+    padding: 42px 15px;
+    gap: 42px;
+  }
+
+  .help-title {
+    max-width: 225px;
+  }
+
+  .help-items {
+    gap: 30px;
+  }
+
+  .help-items article {
+    width: 130px;
+    gap: 20px;
+  }
+
+  .help-items article img {
+    max-width: 50px;
+    max-height: 50px;
+  }
+
+  .help-items article h3 {
+    font-size: 15px;
+    line-height: 16.5px;
+  }
+
+  .donation {
+    padding: 42px 10px;
+    gap: 42px;
+  }
+
+  .donation .info {
+    align-items: center;
+    gap: 20px;
+  }
+
+  .donation img {
+    max-width: 260px;
+  }
+
+  .card-num span {
+    font-size: 15px;
+    line-height: 16.5px;
+  }
+  .donation .donation-title {
+    text-align: center;
+  }
+
+  .donation .info .text {
+    line-height: 24px;
+    letter-spacing: normal;
+    text-align: center;
+  }
+
+  .donation .info p {
+    max-width: 280px;
+    text-align: justify;
+  }
+
+  .footer {
+    padding: 30px 10px 0px;
+    gap: 40px;
+  }
+
+  .contact,
+  .location {
+    text-align: center;
+    align-items: center;
+  }
+
+  .contact a {
+    justify-content: center;
+  }
+
+  .location a {
+    justify-content: flex-start;
+    gap: 19px;
+    text-align: left;
+    align-self: flex-start;
+  }
+
+  .footer .location {
+    gap: 40px;
+  }
+
+  .footer figure {
+    max-width: 260px;
+    justify-self: center;
+  }
+
+  .location h2 {
+    max-width: 270px;
   }
 }
