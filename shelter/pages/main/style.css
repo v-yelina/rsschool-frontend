@@ -175,6 +175,10 @@ h2 {
   gap: 35.2px;
 }
 
+.burger-closed {
+  display: none;
+}
+
 .page-nav ul li {
   transition: 0.3s;
 }
@@ -236,6 +240,11 @@ h2 {
 .not-only .text p {
   margin: 42px 0;
   color: var(--color-dark-s);
+}
+
+.not-only figure img {
+  display: block;
+  width: 100%;
 }
 
 .about {
@@ -483,7 +492,7 @@ h2 {
   width: 100%;
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 1279.9px) {
   .header-container {
     padding: 0 30px;
     height: 1165px;
@@ -512,10 +521,6 @@ h2 {
     margin-left: 100px;
     max-width: 569px;
     align-self: flex-end;
-  }
-
-  .not-only figure img {
-    width: 100%;
   }
 
   .about {
@@ -555,10 +560,11 @@ h2 {
   .help-items {
     gap: 55px 60px;
     justify-content: space-between;
+    max-width: 850px;
   }
 
   .help-items article {
-    max-width: 169px;
+    width: 169px;
   }
 
   .donation {
@@ -582,9 +588,21 @@ h2 {
   .footer .location {
     padding-top: 0;
   }
+
+  .footer figure {
+    margin: 0 50px;
+  }
+}
+@media (min-width: 642px) and (max-width: 767.9px) {
+  .contact,
+  .location {
+    text-align: center;
+    align-items: center;
+    margin: 0 50px;
+  }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 767.9px) {
   h2,
   .not-only-title {
     font-size: 25px;
@@ -593,6 +611,7 @@ h2 {
 
   .header-container {
     padding: 0;
+    height: max-content;
     max-height: 823px;
   }
 
@@ -600,7 +619,7 @@ h2 {
     padding: 30px 53px 0 10px;
   }
 
-  .page-nav {
+  nav.page-nav {
     display: none;
   }
 
@@ -627,10 +646,11 @@ h2 {
 
   .not-only figure {
     margin-left: 40px;
+    max-width: 260px;
   }
 
   .about {
-    padding: 42px 10px;
+    padding: 42px 25px;
     gap: 42px;
   }
 
@@ -685,6 +705,7 @@ h2 {
   }
 
   .help-items {
+    max-width: 446px;
     gap: 30px;
   }
 
