@@ -28,6 +28,23 @@
   font-style: italic;
 }
 
+@keyframes slidein {
+  from {
+    right: -320px;
+  }
+  to {
+    right: 0;
+  }
+}
+@keyframes slideout {
+  from {
+    right: 0;
+  }
+  to {
+    right: -320px;
+  }
+}
+
 :root {
   --color-primary: #f1cdb3;
   --color-primary-light: #fddcc4;
@@ -118,7 +135,8 @@ h2 {
   color: var(--color-dark-3xl);
 }
 
-.burger-closed {
+.burger-closed,
+.burger-header {
   display: none;
 }
 
@@ -213,6 +231,51 @@ h2 {
   color: var(--color-dark-s);
   /* cursor: url(../../assets/icons/cursor-inactive.svg), no-drop; */
   cursor: url("../../assets/icons/cursor-normal.svg"), default;
+}
+
+.burger-header {
+  flex-wrap: wrap;
+  align-items: flex-start;
+  row-gap: 158px;
+  column-gap: 44px;
+  width: 320px;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: var(--color-dark-3xl);
+  padding: 30px 10px;
+  animation-duration: 1.5s;
+  animation-name: slidein;
+}
+
+.burger-header .page-nav {
+  width: 100%;
+}
+
+.burger-header .page-nav .nav-list {
+  flex-direction: column;
+  align-items: center;
+}
+
+.burger-header .page-nav .nav-list li a {
+  color: var(--color-light-s);
+}
+
+.burger-header .logo {
+  max-width: max-content;
+}
+
+.burger-header .logo-title {
+  color: var(--color-light-l);
+}
+
+.burger-header .logo-subtitle {
+  color: var(--color-light-s);
+}
+
+.burger-opened {
+  max-width: max-content;
 }
 
 .friends {
@@ -382,7 +445,7 @@ h2 {
     padding: 30px 50px 30px 10px;
   }
 
-  nav.page-nav {
+  header > nav.page-nav {
     display: none;
   }
 

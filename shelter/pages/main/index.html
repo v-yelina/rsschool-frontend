@@ -11,6 +11,7 @@
     />
     <link rel="stylesheet" href="../../normalize.css" />
     <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
     <title>Shelter: main page</title>
   </head>
   <body>
@@ -20,17 +21,39 @@
           <h1 class="logo-title">Cozy House</h1>
           <span class="logo-subtitle">Shelter for pets in Boston</span>
         </div>
-        <div class="burger-closed">
+        <div class="burger-closed" onclick="openBurgerMenu()">
           <img src="../../assets/icons/Burger.svg" alt="burger" />
         </div>
         <nav class="page-nav">
-          <ul>
+          <ul class="nav-list">
             <li class="active-link"><a href="#about">About the shelter</a></li>
             <li><a href="../../pages/pets/index.html">Our pets</a></li>
             <li><a href="#help">Help the shelter</a></li>
             <li><a href="#footer">Contacts</a></li>
           </ul>
         </nav>
+        <div class="burger-header">
+          <div class="logo">
+            <h2 class="logo-title">Cozy House</h2>
+            <span class="logo-subtitle">Shelter for pets in Boston</span>
+          </div>
+          <div class="burger-opened" onclick="closeBurgerMenu()">
+            <img
+              src="../../assets/icons/Burger-opened-beige.svg"
+              alt="burger"
+            />
+          </div>
+          <nav class="page-nav">
+            <ul class="nav-list">
+              <li class="active-link">
+                <a href="#about">About the shelter</a>
+              </li>
+              <li><a href="../../pages/pets/index.html">Our pets</a></li>
+              <li><a href="#help">Help the shelter</a></li>
+              <li><a href="#footer">Contacts</a></li>
+            </ul>
+          </nav>
+        </div>
       </header>
       <section class="not-only">
         <div class="text">

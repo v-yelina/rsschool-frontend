@@ -28,6 +28,15 @@
   font-style: italic;
 }
 
+@keyframes slidein {
+  from {
+    right: -320px;
+  }
+  to {
+    right: 0;
+  }
+}
+
 :root {
   --color-primary: #f1cdb3;
   --color-primary-light: #fddcc4;
@@ -175,7 +184,8 @@ h2 {
   gap: 35.2px;
 }
 
-.burger-closed {
+.burger-closed,
+.burger-header {
   display: none;
 }
 
@@ -211,6 +221,38 @@ h2 {
 .active-link:hover,
 .active-link a:hover {
   cursor: url("../../assets/icons/cursor-normal.svg"), default;
+}
+
+.burger-header {
+  flex-wrap: wrap;
+  row-gap: 158px;
+  column-gap: 44px;
+  width: 320px;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: var(--color-dark-3xl);
+  padding: 30px 10px;
+  animation-duration: 1.5s;
+  animation-name: slidein;
+}
+
+.burger-header .page-nav {
+  width: 100%;
+}
+
+.burger-header .page-nav .nav-list {
+  flex-direction: column;
+  align-items: center;
+}
+
+.burger-header .logo {
+  max-width: max-content;
+}
+
+.burger-opened {
+  max-width: max-content;
 }
 
 .not-only {
@@ -619,7 +661,7 @@ h2 {
     padding: 30px 53px 0 10px;
   }
 
-  nav.page-nav {
+  header > nav.page-nav {
     display: none;
   }
 
