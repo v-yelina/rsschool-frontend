@@ -233,6 +233,17 @@ h2 {
   cursor: url("../../assets/icons/cursor-normal.svg"), default;
 }
 
+.burger-header-container {
+  display: none;
+  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(41, 41, 41, 0.6);
+}
+
 .burger-header {
   flex-wrap: wrap;
   align-items: flex-start;
@@ -243,7 +254,7 @@ h2 {
   position: absolute;
   right: 0;
   top: 0;
-  background-color: var(--color-dark-3xl);
+  background-color: var(--color-light-s);
   padding: 30px 10px;
   animation-duration: 1.5s;
   animation-name: slidein;
@@ -259,7 +270,7 @@ h2 {
 }
 
 .burger-header .page-nav .nav-list li a {
-  color: var(--color-light-s);
+  color: var(--color-dark-l);
 }
 
 .burger-header .logo {
@@ -267,11 +278,11 @@ h2 {
 }
 
 .burger-header .logo-title {
-  color: var(--color-light-l);
+  color: var(--color-dark-l);
 }
 
 .burger-header .logo-subtitle {
-  color: var(--color-light-s);
+  color: var(--color-dark-3xl);
 }
 
 .burger-opened {

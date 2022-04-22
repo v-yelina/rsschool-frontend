@@ -223,6 +223,17 @@ h2 {
   cursor: url("../../assets/icons/cursor-normal.svg"), default;
 }
 
+.burger-header-container {
+  display: none;
+  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(41, 41, 41, 0.6);
+}
+
 .burger-header {
   flex-wrap: wrap;
   row-gap: 158px;

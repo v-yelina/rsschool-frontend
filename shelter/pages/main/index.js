@@ -1,5 +1,8 @@
 const burgerClosed = document.querySelector(".burger-closed");
 const burgerHeader = document.querySelector(".burger-header");
+const burgerHeaderContainer = document.querySelector(
+  ".burger-header-container"
+);
 const body = document.querySelector("body");
 const pets = [
   {
@@ -105,12 +108,14 @@ const friendsSection = document.querySelector(".friends");
 const openBurgerMenu = () => {
   burgerClosed.style.display = "none";
   burgerHeader.style.display = "flex";
+  burgerHeaderContainer.style.display = "block";
   body.style.position = "fixed";
 };
 
 const closeBurgerMenu = () => {
   burgerClosed.style.display = "block";
   burgerHeader.style.display = "none";
+  burgerHeaderContainer.style.display = "none";
   body.style.position = "static";
 };
 
