@@ -318,6 +318,7 @@ h2 {
 }
 
 .friends {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -377,6 +378,77 @@ h2 {
 .pet-cards {
   display: flex;
   gap: 90px;
+  max-width: 990px;
+  max-height: 435px;
+  overflow: hidden;
+}
+
+.popup {
+  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(41, 41, 41, 0.6);
+}
+
+.popup .btn-arrow {
+  align-self: flex-end;
+  background-image: url("../../assets/icons/cross.svg");
+  position: absolute;
+
+  top: -52px;
+  right: -52px;
+  margin: auto;
+}
+
+.popup .pet {
+  display: flex;
+  background-color: white;
+  border-radius: 20px;
+
+  position: absolute;
+  width: 50%;
+  max-height: max-content;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.popup .pet-img {
+  align-self: center;
+  height: 100%;
+}
+
+.popup .pet-img img {
+  max-width: 360px;
+}
+
+.popup .pet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.type-breed {
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.qualities li::before {
+  content: url("../../assets/icons/dot.svg");
+  width: 5px;
+  height: 5px;
+  margin-right: 5px;
+}
+
+.popup .qualities .title {
+  font-weight: 700;
 }
 
 .help {
@@ -583,13 +655,15 @@ h2 {
     display: none;
   }
 
-  .pet-cards,
   .slider {
-    gap: initial;
+    max-width: 100%;
+    gap: 12px;
   }
 
   .pet-cards {
-    margin: 0 12px;
+    max-width: 580px;
+    overflow: hidden;
+    gap: 40px;
   }
 
   .pet-cards .first {
@@ -733,7 +807,7 @@ h2 {
     margin: 0;
   }
 
-  article.hidden-320 {
+  .popup .pet-img {
     display: none;
   }
 
