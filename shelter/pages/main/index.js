@@ -109,7 +109,7 @@ const openBurgerMenu = () => {
   burgerClosed.style.display = "none";
   burgerHeader.style.display = "flex";
   burgerHeaderContainer.style.display = "block";
-  body.style.position = "fixed";
+  body.style.overflow = "hidden";
 };
 
 const closeBurgerMenu = () => {
@@ -117,6 +117,7 @@ const closeBurgerMenu = () => {
   burgerHeader.style.display = "none";
   burgerHeaderContainer.style.display = "none";
   body.style.position = "static";
+  body.style.overflow = "visible";
 };
 
 const createPetsCards = () => {
@@ -145,7 +146,6 @@ const createPopup = (e) => {
   <div class="pet-info"><h2>${pet.name}</h2><p class='type-breed'><span class='type'>${pet.type}</span> - <span class='breed'>${pet.breed}</span></p><p class='description'>${pet.description}</p><ul class='qualities'><li><span class='title'>Age: </span>${pet.age}</li><li><span class='title'>Inoculations: </span>${pet.inoculations}</li><li><span class='title'>Diseases: </span>${pet.diseases}</li><li><span class='title'>Parasites: </span>${pet.parasites}</li></ul></div></div>`;
   friendsSection.appendChild(popup);
   body.style.overflow = "hidden";
-  document.querySelector(".overlay").style.display = "block";
 };
 
 const closePopup = () => {

@@ -589,6 +589,7 @@ const openBurgerMenu = () => {
   burgerHeader.style.display = "flex";
   burgerHeaderContainer.style.display = "block";
   body.style.position = "fixed";
+  body.style.overflow = "hidden";
 };
 
 const closeBurgerMenu = () => {
@@ -596,6 +597,7 @@ const closeBurgerMenu = () => {
   burgerHeader.style.display = "none";
   burgerHeaderContainer.style.display = "none";
   body.style.position = "static";
+  body.style.overflow = "visible";
 };
 
 // const addClickEventListenerToLinks = () => {
