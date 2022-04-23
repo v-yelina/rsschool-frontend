@@ -11,6 +11,7 @@
     />
     <link rel="stylesheet" href="../../normalize.css" />
     <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
     <title>Shelter: main page</title>
   </head>
   <body>
@@ -20,17 +21,41 @@
           <h1 class="logo-title">Cozy House</h1>
           <span class="logo-subtitle">Shelter for pets in Boston</span>
         </div>
-        <div class="burger-closed">
+        <div class="burger-closed" onclick="openBurgerMenu()">
           <img src="../../assets/icons/Burger.svg" alt="burger" />
         </div>
         <nav class="page-nav">
-          <ul>
+          <ul class="nav-list">
             <li class="active-link"><a href="#about">About the shelter</a></li>
             <li><a href="../../pages/pets/index.html">Our pets</a></li>
             <li><a href="#help">Help the shelter</a></li>
             <li><a href="#footer">Contacts</a></li>
           </ul>
         </nav>
+        <div class="burger-header-container">
+          <div class="burger-header">
+            <div class="logo">
+              <h2 class="logo-title">Cozy House</h2>
+              <span class="logo-subtitle">Shelter for pets in Boston</span>
+            </div>
+            <div class="burger-opened" onclick="closeBurgerMenu()">
+              <img
+                src="../../assets/icons/Burger-opened-beige.svg"
+                alt="burger"
+              />
+            </div>
+            <nav class="page-nav">
+              <ul class="nav-list">
+                <li class="active-link">
+                  <a href="#about">About the shelter</a>
+                </li>
+                <li><a href="../../pages/pets/index.html">Our pets</a></li>
+                <li><a href="#help">Help the shelter</a></li>
+                <li><a href="#footer">Contacts</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
       </header>
       <section class="not-only">
         <div class="text">
@@ -79,31 +104,15 @@
           Our friends who are&nbsp;looking for a house
         </h2>
         <div class="slider">
-          <button class="btn-arrow"></button>
-          <div class="pet-cards">
-            <article class="first">
-              <figure class="pet-pic">
-                <img src="../../assets/img/pets-katrine.png" alt="Katrine" />
-                <figcaption>Katrine</figcaption>
-              </figure>
-              <button class="btn btn-white">Learn more</button>
-            </article>
-            <article class="hidden-320">
-              <figure class="pet-pic">
-                <img src="../../assets/img/pets-jennifer.png" alt="Jennifer" />
-                <figcaption>Jennifer</figcaption>
-              </figure>
-              <button class="btn btn-white">Learn more</button>
-            </article>
-            <article class="hidden">
-              <figure class="pet-pic">
-                <img src="../../assets/img/pets-woody.png" alt="Woody" />
-                <figcaption>Woody</figcaption>
-              </figure>
-              <button class="btn btn-white">Learn more</button>
-            </article>
+          <button class="btn-arrow slider-btn-left"></button>
+          <div class="carousel-wrapper">
+            <div class="pet-cards-wrapper">
+              <div class="pet-cards-left"></div>
+              <div class="pet-cards"></div>
+              <div class="pet-cards-right"></div>
+            </div>
           </div>
-          <button class="btn-arrow arrow-right"></button>
+          <button class="btn-arrow arrow-right slider-btn-right"></button>
         </div>
         <a href="../../pages/pets/index.html" class="btn btn-beige"
           >Get to know the rest</a
