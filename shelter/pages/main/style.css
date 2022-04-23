@@ -14,16 +14,14 @@
 
 @font-face {
   font-family: "Georgia";
-  src: url("../../assets/fonts/georgia/georgia-regular.ttf") format("ttf"),
-    url("../assets/fonts/Georgia.woff") format("woff");
+  src: url("../../assets/fonts/georgia/georgia-regular.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Georgia";
-  src: url("../../assets/fonts/georgia/georgia-italic.ttf") format("ttf"),
-    url("../assets/fonts/Georgia.woff") format("woff");
+  src: url("../../assets/fonts/georgia/georgia-italic.ttf") format("ttf");
   font-weight: normal;
   font-style: italic;
 }
@@ -49,6 +47,9 @@
   --color-light-xl: #ffffff;
   --color-light-l: #f6f6f6;
   --color-light-s: #fafafa;
+  --slider-width-1280: 990px;
+  --slider-width-768: 580px;
+  --slider-width-320: 270px;
 }
 
 * {
@@ -386,12 +387,54 @@ h2 {
   gap: 53px;
 }
 
-.pet-cards {
+@keyframes move-right {
+  from {
+    left: -989px;
+  }
+  to {
+    left: -1978px;
+  }
+}
+
+.transition-right {
+  animation-name: move-right;
+  animation-duration: 5s;
+}
+
+@keyframes move-left {
+  from {
+    left: -989px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+.transition-left {
+  animation-name: move-left;
+  animation-duration: 5s;
+}
+
+.carousel-wrapper {
+  width: var(--slider-width-1280);
+  overflow: hidden;
+  height: 435px;
+}
+
+.pet-cards-wrapper {
+  display: flex;
+  position: relative;
+  left: -989px;
+}
+
+.pet-cards,
+.pet-cards-left,
+.pet-cards-right {
   display: flex;
   gap: 90px;
-  max-width: 990px;
   max-height: 435px;
-  overflow: hidden;
+  max-width: 99.9%;
+  margin: 0 auto;
 }
 
 .popup {
@@ -671,14 +714,36 @@ h2 {
     gap: 12px;
   }
 
-  .pet-cards {
+  .carousel-wrapper {
     max-width: 580px;
-    overflow: hidden;
-    gap: 40px;
   }
 
-  .pet-cards .first {
-    margin-right: 40px;
+  @keyframes move-right {
+    from {
+      left: -579px;
+    }
+    to {
+      left: -1158px;
+    }
+  }
+
+  @keyframes move-left {
+    from {
+      left: -579px;
+    }
+    to {
+      left: 0px;
+    }
+  }
+
+  .pet-cards-wrapper {
+    left: -579px;
+  }
+
+  .pet-cards,
+  .pet-cards-left,
+  .pet-cards-right {
+    gap: 40px;
   }
 
   .help {
@@ -807,14 +872,34 @@ h2 {
     flex-wrap: wrap;
   }
 
-  .pet-cards {
-    flex-direction: column;
+  .carousel-wrapper {
     order: -1;
-    margin: 0;
+    max-width: 270px;
   }
 
-  .pet-cards article,
-  .pet-cards .first {
+  @keyframes move-right {
+    from {
+      left: -270px;
+    }
+    to {
+      left: -540px;
+    }
+  }
+
+  @keyframes move-left {
+    from {
+      left: -270px;
+    }
+    to {
+      left: 0px;
+    }
+  }
+
+  .pet-cards-wrapper {
+    left: -270px;
+  }
+
+  .pet-cards article {
     margin: 0;
   }
 

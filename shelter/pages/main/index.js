@@ -102,8 +102,14 @@ const pets = [
     parasites: ["lice", "fleas"],
   },
 ];
-const petCardsWrapper = document.querySelector(".pet-cards");
+const deviceWidth = window.innerWidth > 0 ? window.innerWidth : screen.width;
+const petCardsWrapper = document.querySelector(".pet-cards-wrapper");
+const petCards = document.querySelector(".pet-cards");
+const petCardsLeft = document.querySelector(".pet-cards-left");
+const petCardsRight = document.querySelector(".pet-cards-right");
 const friendsSection = document.querySelector(".friends");
+const leftSliderBtn = document.querySelector(".slider-btn-left");
+const rightSliderBtn = document.querySelector(".slider-btn-right");
 
 const openBurgerMenu = () => {
   burgerClosed.style.display = "none";
@@ -121,21 +127,40 @@ const closeBurgerMenu = () => {
 };
 
 const createPetsCards = () => {
+  let activeCards = [];
+  petCards.querySelectorAll("figcaption").forEach((element) => {
+    activeCards.push(
+      pets.indexOf(pets.find((pet) => pet.name === element.innerHTML))
+    );
+  });
+
   let cards = "";
-  for (let i = 0; i < pets.length; i++) {
-    cards += `<article class="${pets[
-      i
-    ].name.toLocaleLowerCase()}" onclick="createPopup(this)">
+  let currentCards = [];
+  let cardCount;
+  deviceWidth >= 1028
+    ? (cardCount = 3)
+    : deviceWidth >= 768
+    ? (cardCount = 2)
+    : (cardCount = 1);
+  while (currentCards.length < cardCount) {
+    let i = Math.floor(Math.random() * (pets.length - 1 - 0) + 0);
+    if (activeCards.indexOf(i) === -1 && currentCards.indexOf(i) === -1) {
+      cards += `<article class="${pets[
+        i
+      ].name.toLocaleLowerCase()}" onclick="createPopup(this)">
     <figure class="pet-pic">
       <img src="${pets[i].img}" alt="${pets[i].name}" />
       <figcaption>${pets[i].name}</figcaption>
     </figure>
     <button class="btn btn-white">Learn more</button>
   </article>`;
+      currentCards.push(i);
+    }
   }
-  petCardsWrapper.innerHTML += cards;
+  currentCards = [];
+
+  return cards;
 };
-createPetsCards();
 
 const createPopup = (e) => {
   const name = e.querySelector("figcaption").innerHTML;
@@ -152,3 +177,40 @@ const closePopup = () => {
   friendsSection.removeChild(friendsSection.lastElementChild);
   body.style.overflow = "visible";
 };
+
+const moveLeft = () => {
+  petCardsWrapper.classList.add("transition-left");
+  leftSliderBtn.removeEventListener("click", moveLeft);
+  rightSliderBtn.removeEventListener("click", moveRight);
+};
+
+const moveRight = () => {
+  petCardsWrapper.classList.add("transition-right");
+  leftSliderBtn.removeEventListener("click", moveLeft);
+  rightSliderBtn.removeEventListener("click", moveRight);
+};
+
+leftSliderBtn.addEventListener("click", moveLeft);
+rightSliderBtn.addEventListener("click", moveRight);
+
+petCards.innerHTML += createPetsCards();
+petCardsLeft.innerHTML += createPetsCards();
+petCardsRight.innerHTML += createPetsCards();
+
+petCardsWrapper.addEventListener("animationend", (animationEvent) => {
+  let changedItem;
+  if (animationEvent.animationName === "move-left") {
+    petCardsWrapper.classList.remove("transition-left");
+    changedItem = petCardsLeft;
+    petCards.innerHTML = petCardsLeft.innerHTML;
+  } else {
+    petCardsWrapper.classList.remove("transition-right");
+    changedItem = petCardsRight;
+    petCards.innerHTML = petCardsRight.innerHTML;
+  }
+
+  changedItem.innerHTML = createPetsCards();
+
+  leftSliderBtn.addEventListener("click", moveLeft);
+  rightSliderBtn.addEventListener("click", moveRight);
+});
