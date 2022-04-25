@@ -5,6 +5,8 @@ const burgerHeaderContainer = document.querySelector(
   ".burger-header-container"
 );
 const body = document.querySelector("body");
+const menu = burgerHeader.querySelector(".nav-list");
+
 const pets = [
   {
     name: "Jennifer",
@@ -121,6 +123,11 @@ const openBurgerMenu = () => {
   burgerOpened.style.display = "block";
   burgerHeaderContainer.style.display = "block";
   body.style.overflow = "hidden";
+  menu.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      closeBurgerMenu();
+    }
+  });
 };
 
 const closeBurgerMenu = () => {

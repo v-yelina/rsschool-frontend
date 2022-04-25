@@ -5,6 +5,7 @@ const burgerHeader = document.querySelector(".burger-header");
 const burgerHeaderContainer = document.querySelector(
   ".burger-header-container"
 );
+const menu = burgerHeader.querySelector(".nav-list");
 
 const firstBtn = document.querySelector("#btn-first");
 const leftBtn = document.querySelector("#btn-left");
@@ -702,6 +703,12 @@ const openBurgerMenu = () => {
   burgerOpened.style.display = "block";
   burgerHeaderContainer.style.display = "block";
   body.style.overflow = "hidden";
+  burgerHeaderContainer.addEventListener("click", closeBurgerMenu);
+  menu.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      closeBurgerMenu();
+    }
+  });
 };
 
 const closeBurgerMenu = () => {
@@ -876,7 +883,6 @@ const createPopup = (e) => {
   friendsSection.appendChild(popup);
   body.style.overflow = "hidden";
   popup.addEventListener("click", closePopup);
-  console.log(popup);
   popup.onmouseover = (e) => {
     if (e.target === e.currentTarget) popupBtn.classList.add("hovered");
   };
