@@ -1,9 +1,12 @@
 const burgerClosed = document.querySelector(".burger-closed");
+const burgerOpened = document.querySelector(".burger-opened");
 const burgerHeader = document.querySelector(".burger-header");
 const burgerHeaderContainer = document.querySelector(
   ".burger-header-container"
 );
 const body = document.querySelector("body");
+const menu = burgerHeader.querySelector(".nav-list");
+
 const pets = [
   {
     name: "Jennifer",
@@ -112,16 +115,28 @@ const leftSliderBtn = document.querySelector(".slider-btn-left");
 const rightSliderBtn = document.querySelector(".slider-btn-right");
 
 const openBurgerMenu = () => {
-  burgerClosed.style.display = "none";
+  burgerClosed.classList.add("burger-animation");
+  burgerOpened.style.display = "none";
+  burgerHeader.classList.remove("burger-slide-out");
+  burgerHeader.classList.add("burger-slide-in");
   burgerHeader.style.display = "flex";
+  burgerOpened.style.display = "block";
   burgerHeaderContainer.style.display = "block";
   body.style.overflow = "hidden";
+  menu.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      closeBurgerMenu();
+    }
+  });
 };
 
 const closeBurgerMenu = () => {
+  burgerHeader.classList.remove("burger-slide-in");
+  burgerHeader.classList.add("burger-slide-out");
+  burgerClosed.classList.remove("burger-animation");
   burgerClosed.style.display = "block";
-  burgerHeader.style.display = "none";
   burgerHeaderContainer.style.display = "none";
+  burgerHeader.style.display = "none";
   body.style.position = "static";
   body.style.overflow = "visible";
 };
@@ -167,10 +182,18 @@ const createPopup = (e) => {
   const popup = document.createElement("div");
   popup.classList = "popup overlay";
   const pet = pets.find((pet) => pet.name === name);
-  popup.innerHTML += `<div class='pet'><button class='btn-arrow' onclick='closePopup()'></button><div class="pet-img"><img src="${pet.img}" alt="${pet.name}"></div>
+  popup.innerHTML += `<div class='pet' onclick="event.stopPropagation()"><button class='btn-arrow' onclick='closePopup()' id='popupBtn'></button><div class="pet-img"><img src="${pet.img}" alt="${pet.name}"></div>
   <div class="pet-info"><h2>${pet.name}</h2><p class='type-breed'><span class='type'>${pet.type}</span> - <span class='breed'>${pet.breed}</span></p><p class='description'>${pet.description}</p><ul class='qualities'><li><span class='title'>Age: </span>${pet.age}</li><li><span class='title'>Inoculations: </span>${pet.inoculations}</li><li><span class='title'>Diseases: </span>${pet.diseases}</li><li><span class='title'>Parasites: </span>${pet.parasites}</li></ul></div></div>`;
   friendsSection.appendChild(popup);
   body.style.overflow = "hidden";
+  popup.addEventListener("click", closePopup);
+  popup.onmouseover = (e) => {
+    if (e.target === e.currentTarget) popupBtn.classList.add("hovered");
+  };
+
+  popup.onmouseout = (e) => {
+    if (e.target === e.currentTarget) popupBtn.classList.remove("hovered");
+  };
 };
 
 const closePopup = () => {

@@ -26,15 +26,6 @@
   font-style: italic;
 }
 
-@keyframes slidein {
-  from {
-    right: -320px;
-  }
-  to {
-    right: 0;
-  }
-}
-
 :root {
   --color-primary: #f1cdb3;
   --color-primary-light: #fddcc4;
@@ -47,7 +38,7 @@
   --color-light-xl: #ffffff;
   --color-light-l: #f6f6f6;
   --color-light-s: #fafafa;
-  --slider-width-1280: 990px;
+  --slider-width-1280: 989px;
   --slider-width-768: 580px;
   --slider-width-320: 270px;
 }
@@ -113,7 +104,8 @@ h2 {
 }
 
 .btn:hover,
-.btn-arrow:hover {
+.btn-arrow:hover,
+button.hovered {
   cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);
@@ -189,6 +181,18 @@ h2 {
 .burger-header {
   display: none;
 }
+.burger-closed {
+  transition: all 0.3s ease-in-out;
+}
+
+.burger-closed:hover,
+.burger-opened:hover {
+  cursor: pointer;
+}
+
+.burger-animation {
+  transform: rotate(90deg);
+}
 
 .page-nav ul li {
   transition: 0.3s;
@@ -235,6 +239,24 @@ h2 {
   background: rgba(41, 41, 41, 0.6);
 }
 
+@keyframes slidein {
+  from {
+    right: -320px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes slideout {
+  from {
+    right: 0;
+  }
+  to {
+    right: -320px;
+  }
+}
+
 .burger-header {
   flex-wrap: wrap;
   row-gap: 158px;
@@ -247,7 +269,14 @@ h2 {
   background-color: var(--color-dark-3xl);
   padding: 30px 10px;
   animation-duration: 1.5s;
+}
+
+.burger-slide-in {
   animation-name: slidein;
+}
+
+.burger-slide-out {
+  animation-name: slideout;
 }
 
 .burger-header .page-nav {
@@ -398,7 +427,7 @@ h2 {
 
 .transition-right {
   animation-name: move-right;
-  animation-duration: 5s;
+  animation-duration: 1.5s;
 }
 
 @keyframes move-left {
@@ -412,7 +441,7 @@ h2 {
 
 .transition-left {
   animation-name: move-left;
-  animation-duration: 5s;
+  animation-duration: 1.5s;
 }
 
 .carousel-wrapper {
@@ -744,6 +773,10 @@ h2 {
   .pet-cards-left,
   .pet-cards-right {
     gap: 40px;
+  }
+
+  .popup .pet {
+    width: 80%;
   }
 
   .help {

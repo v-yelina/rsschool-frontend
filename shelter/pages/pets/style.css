@@ -14,35 +14,16 @@
 
 @font-face {
   font-family: "Georgia";
-  src: url("../../assets/fonts/georgia/georgia-regular.ttf") format("ttf"),
-    url("../assets/fonts/Georgia.woff") format("woff");
+  src: url("../../assets/fonts/georgia/georgia-regular.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Georgia";
-  src: url("../../assets/fonts/georgia/georgia-italic.ttf") format("ttf"),
-    url("../assets/fonts/Georgia.woff") format("woff");
+  src: url("../../assets/fonts/georgia/georgia-italic.ttf") format("ttf");
   font-weight: normal;
   font-style: italic;
-}
-
-@keyframes slidein {
-  from {
-    right: -320px;
-  }
-  to {
-    right: 0;
-  }
-}
-@keyframes slideout {
-  from {
-    right: 0;
-  }
-  to {
-    right: -320px;
-  }
 }
 
 :root {
@@ -140,6 +121,24 @@ h2 {
   display: none;
 }
 
+.burger-closed:hover,
+.burger-opened:hover {
+  cursor: pointer;
+}
+
+.burger-closed {
+  transition: all 0.3s ease-in-out;
+}
+
+.burger-closed:hover,
+.burger-opened:hover {
+  cursor: pointer;
+}
+
+.burger-animation {
+  transform: rotate(90deg);
+}
+
 .header .page-nav ul {
   display: flex;
   flex-direction: row;
@@ -212,7 +211,8 @@ h2 {
 
 .btn:hover,
 .btn-arrow:hover,
-.btn-beige:active {
+.btn-beige:active,
+.hovered {
   cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);
@@ -231,6 +231,23 @@ h2 {
   color: var(--color-dark-s);
   /* cursor: url(../../assets/icons/cursor-inactive.svg), no-drop; */
   cursor: url("../../assets/icons/cursor-normal.svg"), default;
+}
+
+@keyframes slidein {
+  from {
+    right: -320px;
+  }
+  to {
+    right: 0;
+  }
+}
+@keyframes slideout {
+  from {
+    right: 0;
+  }
+  to {
+    right: -320px;
+  }
 }
 
 .burger-header-container {
@@ -257,7 +274,14 @@ h2 {
   background-color: var(--color-light-s);
   padding: 30px 10px;
   animation-duration: 1.5s;
+}
+
+.burger-slide-in {
   animation-name: slidein;
+}
+
+.burger-slide-out {
+  animation-name: slideout;
 }
 
 .burger-header .page-nav {
@@ -496,6 +520,10 @@ h2 {
     margin-bottom: 10px;
     max-width: 795px;
     max-height: 1365px;
+  }
+
+  .popup .pet {
+    width: 80%;
   }
 
   .footer {
