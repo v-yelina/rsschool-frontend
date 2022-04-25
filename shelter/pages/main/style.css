@@ -47,7 +47,7 @@
   --color-light-xl: #ffffff;
   --color-light-l: #f6f6f6;
   --color-light-s: #fafafa;
-  --slider-width-1280: 990px;
+  --slider-width-1280: 989px;
   --slider-width-768: 580px;
   --slider-width-320: 270px;
 }
@@ -398,7 +398,7 @@ h2 {
 
 .transition-right {
   animation-name: move-right;
-  animation-duration: 5s;
+  animation-duration: 3s;
 }
 
 @keyframes move-left {
@@ -412,7 +412,7 @@ h2 {
 
 .transition-left {
   animation-name: move-left;
-  animation-duration: 5s;
+  animation-duration: 53s;
 }
 
 .carousel-wrapper {
