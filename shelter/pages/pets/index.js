@@ -864,10 +864,19 @@ const createPopup = (e) => {
   const popup = document.createElement("div");
   popup.classList = "popup overlay";
   const pet = pets.find((pet) => pet.name === name);
-  popup.innerHTML += `<div class='pet'><button class='btn-arrow' onclick='closePopup()'></button><div class="pet-img"><img src="${pet.img}" alt="${pet.name}"></div>
+  popup.innerHTML += `<div class='pet' onclick="event.stopPropagation()"><button class='btn-arrow' onclick='closePopup()' id='popupBtn'></button><div class="pet-img"><img src="${pet.img}" alt="${pet.name}"></div>
   <div class="pet-info"><h2>${pet.name}</h2><p class='type-breed'><span class='type'>${pet.type}</span> - <span class='breed'>${pet.breed}</span></p><p class='description'>${pet.description}</p><ul class='qualities'><li><span class='title'>Age: </span>${pet.age}</li><li><span class='title'>Inoculations: </span>${pet.inoculations}</li><li><span class='title'>Diseases: </span>${pet.diseases}</li><li><span class='title'>Parasites: </span>${pet.parasites}</li></ul></div></div>`;
   friendsSection.appendChild(popup);
   body.style.overflow = "hidden";
+  popup.addEventListener("click", closePopup);
+  console.log(popup);
+  popup.onmouseover = (e) => {
+    if (e.target === e.currentTarget) popupBtn.classList.add("hovered");
+  };
+
+  popup.onmouseout = (e) => {
+    if (e.target === e.currentTarget) popupBtn.classList.remove("hovered");
+  };
 };
 
 const closePopup = () => {

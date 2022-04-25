@@ -210,7 +210,8 @@ h2 {
 
 .btn:hover,
 .btn-arrow:hover,
-.btn-beige:active {
+.btn-beige:active,
+.hovered {
   cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);
@@ -494,6 +495,10 @@ h2 {
     margin-bottom: 10px;
     max-width: 795px;
     max-height: 1365px;
+  }
+
+  .popup .pet {
+    width: 80%;
   }
 
   .footer {

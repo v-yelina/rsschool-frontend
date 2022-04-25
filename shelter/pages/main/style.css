@@ -113,7 +113,8 @@ h2 {
 }
 
 .btn:hover,
-.btn-arrow:hover {
+.btn-arrow:hover,
+button.hovered {
   cursor: url("../../assets/icons/cursor-hover.svg"), pointer;
   background-color: var(--color-primary-light);
   border: 2px solid var(--color-primary-light);
@@ -744,6 +745,10 @@ h2 {
   .pet-cards-left,
   .pet-cards-right {
     gap: 40px;
+  }
+
+  .popup .pet {
+    width: 80%;
   }
 
   .help {
