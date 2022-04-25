@@ -26,15 +26,6 @@
   font-style: italic;
 }
 
-@keyframes slidein {
-  from {
-    right: -320px;
-  }
-  to {
-    right: 0;
-  }
-}
-
 :root {
   --color-primary: #f1cdb3;
   --color-primary-light: #fddcc4;
@@ -190,6 +181,18 @@ button.hovered {
 .burger-header {
   display: none;
 }
+.burger-closed {
+  transition: all 0.3s ease-in-out;
+}
+
+.burger-closed:hover,
+.burger-opened:hover {
+  cursor: pointer;
+}
+
+.burger-animation {
+  transform: rotate(90deg);
+}
 
 .page-nav ul li {
   transition: 0.3s;
@@ -236,6 +239,24 @@ button.hovered {
   background: rgba(41, 41, 41, 0.6);
 }
 
+@keyframes slidein {
+  from {
+    right: -320px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes slideout {
+  from {
+    right: 0;
+  }
+  to {
+    right: -320px;
+  }
+}
+
 .burger-header {
   flex-wrap: wrap;
   row-gap: 158px;
@@ -248,7 +269,14 @@ button.hovered {
   background-color: var(--color-dark-3xl);
   padding: 30px 10px;
   animation-duration: 1.5s;
+}
+
+.burger-slide-in {
   animation-name: slidein;
+}
+
+.burger-slide-out {
+  animation-name: slideout;
 }
 
 .burger-header .page-nav {

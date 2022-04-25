@@ -26,23 +26,6 @@
   font-style: italic;
 }
 
-@keyframes slidein {
-  from {
-    right: -320px;
-  }
-  to {
-    right: 0;
-  }
-}
-@keyframes slideout {
-  from {
-    right: 0;
-  }
-  to {
-    right: -320px;
-  }
-}
-
 :root {
   --color-primary: #f1cdb3;
   --color-primary-light: #fddcc4;
@@ -136,6 +119,24 @@ h2 {
 .burger-closed,
 .burger-header {
   display: none;
+}
+
+.burger-closed:hover,
+.burger-opened:hover {
+  cursor: pointer;
+}
+
+.burger-closed {
+  transition: all 0.3s ease-in-out;
+}
+
+.burger-closed:hover,
+.burger-opened:hover {
+  cursor: pointer;
+}
+
+.burger-animation {
+  transform: rotate(90deg);
 }
 
 .header .page-nav ul {
@@ -232,6 +233,23 @@ h2 {
   cursor: url("../../assets/icons/cursor-normal.svg"), default;
 }
 
+@keyframes slidein {
+  from {
+    right: -320px;
+  }
+  to {
+    right: 0;
+  }
+}
+@keyframes slideout {
+  from {
+    right: 0;
+  }
+  to {
+    right: -320px;
+  }
+}
+
 .burger-header-container {
   display: none;
   position: relative;
@@ -256,7 +274,14 @@ h2 {
   background-color: var(--color-light-s);
   padding: 30px 10px;
   animation-duration: 1.5s;
+}
+
+.burger-slide-in {
   animation-name: slidein;
+}
+
+.burger-slide-out {
+  animation-name: slideout;
 }
 
 .burger-header .page-nav {

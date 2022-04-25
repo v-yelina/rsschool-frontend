@@ -1,5 +1,6 @@
 const body = document.querySelector("body");
 const burgerClosed = document.querySelector(".burger-closed");
+const burgerOpened = document.querySelector(".burger-opened");
 const burgerHeader = document.querySelector(".burger-header");
 const burgerHeaderContainer = document.querySelector(
   ".burger-header-container"
@@ -693,17 +694,23 @@ const paginationPets = [
 ];
 
 const openBurgerMenu = () => {
-  burgerClosed.style.display = "none";
+  burgerClosed.classList.add("burger-animation");
+  burgerOpened.style.display = "none";
+  burgerHeader.classList.remove("burger-slide-out");
+  burgerHeader.classList.add("burger-slide-in");
   burgerHeader.style.display = "flex";
+  burgerOpened.style.display = "block";
   burgerHeaderContainer.style.display = "block";
-  body.style.position = "fixed";
   body.style.overflow = "hidden";
 };
 
 const closeBurgerMenu = () => {
+  burgerHeader.classList.remove("burger-slide-in");
+  burgerHeader.classList.add("burger-slide-out");
+  burgerClosed.classList.remove("burger-animation");
   burgerClosed.style.display = "block";
-  burgerHeader.style.display = "none";
   burgerHeaderContainer.style.display = "none";
+  burgerHeader.style.display = "none";
   body.style.position = "static";
   body.style.overflow = "visible";
 };
