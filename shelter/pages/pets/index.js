@@ -944,11 +944,16 @@ const goToFirstPage = () => {
 };
 
 const goToLeft = () => {
-  console.log("hi");
+  let lastPage;
+  deviceWidth >= 1028
+    ? (lastPage = 6)
+    : deviceWidth >= 768
+    ? (lastPage = 8)
+    : (lastPage = 16);
   if (currentPage === 2) {
     goToFirstPage();
     return;
-  } else if (currentPage === 6) {
+  } else if (currentPage === lastPage) {
     rightBtn.classList.remove("btn-grey");
     lastBtn.classList.remove("btn-grey");
     rightBtn.removeAttribute("disabled", "true");
