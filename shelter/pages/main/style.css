@@ -940,6 +940,11 @@ button.hovered {
     display: none;
   }
 
+  .popup .btn-arrow {
+    top: -55px;
+    right: -25px;
+  }
+
   .help {
     padding: 42px 15px;
     gap: 42px;
