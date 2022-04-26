@@ -931,7 +931,6 @@ const goToLastPage = () => {
 };
 
 const goToFirstPage = () => {
-  console.log("hi");
   currentPage = 1;
   createPaginationPage(cardCount);
   rightBtn.classList.remove("btn-grey");
@@ -966,7 +965,13 @@ const goToLeft = () => {
 };
 
 const goToRight = () => {
-  if (currentPage === 5) {
+  let lastPage;
+  deviceWidth >= 1028
+    ? (lastPage = 5)
+    : deviceWidth >= 768
+    ? (lastPage = 7)
+    : (lastPage = 15);
+  if (currentPage === lastPage) {
     goToLastPage();
     return;
   } else if (currentPage === 1) {
