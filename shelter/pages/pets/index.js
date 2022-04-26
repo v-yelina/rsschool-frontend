@@ -931,7 +931,6 @@ const goToLastPage = () => {
 };
 
 const goToFirstPage = () => {
-  console.log("hi");
   currentPage = 1;
   createPaginationPage(cardCount);
   rightBtn.classList.remove("btn-grey");
@@ -944,11 +943,16 @@ const goToFirstPage = () => {
 };
 
 const goToLeft = () => {
-  console.log("hi");
+  let lastPage;
+  deviceWidth >= 1028
+    ? (lastPage = 6)
+    : deviceWidth >= 768
+    ? (lastPage = 8)
+    : (lastPage = 16);
   if (currentPage === 2) {
     goToFirstPage();
     return;
-  } else if (currentPage === 6) {
+  } else if (currentPage === lastPage) {
     rightBtn.classList.remove("btn-grey");
     lastBtn.classList.remove("btn-grey");
     rightBtn.removeAttribute("disabled", "true");
@@ -961,7 +965,13 @@ const goToLeft = () => {
 };
 
 const goToRight = () => {
-  if (currentPage === 5) {
+  let lastPage;
+  deviceWidth >= 1028
+    ? (lastPage = 5)
+    : deviceWidth >= 768
+    ? (lastPage = 7)
+    : (lastPage = 15);
+  if (currentPage === lastPage) {
     goToLastPage();
     return;
   } else if (currentPage === 1) {
