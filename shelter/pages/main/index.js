@@ -128,6 +128,9 @@ const openBurgerMenu = () => {
       closeBurgerMenu();
     }
   });
+  burgerHeaderContainer.addEventListener("click", function (e) {
+    if (!e.target.closest(".burger-header")) closeBurgerMenu();
+  });
 };
 
 const closeBurgerMenu = () => {
