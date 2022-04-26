@@ -750,6 +750,12 @@ deviceWidth >= 1028
 
 const createPaginationPage = (cardCount) => {
   currentPageNumber.innerHTML = currentPage;
+  let lastPage;
+  deviceWidth >= 1028
+    ? (lastPage = 6)
+    : deviceWidth >= 768
+    ? (lastPage = 8)
+    : (lastPage = 16);
   if (currentPage === 1) {
     leftBtn.classList.add("btn-grey");
     firstBtn.classList.add("btn-grey");
@@ -757,7 +763,7 @@ const createPaginationPage = (cardCount) => {
     firstBtn.setAttribute("disabled", "true");
     leftBtn.classList.remove("btn-white");
     firstBtn.classList.remove("btn-white");
-  } else if (currentPage === 6) {
+  } else if (currentPage === lastPage) {
     rightBtn.classList.add("btn-grey");
     lastBtn.classList.add("btn-grey");
     rightBtn.setAttribute("disabled", "true");
