@@ -698,13 +698,12 @@ const paginationPets = [];
 const createPetsPaginationArray = () => {
   for (let i = 0; i < 6; i++) {
     let onePagePets = [];
-    while (onePagePets.length < 7) {
-      let petIndex = Math.floor(Math.random() * (pets.length - 1 - 0) + 0);
+    while (onePagePets.length < 8) {
+      let petIndex = Math.floor(Math.random() * (pets.length - 1 - 0 + 1) + 0);
       if (onePagePets.indexOf(pets[petIndex]) === -1) {
         onePagePets.push(pets[petIndex]);
       }
     }
-    onePagePets.push(...pets.filter((x) => !onePagePets.includes(x)));
     paginationPets.push(...onePagePets);
     onePagePets = [];
   }
