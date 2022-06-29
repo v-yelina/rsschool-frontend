@@ -10,6 +10,8 @@ enum ResponseStatus {
     NotFound = 404,
 }
 
+type Data = SourcesData | AllNewsData;
+
 class Loader {
     baseLink: string;
     options: object;
@@ -21,10 +23,10 @@ class Loader {
 
     getResp(
         { endpoint, options = {} }: { endpoint: string; options?: Options },
-        callback: (data: SourcesData | AllNewsData) => void = () => {
+        callback: (data: Data) => void = () => {
             console.error('No callback for GET response');
         }
-    ) {
+    ): void {
         this.load('GET', endpoint, callback, options);
     }
 
