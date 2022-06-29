@@ -5,6 +5,11 @@ interface Options {
     [prop: string]: string;
 }
 
+enum ResponseStatus {
+    Unauthorized = 401,
+    NotFound = 404,
+}
+
 class Loader {
     baseLink: string;
     options: object;
@@ -25,7 +30,7 @@ class Loader {
 
     errorHandler(res: Response) {
         if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
+            if (res.status === ResponseStatus.Unauthorized || res.status === ResponseStatus.NotFound)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
             throw Error(res.statusText);
         }
