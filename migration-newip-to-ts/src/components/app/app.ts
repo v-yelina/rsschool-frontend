@@ -11,9 +11,8 @@ class App {
     }
 
     start() {
-        document
-            .querySelector('.sources')!
-            .addEventListener('click', (e: Event) => this.controller.getNews(e, (data) => this.view.drawNews(data)));
+        const sources = document.querySelector('.sources') as HTMLDivElement;
+        sources.addEventListener('click', (e: Event) => this.controller.getNews(e, (data) => this.view.drawNews(data)));
         this.controller.getSources((data) => {
             this.view.drawSources(data);
             this.controller.chooseFirstCategory((data) => this.view.drawNews(data));
