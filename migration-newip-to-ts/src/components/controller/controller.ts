@@ -1,8 +1,16 @@
 import AppLoader from './appLoader';
 import { SourcesData } from '../view/sources/sourceData.interface';
 import { AllNewsData } from '../view/news/newsData.interface';
+import { AppView } from '../view/appView';
 
 class AppController extends AppLoader {
+    view: AppView;
+
+    constructor() {
+        super();
+        this.view = new AppView();
+    }
+
     getSources(callback: (data: SourcesData) => void) {
         super.getResp(
             {
@@ -10,6 +18,42 @@ class AppController extends AppLoader {
             },
             callback
         );
+    }
+
+    getSourcesByCategory(e: Event, callback: (data: SourcesData) => void) {
+        const target = e.target as HTMLElement;
+        const categoryContainer = e.currentTarget as HTMLElement;
+
+        while (target !== categoryContainer) {
+            if (target.classList.contains('category__item') || target.classList.contains('category__item-name')) {
+                const categoryName = (target.getAttribute('data-category') || target.innerHTML) as string;
+                console.log('category:' + categoryName);
+
+                const sources = document.querySelector('.sources') as HTMLDivElement;
+
+                sources.innerHTML = '';
+
+                if (categoryName === 'all') {
+                    super.getResp(
+                        {
+                            endpoint: 'sources',
+                        },
+                        callback
+                    );
+                } else {
+                    super.getResp(
+                        {
+                            endpoint: 'sources',
+                            options: {
+                                category: categoryName,
+                            },
+                        },
+                        callback
+                    );
+                }
+                return;
+            }
+        }
     }
 
     getNews(e: Event, callback: (data: AllNewsData) => void) {
