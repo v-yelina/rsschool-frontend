@@ -11,7 +11,7 @@ class AppController extends AppLoader {
         this.view = new AppView();
     }
 
-    getSources(callback: (data: SourcesData) => void) {
+    public getSources(callback: (data: SourcesData) => void): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -20,7 +20,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getSourcesByCategory(e: Event, callback: (data: SourcesData) => void) {
+    public getSourcesByCategory(e: Event, callback: (data: SourcesData) => void): void {
         const target = e.target as HTMLElement;
         const categoryContainer = e.currentTarget as HTMLElement;
 
@@ -56,7 +56,7 @@ class AppController extends AppLoader {
         }
     }
 
-    getNews(e: Event, callback: (data: AllNewsData) => void) {
+    public getNews(e: Event, callback: (data: AllNewsData) => void): void {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 
@@ -81,7 +81,7 @@ class AppController extends AppLoader {
         }
     }
 
-    chooseFirstCategory(callback: (data: AllNewsData) => void) {
+    public chooseFirstCategory(callback: (data: AllNewsData) => void): void {
         const newsContainer = document.querySelector('.sources') as HTMLElement;
         const firstCategory = document.querySelector('.source__item') as HTMLElement;
 

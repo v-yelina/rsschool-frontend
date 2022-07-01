@@ -1,7 +1,7 @@
 import './categories.css';
 
 class Categories {
-    draw() {
+    public draw() {
         type CategoriesList =
             | 'all'
             | 'business'
