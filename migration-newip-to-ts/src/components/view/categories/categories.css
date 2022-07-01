@@ -4,7 +4,6 @@
     flex-wrap: wrap;
     max-width: 90%;
     margin: 0 auto;
-    height: 150px;
     overflow: auto;
     align-items: center;
     font: 300 1em 'Fira Sans', sans-serif;
@@ -12,7 +11,6 @@
 
 .category__item {
     background: #02394A;
-    border: 2px solid #5158bb;
     font: inherit;
     line-height: 1;
     margin: 0.5em;
@@ -25,9 +23,9 @@
 
 .category__item:hover,
 .category__item:focus {
-    border-color: #eb4b98;
-    color: #eb4b98;
-    box-shadow: 0 0.5em 0.5em -0.4em #eb4b98;
+    border-color: #F26DF9;
+    color: #F26DF9;
+    box-shadow: 0 0.5em 0.5em -0.4em #F26DF9;
     transform: translateY(-0.25em);
 }
 

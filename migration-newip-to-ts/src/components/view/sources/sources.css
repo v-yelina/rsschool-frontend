@@ -4,9 +4,9 @@
     flex-wrap: wrap;
     max-width: 90%;
     margin: 0 auto;
-    height: 150px;
+    max-height: 200px;
     overflow: auto;
-    align-items: center;
+    align-items: flex-start;
     font: 300 1em 'Fira Sans', sans-serif;
 }
 
@@ -15,8 +15,8 @@
     border: 2px solid #5158bb;
     font: inherit;
     line-height: 1;
-    margin: 0.5em;
-    padding: 1em 2em;
+    margin: 0.3em;
+    padding: 0.5em 1em;
     color: #5158bb;
     transition: 0.25s;
     cursor: pointer;

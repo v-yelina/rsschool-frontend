@@ -11,6 +11,7 @@ header {
 header h1 {
     font-size: 4rem;
     font-weight: 800;
+    margin: 0.5em 0;
     
 }
 
@@ -27,7 +28,7 @@ footer {
 
 footer .copyright {
     font-size: 14px;
-        color: #043565;
+    color: #043565;
     text-align: center;
     width: 100%;
 }
@@ -41,4 +42,11 @@ footer .copyright:before {
     display: block;
     padding: 10px;
     color: var(--green-color);
+}
+
+@media (max-width: 640px) {
+    header h1 {
+        font-size: 3rem;
+        margin: 0.2em 0;
+    }
 }
