@@ -24,10 +24,11 @@ footer {
     gap: 5px;
     flex-wrap: wrap;
     margin: 5vh auto;
+    font-size: 1rem;
 }
 
 footer .copyright {
-    font-size: 14px;
+    font-size: 0.8rem;
     color: #043565;
     text-align: center;
     width: 100%;
