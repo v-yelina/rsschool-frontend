@@ -27,7 +27,6 @@ class AppController extends AppLoader {
         while (target !== categoryContainer) {
             if (target.classList.contains('category__item') || target.classList.contains('category__item-name')) {
                 const categoryName = (target.getAttribute('data-category') || target.innerHTML) as string;
-                console.log('category:' + categoryName);
 
                 const sources = document.querySelector('.sources') as HTMLDivElement;
 
