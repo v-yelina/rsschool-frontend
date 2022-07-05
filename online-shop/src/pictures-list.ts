@@ -1,4 +1,4 @@
-import { Picture } from './picture';
+import { Picture } from './picture.inteface';
 import * as path from 'path';
 
 export const picturesList: Picture[] = [
