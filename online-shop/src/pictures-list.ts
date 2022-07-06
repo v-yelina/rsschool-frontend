@@ -1,5 +1,4 @@
 import { Picture } from './picture.inteface';
-import * as path from 'path';
 
 export const picturesList: Picture[] = [
     {
@@ -11,7 +10,7 @@ export const picturesList: Picture[] = [
         description: 'Banana painted with oil brush',
         amount: 1,
         color: 'yellow',
-        url: path.join(__dirname, '/assets/img/banana-oil-brush.jpg'),
+        url: './assets/img/banana-oil-brush.jpg',
     },
     {
         title: 'Cat',
@@ -22,7 +21,7 @@ export const picturesList: Picture[] = [
         description: 'Grey cat smiles you',
         amount: 10,
         color: 'grey',
-        url: path.join(__dirname, '/assets/img/cat-pencil.jpg'),
+        url: './assets/img/cat-pencil.jpg',
     },
     {
         title: 'Christmas tree',
@@ -33,7 +32,7 @@ export const picturesList: Picture[] = [
         description: 'Holiday is coming! Christmas tree for you HO-HO-HO',
         amount: 2,
         color: 'green',
-        url: path.join(__dirname, '/assets/img/christmas-tree-oil-brush.jpg'),
+        url: './assets/img/christmas-tree-oil-brush.jpg',
     },
     {
         title: 'Cloud',
@@ -44,7 +43,7 @@ export const picturesList: Picture[] = [
         description: 'A little cloud for warm days',
         amount: 15,
         color: 'blue',
-        url: path.join(__dirname, '/assets/img/cloud-pencil.jpg'),
+        url: './assets/img/cloud-pencil.jpg',
     },
     {
         title: 'Fish',
@@ -55,7 +54,7 @@ export const picturesList: Picture[] = [
         description: 'The best quiet pet or just cookie, as you wish',
         amount: 3,
         color: 'orange',
-        url: path.join(__dirname, '/assets/img/fish-crayon.jpg'),
+        url: './assets/img/fish-crayon.jpg',
     },
     {
         title: 'Flower',
@@ -66,7 +65,7 @@ export const picturesList: Picture[] = [
         description: 'Your winter bouquet',
         amount: 9,
         color: 'blue',
-        url: path.join(__dirname, '/assets/img/flower-pencil.jpg'),
+        url: './assets/img/flower-pencil.jpg',
     },
     {
         title: 'Grape',
@@ -77,7 +76,7 @@ export const picturesList: Picture[] = [
         description: 'Just delicious',
         amount: 1,
         color: 'purple',
-        url: path.join(__dirname, '/assets/img/grape-watercolor-brush.jpg'),
+        url: './assets/img/grape-watercolor-brush.jpg',
     },
     {
         title: 'Grass',
@@ -88,7 +87,7 @@ export const picturesList: Picture[] = [
         description: 'Smells like summer',
         amount: 4,
         color: 'green',
-        url: path.join(__dirname, '/assets/img/grass-pencil.jpg'),
+        url: './assets/img/grass-pencil.jpg',
     },
     {
         title: 'Heart',
@@ -99,7 +98,7 @@ export const picturesList: Picture[] = [
         description: 'All you need is love',
         amount: 8,
         color: 'red',
-        url: path.join(__dirname, '/assets/img/heart-airbrush.jpg'),
+        url: './assets/img/heart-airbrush.jpg',
     },
     {
         title: 'Orange',
@@ -110,7 +109,7 @@ export const picturesList: Picture[] = [
         description: 'Orange like orange',
         amount: 8,
         color: 'orange',
-        url: path.join(__dirname, '/assets/img/orange-marker.jpg'),
+        url: './assets/img/orange-marker.jpg',
     },
     {
         title: 'Pig',
@@ -121,7 +120,7 @@ export const picturesList: Picture[] = [
         description: 'Oink oink',
         amount: 3,
         color: 'rose',
-        url: path.join(__dirname, '/assets/img/pig-marker.jpg'),
+        url: './assets/img/pig-marker.jpg',
     },
     {
         title: 'Rainbow',
@@ -132,7 +131,7 @@ export const picturesList: Picture[] = [
         description: 'ROYGBIV',
         amount: 1,
         color: 'rainbow',
-        url: path.join(__dirname, '/assets/img/rainbow-crayon.jpg'),
+        url: './assets/img/rainbow-crayon.jpg',
     },
     {
         title: 'Star',
@@ -143,7 +142,7 @@ export const picturesList: Picture[] = [
         description: 'Shine bright',
         amount: 13,
         color: 'yellow',
-        url: path.join(__dirname, '/assets/img/star-pencil.jpg'),
+        url: './assets/img/star-pencil.jpg',
     },
     {
         title: 'Sun',
@@ -154,7 +153,7 @@ export const picturesList: Picture[] = [
         description: 'For rainy days',
         amount: 30,
         color: 'yellow',
-        url: path.join(__dirname, '/assets/img/sun-crayon.jpg'),
+        url: './assets/img/sun-crayon.jpg',
     },
     {
         title: 'Watermelon',
@@ -165,7 +164,7 @@ export const picturesList: Picture[] = [
         description: "You can't just stop",
         amount: 12,
         color: 'red',
-        url: path.join(__dirname, '/assets/img/watermelon-marker.jpg'),
+        url: './assets/img/watermelon-marker.jpg',
     },
     {
         title: 'Dog',
@@ -176,7 +175,7 @@ export const picturesList: Picture[] = [
         description: 'Your best friend',
         amount: 1,
         color: 'grey',
-        url: path.join(__dirname, '/assets/img/dog-watercolor-brush.jpg'),
+        url: './assets/img/dog-watercolor-brush.jpg',
     },
     {
         title: 'Rocket',
@@ -187,7 +186,7 @@ export const picturesList: Picture[] = [
         description: 'To the moon',
         amount: 15,
         color: 'grey',
-        url: path.join(__dirname, '/assets/img/rocket-brush.jpg'),
+        url: './assets/img/rocket-brush.jpg',
     },
     {
         title: 'Saturn',
@@ -198,7 +197,7 @@ export const picturesList: Picture[] = [
         description: 'Just too far away',
         amount: 5,
         color: 'brown',
-        url: path.join(__dirname, '/assets/img/saturn-marker.jpg'),
+        url: './assets/img/saturn-marker.jpg',
     },
     {
         title: 'Snail',
@@ -209,7 +208,7 @@ export const picturesList: Picture[] = [
         description: 'Slo-o-o-o-ow',
         amount: 15,
         color: 'brown',
-        url: path.join(__dirname, '/assets/img/snail-oil-brush.jpg'),
+        url: './assets/img/snail-oil-brush.jpg',
     },
     {
         title: 'Tree',
@@ -220,6 +219,6 @@ export const picturesList: Picture[] = [
         description: 'Perfect shadow and air',
         amount: 15,
         color: 'green',
-        url: path.join(__dirname, '/assets/img/snail-oil-brush.jpg'),
+        url: './assets/img/tree-crayon.jpg',
     },
 ];
