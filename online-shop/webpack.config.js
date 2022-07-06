@@ -1,10 +1,11 @@
-import { resolve as _resolve } from 'path';
-import { merge } from 'webpack-merge';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+const path = require('path');
+const { merge } = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const baseConfig = {
-    entry: _resolve(__dirname, './src/index.ts'),
+    entry: path.resolve(__dirname, './src/index.ts'),
     devtool: 'inline-source-map',
     mode: 'development',
     module: {
@@ -19,28 +20,39 @@ const baseConfig = {
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
-                test: /\.(png|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loader: 'file-loader',
+            },
+            {
+                test: /\.html$/,
+                loader: 'html-loader',
             },
         ],
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
+        fallback: {
+            fs: false,
+            path: false,
+        },
     },
     output: {
         filename: 'index.js',
-        path: _resolve(__dirname, './dist'),
+        path: path.resolve(__dirname, './dist'),
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: _resolve(__dirname, './src/index.html'),
+            template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
         }),
         new CleanWebpackPlugin(),
+        new CopyPlugin({
+            patterns: [{ from: './src/assets', to: './assets' }],
+        }),
     ],
 };
 
-export default ({ mode }) => {
+module.exports = ({ mode }) => {
     const isProductionMode = mode === 'prod';
     const envConfig = isProductionMode ? require('./webpack.prod.config') : require('./webpack.dev.config');
 
