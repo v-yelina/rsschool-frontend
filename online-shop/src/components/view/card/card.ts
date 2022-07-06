@@ -1,4 +1,5 @@
 import { Picture } from '../../../picture.inteface';
+import './card.scss';
 
 class Card {
     public draw(data: Picture[]) {
