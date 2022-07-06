@@ -1,0 +1,85 @@
+// <article class="card__item">
+// <img src="#" alt="" class="card__item-img" />
+// <p class="card__item-header"><span class="card__item-title">
+// <p class="card__item-header">Year: <span class="card__item-year">
+// <p class="card__item-header"><span class="card__item-price">$
+// <button class="card__item-btn--cart">Add to cart</button>
+@import url('https://fonts.googleapis.com/css2?family=Mingzat&family=Raleway:wght@400;700&display=swap');
+
+
+.products {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card__item {
+    display: grid;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 5%;
+    background-color: #fff;
+    padding: 2%;
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+    border-radius: 1rem;
+}
+
+.card__item-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    p {
+        margin: 0;
+        text-align: center;
+    }
+}
+
+.card__item-title {
+    color: #0b2545;
+    font-weight: 700;
+    font-size: 1.5rem;
+    font-family: 'Raleway', sans-serif;
+}
+
+.card__item-price {
+    font-weight: 700;
+}
+
+.card__item-img {
+    max-width: 15vw;
+    transition: 0.3s;
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+        cursor: pointer;
+    }
+
+    &:active {
+        transform: translateY(2px);
+    }
+}
+
+.card__item-btn--cart {
+    border-radius: 0.5rem;
+    padding: 5% 10%;
+    width: 80%;
+    background-color: #8da9c4;
+    color: #eef4ed;
+    text-transform: uppercase;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    transition: 0.3s;
+
+    &:hover {
+        cursor: pointer;
+        background-color: darken($color: #8da9c4, $amount: 10%);
+    }
+
+    &:active {
+        transform: translateY(4px);
+    }
+
+}
