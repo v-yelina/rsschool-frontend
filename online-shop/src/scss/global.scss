@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Mingzat&family=Raleway:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    line-height: 1.5rem;
+}
+
+body {
+    font-family: 'Mingzat', sans-serif;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    margin: 0 auto;
+    background-color: #E5E5E5;
+    padding: 2%;
+}
+
+
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    flex-wrap: wrap;
+    max-width: 90%;
+    height: 100px;
+    margin: 0 auto;
+    font-size: 1rem;
+    background-color: #13315c;
+    color: #e5e5e5;
+    max-width: 90%;
+    padding: 1%;
+
+    a {
+        text-decoration: none;
+        font-size: 1.2rem;
+        color:#e5e5e5 ;
+    }
+}
