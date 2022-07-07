@@ -9,12 +9,31 @@ body {
     font-family: 'Mingzat', sans-serif;
 }
 
+header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background-color: #fff;
+    color: #13315c;
+    max-width: 90%;
+    margin: 0 auto;
+    text-transform: uppercase;
+    padding: 2%;
+    letter-spacing: 4px;
+    box-shadow: rgba(11, 38, 70, 0.4) 0px 5px, rgba(19, 49, 92, 0.3) 0px 10px, rgba(19, 64, 116, 0.2) 0px 15px, rgba(141, 169, 196,0.3) 0px 20px, rgba(141, 169, 196, 0.1) 0px 25px;
+
+    img {
+        max-height: 100px;
+    }
+}
+
 main {
     display: flex;
     flex-direction: column;
     max-width: 90%;
     margin: 0 auto;
-    background-color: #E5E5E5;
+    // background-color: #e5e5e589;
+    
     padding: 2%;
 }
 
