@@ -20,12 +20,19 @@ const baseConfig = {
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loader: 'file-loader',
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'html-loader',
+                    },
+                ],
             },
             {
-                test: /\.html$/,
-                loader: 'html-loader',
+                test: /\.(jpe?g|png|gif)$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'img/[hash][ext]',
+                },
             },
         ],
     },
@@ -44,6 +51,7 @@ const baseConfig = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html',
+            favicon: path.resolve(__dirname, './src/assets/svg/brush-svgrepo-com.svg'),
         }),
         new CleanWebpackPlugin(),
         new CopyPlugin({
