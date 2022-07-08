@@ -1,0 +1,37 @@
+.search {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    min-width: 300px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    img {
+        max-width: 24px;
+    }
+
+}
+
+.search-input {
+    border: none;
+    padding: 5px;
+
+    &:focus {
+        border: none;
+    }
+}
+
+.search-remove {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.error {
+    margin-top: 2%;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 2rem;
+}
