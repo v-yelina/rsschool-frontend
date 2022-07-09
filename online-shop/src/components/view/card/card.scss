@@ -11,7 +11,6 @@
 
 .card__item {
     display: flex;
-    // grid-template-columns: repeat(auto-fill, 1fr);
     flex-direction: column;
     gap: 10px;
     align-items: center;
@@ -22,15 +21,19 @@
     border-radius: 1rem;
     min-width: 210px;
 
-    @media (max-width: 750px) {
-        min-width: 270px;
+    @media (max-width: 920px) {
+        min-width: 280px;
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 820px) {
         flex-direction: row;
         width: 80%;
         margin: 0 auto 5%;
-        }
+    }
+        
+    @media (max-width: 520px) {
+        width: 95%;
+    }
 }
 
 .card__item-description {
@@ -78,7 +81,7 @@
 .card__item-btn--cart {
     border-radius: 0.5rem;
     padding: 5% 10%;
-    width: 80%;
+    width: max-content;
     background-color: #8da9c4;
     color: #eef4ed;
     text-transform: uppercase;

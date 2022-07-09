@@ -21,10 +21,28 @@
                 <img src="./assets/svg/remove.svg" alt="search" class="search-remove" />
             </div>
         </header>
-        <main>
-            <section class="filters"></section>
-            <section class="products"></section>
-        </main>
+        <aside>
+            <select name="sort" id="sort">
+                <option value="sort-by" selected>Sort by:</option>
+                <option value="price-ascending">Price: ascending</option>
+                <option value="price-descending">Price: descending</option>
+                <option value="title-ascending">Title: ascending</option>
+                <option value="title-descending">Title: descending</option>
+                <option value="year-ascending">Year: ascending</option>
+                <option value="year-descending">Year: descending</option>
+            </select>
+            <select name="filter" id="filter">
+                <option value="filter-by" selected>Filter by:</option>
+                <option value="color">Color</option>
+                <option value="author">Author</option>
+                <option value="brush">Brush</option>
+            </select>
+            <label for="onsale"
+                >On sale
+                <input type="checkbox" name="onsale" id="onsale" />
+            </label>
+        </aside>
+        <main class="products"></main>
         <footer class="footer">
             <a class="github-link" href="https://github.com/v-yelina">Github: v-yelina</a>
             <span>2022</span>
