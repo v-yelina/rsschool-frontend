@@ -25,17 +25,21 @@ class App {
         sort.sortProducts();
         const filter = new Filter();
 
-        const filterCheckboxes = document.querySelectorAll('.filter');
+        const filterCheckboxes = (document.querySelectorAll('.filter') as unknown) as HTMLInputElement[];
         filterCheckboxes.forEach((checkbox) =>
             checkbox.addEventListener('change', (e: Event) => {
                 const selectedOption = e.target as HTMLOptionElement;
-                const prevValue = localStorage.getItem('filters');
-                if (prevValue) {
-                    localStorage.setItem('filters', prevValue + '-' + selectedOption.value);
+                if (checkbox.checked) {
+                    const prevValue = localStorage.getItem('filters');
+                    if (prevValue) {
+                        localStorage.setItem('filters', prevValue + '-' + selectedOption.value);
+                    } else {
+                        localStorage.setItem('filters', selectedOption.value);
+                    }
                 } else {
-                    localStorage.setItem('filters', selectedOption.value);
+                    filter.removeFilter(selectedOption.value);
                 }
-                console.log(localStorage.getItem('filters'));
+
                 filter.filterProducts();
             })
         );
