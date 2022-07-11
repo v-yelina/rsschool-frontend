@@ -23,7 +23,7 @@ class Card {
                     cardItemPrice.textContent = item.price + '';
                     const cardItem = cardClone.querySelector('.card__item') as HTMLDivElement;
 
-                    cardItem.setAttribute('data-filters', `${item.brush}-${item.author}-${item.color}`);
+                    cardItem.setAttribute('data-filters', `${item.brush}-${item.author.toLowerCase()}-${item.color}`);
                     fragment.append(cardClone);
 
                     const products = document.querySelector('.products') as HTMLDivElement;
