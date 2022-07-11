@@ -21,30 +21,33 @@ class Filter {
 
     public filterProducts() {
         const productsWrapper = document.querySelector('.products') as HTMLDivElement;
+
         if (localStorage.getItem('filters')) {
-            productsWrapper.innerHTML = '';
             let filters = localStorage.getItem('filters');
 
             if (filters) {
                 let filtersArr = filters.split('-');
+                let currentProducts =
+                    filtersArr.length > 1 ? Array.from(document.querySelectorAll('.card__item')) : this.allProducts;
 
-                for (let product of this.allProducts) {
-                    let productElement = product as HTMLElement;
-                    const productProperties = productElement.dataset.filters;
+                filtersArr.forEach((filter) => {
+                    productsWrapper.innerHTML = '';
 
-                    let productPropertiesArr;
-                    if (productProperties) {
-                        productPropertiesArr = productProperties.split('-');
+                    for (let product of currentProducts) {
+                        console.log('filter', filter, 'product', product);
 
-                        if (productPropertiesArr && productPropertiesArr[0] !== '') {
-                            productPropertiesArr.forEach((property) => {
-                                if (filtersArr.includes(property)) {
-                                    productsWrapper.appendChild(product);
-                                }
-                            });
+                        let productElement = product as HTMLElement;
+                        const productProperties = productElement.dataset.filters;
+
+                        let productPropertiesArr: string[];
+                        if (productProperties) {
+                            productPropertiesArr = productProperties.split('-');
+                            if (productPropertiesArr.includes(filter)) {
+                                productsWrapper.appendChild(product);
+                            }
                         }
                     }
-                }
+                });
             }
         } else {
             for (let product of this.allProducts) {
