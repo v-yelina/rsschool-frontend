@@ -17,12 +17,13 @@ class Card {
 
                     cardItemImg.setAttribute('src', item.url);
                     cardItemImg.setAttribute('alt', item.title);
-                    // const cardItem = cardClone.querySelector('.card__item') as HTMLDivElement;
-                    // sourceItem.setAttribute('data-source-id', item.id);
                     const cardItemYear = cardClone.querySelector('.card__item-year') as HTMLSpanElement;
                     cardItemYear.textContent = item.year + '';
                     const cardItemPrice = cardClone.querySelector('.card__item-price') as HTMLSpanElement;
                     cardItemPrice.textContent = item.price + '';
+                    const cardItem = cardClone.querySelector('.card__item') as HTMLDivElement;
+
+                    cardItem.setAttribute('data-filters', `${item.brush}-${item.author}-${item.color}`);
                     fragment.append(cardClone);
 
                     const products = document.querySelector('.products') as HTMLDivElement;
