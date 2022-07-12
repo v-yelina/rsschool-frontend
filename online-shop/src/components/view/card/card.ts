@@ -21,6 +21,9 @@ class Card {
                     cardItemYear.textContent = item.year + '';
                     const cardItemPrice = cardClone.querySelector('.card__item-price') as HTMLSpanElement;
                     cardItemPrice.textContent = item.price + '$';
+                    const cardItem = cardClone.querySelector('.card__item') as HTMLDivElement;
+
+                    cardItem.setAttribute('data-filters', `${item.brush}-${item.author.toLowerCase()}-${item.color}`);
                     if (item.onsale && item.salePrice) {
                         cardItemPrice.classList.add('card__item-price_sale');
                         const salePrice = document.createElement('span');
@@ -31,10 +34,9 @@ class Card {
                         salePercent.classList.add('card__item_sale-percent');
                         salePercent.innerHTML = `-${Math.round(100 - (item.salePrice * 100) / item.price)}%`;
                         salePrice.after(salePercent);
+                        cardItem.dataset.filters += '-sale';
                     }
-                    const cardItem = cardClone.querySelector('.card__item') as HTMLDivElement;
 
-                    cardItem.setAttribute('data-filters', `${item.brush}-${item.author.toLowerCase()}-${item.color}`);
                     fragment.append(cardClone);
 
                     const products = document.querySelector('.products') as HTMLDivElement;

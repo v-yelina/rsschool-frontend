@@ -43,6 +43,24 @@ class App {
                 filter.filterProducts();
             })
         );
+        const saleRadio = document.querySelector('.onsale');
+        if (saleRadio) {
+            saleRadio.addEventListener('change', () => {
+                const saleRadioElement = saleRadio as HTMLInputElement;
+                if (saleRadioElement.checked) {
+                    const prevValue = localStorage.getItem('filters');
+                    if (prevValue) {
+                        localStorage.setItem('filters', prevValue + '-sale');
+                    } else {
+                        localStorage.setItem('filters', 'sale');
+                    }
+                } else {
+                    filter.removeFilter('sale');
+                }
+
+                filter.filterProducts();
+            });
+        }
         filter.filterProducts();
     }
 }
