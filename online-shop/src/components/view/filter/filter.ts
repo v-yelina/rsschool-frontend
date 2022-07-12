@@ -8,10 +8,10 @@ class Filter {
     }
 
     public removeFilter(filter: string) {
-        let filters = localStorage.getItem('filters');
+        const filters = localStorage.getItem('filters');
 
         if (filters) {
-            let filtersArr = filters.split('-');
+            const filtersArr = filters.split('-');
             if (filtersArr.includes(filter)) {
                 filtersArr.splice(filtersArr.indexOf(filter), 1);
                 localStorage.setItem('filters', filtersArr.join('-'));
@@ -23,20 +23,18 @@ class Filter {
         const productsWrapper = document.querySelector('.products') as HTMLDivElement;
 
         if (localStorage.getItem('filters')) {
-            let filters = localStorage.getItem('filters');
+            const filters = localStorage.getItem('filters');
 
             if (filters) {
-                let filtersArr = filters.split('-');
-                let currentProducts =
+                const filtersArr = filters.split('-');
+                const currentProducts =
                     filtersArr.length > 1 ? Array.from(document.querySelectorAll('.card__item')) : this.allProducts;
 
                 filtersArr.forEach((filter) => {
                     productsWrapper.innerHTML = '';
 
-                    for (let product of currentProducts) {
-                        console.log('filter', filter, 'product', product);
-
-                        let productElement = product as HTMLElement;
+                    for (const product of currentProducts) {
+                        const productElement = product as HTMLElement;
                         const productProperties = productElement.dataset.filters;
 
                         let productPropertiesArr: string[];
@@ -50,7 +48,7 @@ class Filter {
                 });
             }
         } else {
-            for (let product of this.allProducts) {
+            for (const product of this.allProducts) {
                 productsWrapper.appendChild(product);
             }
         }
