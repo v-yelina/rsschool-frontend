@@ -65,6 +65,29 @@
     font-weight: 700;
 }
 
+.card__item-price_sale {
+    text-decoration: line-through;
+    font-weight: 400;
+}
+
+.card__item_sale-price {
+    font-weight: 700;
+    color: #780000;
+    font-size: larger;
+    margin-left: 5px;
+}
+
+.card__item_sale-percent {
+    display: inline-block;
+    background-color: #fca311;
+    color: #ffffff;
+    letter-spacing: 1px;
+    font-size: smaller;
+    border-radius: 5px;
+    padding: 7px;
+    margin-left: 5px;
+}
+
 .card__item-img {
     max-width: 15vw;
     transition: 0.3s;

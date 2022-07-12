@@ -4,6 +4,8 @@ export interface Picture {
     title: string;
     year: number;
     price: number;
+    salePrice?: number;
+    onsale: boolean;
     author: string;
     brush: BrushType;
     description: string;
