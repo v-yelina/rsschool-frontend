@@ -1,0 +1,28 @@
+.price-slider__container,
+.year-slider__container {
+    position: relative;
+    pointer-events: none;
+}
+
+input[type="range"] {
+    height: 2em;
+    display: block;
+    margin: 0;
+}
+
+.price-slider__container .slider__input-second,
+.year-slider__container .slider__input-second {
+    margin-top: -2em;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    pointer-events: all;
+}
+
+input[type="range"]::-moz-range-thumb {
+    pointer-events: all;
+}
+
+input[type="range"]::-ms-thumb {
+    pointer-events: all;
+}

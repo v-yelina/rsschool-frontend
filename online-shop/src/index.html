@@ -125,6 +125,46 @@
                 >On sale
                 <input type="checkbox" name="onsale" id="onsale" class="onsale" />
             </label>
+            <div class="slider price-slider__container">
+                <h3>Price:</h3>
+                <input
+                    type="range"
+                    min="5"
+                    step="1"
+                    max="180"
+                    value="0"
+                    class="slider__input slider__input-first price-slider"
+                />
+                <input
+                    type="range"
+                    min="5"
+                    step="1"
+                    max="180"
+                    value="180"
+                    class="slider__input slider__input-second price-slider"
+                />
+                <p><span class="from">5</span> - <span class="to">180</span></p>
+            </div>
+            <div class="slider year-slider__container">
+                <h3>Year:</h3>
+                <input
+                    type="range"
+                    min="2015"
+                    step="1"
+                    max="2023"
+                    value="2015"
+                    class="slider__input slider__input-first year-slider"
+                />
+                <input
+                    type="range"
+                    min="2015"
+                    step="1"
+                    max="2023"
+                    value="2023"
+                    class="slider__input slider__input-second year-slider"
+                />
+                <p><span class="from">2015</span> - <span class="to">2023</span></p>
+            </div>
         </aside>
         <main class="products"></main>
         <footer class="footer">
