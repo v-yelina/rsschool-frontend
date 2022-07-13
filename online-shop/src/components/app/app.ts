@@ -98,6 +98,15 @@ class App {
             });
         });
 
+        const removeSettings = document.querySelector('.remove-settings-button');
+        if (removeSettings) {
+            removeSettings.addEventListener('click', () => {
+                localStorage.clear();
+                filter.filterProducts();
+                this.sort.sortProducts();
+            });
+        }
+
         filter.filterProducts();
         this.sort.sortProducts();
     }

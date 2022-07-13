@@ -8,6 +8,7 @@
     align-items: flex-start;
     flex-wrap: wrap;
     margin-top: 10px;
+    padding: 0 2%;
 }
 
 .card__item {
@@ -103,23 +104,10 @@
 }
 
 .card__item-btn--cart {
-    border-radius: 0.5rem;
-    padding: 5% 10%;
-    width: max-content;
     background-color: #8da9c4;
-    color: #eef4ed;
-    text-transform: uppercase;
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-    transition: 0.3s;
 
     &:hover {
-        cursor: pointer;
         background-color: darken($color: #8da9c4, $amount: 10%);
-    }
-
-    &:active {
-        transform: translateY(4px);
     }
 
 }
