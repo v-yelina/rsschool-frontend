@@ -98,14 +98,20 @@ class App {
             });
         });
 
-        const removeSettings = document.querySelector('.remove-settings-button');
-        if (removeSettings) {
-            removeSettings.addEventListener('click', () => {
-                localStorage.clear();
+        const asideButtons = document.querySelectorAll('.aside-button');
+        asideButtons.forEach((button): void => {
+            const buttonEl = button as HTMLButtonElement;
+
+            buttonEl.addEventListener('click', () => {
+                if (buttonEl.classList.contains('remove-settings-button')) {
+                    localStorage.clear();
+                } else if (buttonEl.classList.contains('remove-filters-button')) {
+                    localStorage.removeItem('filters');
+                }
                 filter.filterProducts();
                 this.sort.sortProducts();
             });
-        }
+        });
 
         filter.filterProducts();
         this.sort.sortProducts();
