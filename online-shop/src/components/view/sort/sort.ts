@@ -20,10 +20,12 @@ class Sort {
             case 'year-descending':
                 this.sort('year', 'descending');
                 return;
+            default:
+                return;
         }
     }
 
-    private sort(filter: string, direction: string) {
+    private sort(filter: string, direction: string): void {
         const products = Array.from(document.querySelectorAll('.card__item'));
 
         const filterClass =
@@ -54,6 +56,12 @@ class Sort {
                     parseFloat(a.querySelector(filterClass)?.innerHTML as string)
             );
         }
+        const sortOptions = Array.from(document.querySelectorAll('option'));
+        sortOptions.forEach((option) => {
+            if (option.value === `${filter}-${direction}`) {
+                option.selected = true;
+            }
+        });
         const productsWrapper = document.querySelector('.products') as HTMLDivElement;
         productsWrapper.innerHTML = '';
         products.forEach((product) => productsWrapper.appendChild(product));
