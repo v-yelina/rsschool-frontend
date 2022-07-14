@@ -103,7 +103,8 @@
     }
 }
 
-.card__item-btn--cart {
+.card__item-btn--cart,
+.popup__item-btn--cart {
     background-color: #8da9c4;
 
     &:hover {

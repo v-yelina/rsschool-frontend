@@ -5,18 +5,21 @@ import removeSearchText from '../view/search/removeSearchText';
 import Sort from '../view/sort/sort';
 import Filter from '../view/filter/filter';
 import Slider from '../view/slider/slider';
+import Popup from '../view/popup/popup';
 
 class App {
     priceSlider: Slider;
     yearSlider: Slider;
     card: Card;
     sort: Sort;
+    popup: Popup;
 
     constructor() {
         this.priceSlider = new Slider('.price-slider');
         this.yearSlider = new Slider('.year-slider');
         this.card = new Card();
         this.sort = new Sort();
+        this.popup = new Popup();
     }
     start() {
         this.card.draw(picturesList);
@@ -112,6 +115,9 @@ class App {
                 this.sort.sortProducts();
             });
         });
+
+        const productImages = document.querySelectorAll('.card__item-img');
+        productImages.forEach((image) => image.addEventListener('click', (e): void => this.popup.createPopup(e)));
 
         filter.filterProducts();
         this.sort.sortProducts();
