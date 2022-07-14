@@ -1,7 +1,6 @@
 import Card from '../view/card/card';
 import { picturesList } from '../../pictures-list';
-import search from '../view/search/search';
-import removeSearchText from '../view/search/removeSearchText';
+import Search from '../view/search/search';
 import Sort from '../view/sort/sort';
 import Filter from '../view/filter/filter';
 import Slider from '../view/slider/slider';
@@ -13,6 +12,7 @@ class App {
     card: Card;
     sort: Sort;
     popup: Popup;
+    search: Search;
 
     constructor() {
         this.priceSlider = new Slider('.price-slider');
@@ -20,16 +20,17 @@ class App {
         this.card = new Card();
         this.sort = new Sort();
         this.popup = new Popup();
+        this.search = new Search();
     }
     start() {
         this.card.draw(picturesList);
         const searchInput = document.querySelector('.search-input');
         if (searchInput) {
-            searchInput.addEventListener('keyup', search);
+            searchInput.addEventListener('keyup', this.search.searchProduct);
         }
         const searchRemoveBtn = document.querySelector('.search-remove');
         if (searchRemoveBtn) {
-            searchRemoveBtn.addEventListener('click', removeSearchText);
+            searchRemoveBtn.addEventListener('click', this.search.removeSearchText);
         }
         const sortList = document.querySelector('.sort');
         if (sortList) {
