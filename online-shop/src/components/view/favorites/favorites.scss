@@ -1,0 +1,14 @@
+.fav-btn {
+    background: none;
+    border: none;
+    width: 35px;
+    
+    &:hover {
+        cursor: pointer;
+        transform: skale(0.7);
+    }
+
+    img{
+        width: 100%;
+    }
+}

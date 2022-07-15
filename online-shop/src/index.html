@@ -125,6 +125,10 @@
                 >On sale
                 <input type="checkbox" name="onsale" id="onsale" class="onsale" />
             </label>
+            <label for="isfavorite"
+                >Favorite
+                <input type="checkbox" name="isfavorite" id="isfavorite" class="isfavorite" />
+            </label>
             <div class="slider price-slider__container">
                 <h3>Price:</h3>
                 <input
@@ -186,12 +190,18 @@
                     <p class="card__item-header"><span class="card__item-price"></span></p>
                     <button class="card__item-btn--cart btn">Add to cart</button>
                 </div>
+                <button class="fav-btn card__item-fav-btn">
+                    <img src="./assets/svg/like-white.svg" alt="Add to favorite" />
+                </button>
             </article>
         </template>
 
         <template id="popupTemp">
             <article class="popup__item">
                 <div class="popup__item-container">
+                    <button class="fav-btn popup__item-fav-btn">
+                        <img src="./assets/svg/like-white.svg" alt="Add to favorite" />
+                    </button>
                     <img src="#" alt="" class="popup__item-img" />
                     <div class="popup__item-description">
                         <p class="popup__item-header"><span class="popup__item-title"></span></p>

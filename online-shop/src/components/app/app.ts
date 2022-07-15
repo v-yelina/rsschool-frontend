@@ -5,6 +5,7 @@ import Sort from '../view/sort/sort';
 import Filter from '../view/filter/filter';
 import Slider from '../view/slider/slider';
 import Popup from '../view/popup/popup';
+import Favorites from '../view/favorites/favorites';
 
 class App {
     priceSlider: Slider;
@@ -13,6 +14,7 @@ class App {
     sort: Sort;
     popup: Popup;
     search: Search;
+    favorites: Favorites;
 
     constructor() {
         this.priceSlider = new Slider('.price-slider');
@@ -21,6 +23,7 @@ class App {
         this.sort = new Sort();
         this.popup = new Popup();
         this.search = new Search();
+        this.favorites = new Favorites();
     }
     start() {
         this.card.draw(picturesList);
@@ -80,6 +83,27 @@ class App {
                 }
 
                 filter.filterProducts();
+                this.sort.sortProducts();
+            });
+        }
+
+        const favoriteRadio = document.querySelector('.isfavorite');
+        if (favoriteRadio) {
+            favoriteRadio.addEventListener('change', () => {
+                const favoriteRadioElement = favoriteRadio as HTMLInputElement;
+                if (favoriteRadioElement.checked) {
+                    const prevValue = localStorage.getItem('filters');
+                    if (prevValue) {
+                        localStorage.setItem('filters', prevValue + '-favorite');
+                    } else {
+                        localStorage.setItem('filters', 'favorite');
+                    }
+                } else {
+                    filter.removeFilter('favorite');
+                }
+
+                filter.filterProducts();
+                console.log('hi');
                 this.sort.sortProducts();
             });
         }

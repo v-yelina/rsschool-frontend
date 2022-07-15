@@ -8,7 +8,7 @@ class Search {
         const productsWrapper = document.querySelector('.products') as HTMLDivElement;
         const searchInput = document.querySelector('.search-input') as HTMLInputElement;
 
-        const text = searchInput.value.toLowerCase();
+        const text = searchInput.value.toLowerCase().trim();
         if (!text) {
             productsWrapper.innerHTML = '';
             card.draw(picturesList);

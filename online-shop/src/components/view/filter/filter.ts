@@ -1,10 +1,14 @@
+import Favorites from '../favorites/favorites';
+
 class Filter {
     allProducts: Element[];
     filteredProducts: Element[];
+    favorites: Favorites;
 
     constructor() {
         this.allProducts = Array.from(document.querySelectorAll('.card__item'));
         this.filteredProducts = [];
+        this.favorites = new Favorites();
     }
 
     public removeFilter(filter: string) {
@@ -62,7 +66,23 @@ class Filter {
                         }
                         return filtered;
                     }, []);
-                    filteredProducts.forEach((product) => productsWrapper.appendChild(product));
+                    filteredProducts.forEach((product) => {
+                        const productTitleEL = product.querySelector('.card__item-title');
+                        let productTitle: string;
+                        if (productTitleEL) {
+                            productTitle = productTitleEL.innerHTML.toLowerCase();
+                            console.log(productTitle);
+
+                            let isFav: boolean = this.favorites.checkFav(productTitle);
+                            const favBtn = product.querySelector('.fav-btn img');
+                            console.log(isFav && favBtn);
+
+                            if (isFav && favBtn) {
+                                favBtn.setAttribute('src', '../../../assets/svg/like-black.svg');
+                            }
+                        }
+                        productsWrapper.appendChild(product);
+                    });
                 } else {
                     const checkboxFilter = document.querySelector(`#${filter}`) as HTMLInputElement;
                     if (checkboxFilter) {

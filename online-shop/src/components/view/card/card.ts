@@ -1,7 +1,17 @@
 import { Picture } from '../../../picture.inteface';
+import { picturesList } from '../../../pictures-list';
+import Favorites from '../favorites/favorites';
+import Filter from '../filter/filter';
+import Sort from '../sort/sort';
 import './card.scss';
 
 class Card {
+    favorites: Favorites;
+
+    constructor() {
+        this.favorites = new Favorites();
+    }
+
     public draw(data: Picture[]) {
         const fragment = document.createDocumentFragment();
         const productCardTemp: HTMLTemplateElement | null = document.querySelector('#productCardTemp');
@@ -12,7 +22,15 @@ class Card {
 
                 if (cardClone) {
                     const cardItemTitle = cardClone.querySelector('.card__item-title');
-                    if (cardItemTitle) cardItemTitle.textContent = item.title;
+                    let isFav: boolean = this.favorites.checkFav(item.title.toLowerCase());
+                    const favBtn = cardClone.querySelector('.fav-btn img');
+                    if (isFav && favBtn) {
+                        favBtn.setAttribute('src', '../../../assets/svg/like-black.svg');
+                    }
+                    if (cardItemTitle) {
+                        cardItemTitle.textContent = item.title;
+                    }
+
                     const cardItemImg = cardClone.querySelector('.card__item-img');
                     if (cardItemImg) {
                         cardItemImg.setAttribute('src', item.url);
@@ -43,6 +61,17 @@ class Card {
                             salePrice.after(salePercent);
                             cardItem.dataset.filters += '-sale';
                         }
+                    }
+
+                    const favButton = cardClone.querySelector('.fav-btn');
+                    if (favButton) {
+                        favButton.addEventListener('click', (e: Event) => {
+                            this.favorites.toggle(e);
+                            const filter = new Filter();
+                            filter.filterProducts();
+                            const sort = new Sort();
+                            sort.sortProducts();
+                        });
                     }
 
                     fragment.append(cardClone);
