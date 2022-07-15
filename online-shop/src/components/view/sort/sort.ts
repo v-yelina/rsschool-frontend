@@ -21,6 +21,7 @@ class Sort {
                 this.sort('year', 'descending');
                 return;
             default:
+                localStorage.removeItem('sortBy');
                 return;
         }
     }
