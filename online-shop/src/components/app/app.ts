@@ -6,6 +6,7 @@ import Filter from '../view/filter/filter';
 import Slider from '../view/slider/slider';
 import Popup from '../view/popup/popup';
 import Favorites from '../view/favorites/favorites';
+import Cart from '../view/cart/cart';
 
 class App {
     priceSlider: Slider;
@@ -15,6 +16,7 @@ class App {
     popup: Popup;
     search: Search;
     favorites: Favorites;
+    cart: Cart;
 
     constructor() {
         this.priceSlider = new Slider('.price-slider');
@@ -24,6 +26,7 @@ class App {
         this.popup = new Popup();
         this.search = new Search();
         this.favorites = new Favorites();
+        this.cart = new Cart();
     }
     start() {
         this.card.draw(picturesList);
@@ -141,8 +144,10 @@ class App {
             });
         });
 
-        const productImages = document.querySelectorAll('.card__item-img');
-        productImages.forEach((image) => image.addEventListener('click', (e): void => this.popup.createPopup(e)));
+        const cartButtons = document.querySelectorAll('.card__item-btn--cart');
+        cartButtons.forEach((button) => button.addEventListener('click', (e) => this.cart.addToCart(e)));
+        const removeButtons = document.querySelectorAll('.card__item-btn--remove');
+        removeButtons.forEach((button) => button.addEventListener('click', (e: Event) => this.cart.removeFromCart(e)));
 
         filter.filterProducts();
         this.sort.sortProducts();

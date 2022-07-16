@@ -1,15 +1,17 @@
 import { Picture } from '../../../picture.inteface';
-import { picturesList } from '../../../pictures-list';
 import Favorites from '../favorites/favorites';
 import Filter from '../filter/filter';
+import Popup from '../popup/popup';
 import Sort from '../sort/sort';
 import './card.scss';
 
 class Card {
     favorites: Favorites;
+    popup: Popup;
 
     constructor() {
         this.favorites = new Favorites();
+        this.popup = new Popup();
     }
 
     public draw(data: Picture[]) {
@@ -72,6 +74,11 @@ class Card {
                             const sort = new Sort();
                             sort.sortProducts();
                         });
+                    }
+
+                    const moreButton = cardClone.querySelector('.card__item-btn--more');
+                    if (moreButton) {
+                        moreButton.addEventListener('click', (e): void => this.popup.createPopup(e));
                     }
 
                     fragment.append(cardClone);

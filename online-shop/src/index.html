@@ -20,6 +20,7 @@
                 <input type="text" placeholder="Search..." class="search-input" autofocus />
                 <img src="./assets/svg/remove.svg" alt="search" class="search-remove" />
             </div>
+            <div class="cart"><img src="./assets/svg/basket.svg" alt="Cart" /><span>0</span></div>
         </header>
         <aside>
             <select name="sort" class="sort">
@@ -37,6 +38,10 @@
                 <div>
                     <input type="checkbox" class="filter" id="yellow" name="yellow" value="yellow" />
                     <label for="yellow">Yellow</label>
+                </div>
+                <div>
+                    <input type="checkbox" class="filter" id="black" name="black" value="black" />
+                    <label for="black">Black</label>
                 </div>
                 <div>
                     <input type="checkbox" class="filter" id="grey" name="grey" value="grey" />
@@ -172,7 +177,14 @@
             <button class="remove-filters-button aside-button btn">Clear filters</button>
             <button class="remove-settings-button aside-button btn">Remove settings</button>
         </aside>
-        <main class="products"></main>
+        <main class="products">
+            <div class="cart-warning hidden">
+                <div class="cart-warning__container">
+                    <p>Sorry, all slots are full</p>
+                    <button class="btn-cross btn-cross_warning"></button>
+                </div>
+            </div>
+        </main>
         <footer class="footer">
             <a class="github-link" href="https://github.com/v-yelina">Github: v-yelina</a>
             <span>2022</span>
@@ -188,7 +200,9 @@
                     <p class="card__item-header"><span class="card__item-title"></span></p>
                     <p class="card__item-header">Year: <span class="card__item-year"></span></p>
                     <p class="card__item-header"><span class="card__item-price"></span></p>
+                    <button class="card__item-btn--more btn">More info</button>
                     <button class="card__item-btn--cart btn">Add to cart</button>
+                    <button class="card__item-btn--remove btn hidden">Remove from cart</button>
                 </div>
                 <button class="fav-btn card__item-fav-btn">
                     <img src="./assets/svg/like-white.svg" alt="Add to favorite" />
@@ -199,9 +213,6 @@
         <template id="popupTemp">
             <article class="popup__item">
                 <div class="popup__item-container">
-                    <button class="fav-btn popup__item-fav-btn">
-                        <img src="./assets/svg/like-white.svg" alt="Add to favorite" />
-                    </button>
                     <img src="#" alt="" class="popup__item-img" />
                     <div class="popup__item-description">
                         <p class="popup__item-header"><span class="popup__item-title"></span></p>
@@ -211,7 +222,6 @@
                         <p class="popup__item-header">Color: <span class="popup__item-color"></span></p>
                         <p class="popup__item-header">Brush: <span class="popup__item-brush"></span></p>
                         <p class="popup__item-header"><span class="popup__item-descr"></span></p>
-                        <button class="popup__item-btn--cart btn">Add to cart</button>
                         <button class="btn-cross"></button>
                     </div>
                 </div>
