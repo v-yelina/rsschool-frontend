@@ -25,7 +25,11 @@
     min-width: 210px;
 
     @media (max-width: 920px) {
-        min-width: 280px;
+        min-width: 275px;
+    }
+
+    @media (max-width: 850px) {
+        min-width: 260px;
     }
 
     @media (max-width: 820px) {
@@ -105,9 +109,8 @@
 }
 
 .card__item-btn--cart,
-.popup__item-btn--cart,
 .card__item-btn--more,
-.card__item-btn--cart {
+.card__item-btn--remove {
     background-color: #8da9c4;
 
     &:hover {

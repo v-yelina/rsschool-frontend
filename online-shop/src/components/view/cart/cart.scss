@@ -1,3 +1,10 @@
+.cart {
+    span {
+        letter-spacing: normal;
+    }
+}
+
+
 .cart-warning {
     position: fixed;
         top: 0;
@@ -25,4 +32,9 @@
 
 .hidden {
     display: none;
+}
+
+.card__item-btn--remove {
+    padding: 5%;
+    font-size: smaller;
 }

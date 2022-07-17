@@ -26,7 +26,7 @@ header {
     box-shadow: rgba(11, 38, 70, 0.4) 0px 5px, rgba(19, 49, 92, 0.3) 0px 10px, rgba(19, 64, 116, 0.2) 0px 15px, rgba(141, 169, 196,0.3) 0px 20px, rgba(141, 169, 196, 0.1) 0px 25px;
 
     @media (max-width: 620px) {
-            flex-direction: column;
+        flex-direction: column;
     }
 
     .logo {
@@ -36,15 +36,24 @@ header {
         text-transform: uppercase;
 
         img {
-           max-height: 100px;
-         }
-
-         h1 {
-            line-height: 2.5rem;
+            max-height: 100px;
 
             @media (max-width: 750px) {
+                max-height: 80px;
+            }
+        }
+
+        h1 {
+            line-height: 2.5rem;
+            max-width: fit-content;
+
+            @media (max-width: 900px) {
                 font-size: 1.5rem;
                 line-height: 2rem;
+            }
+
+            @media (max-width: 750px) {
+                max-width: fit-content;
             }
 
          }
@@ -102,6 +111,11 @@ aside {
     &:hover {
         background-color: darken($color: #003049, $amount: 10%);
     }
+}
+
+.filter-label {
+    margin-top: 5%;
+    font-size: 1.2rem;
 }
 
 main {
