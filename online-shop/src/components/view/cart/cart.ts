@@ -14,12 +14,14 @@ class Cart {
 
         if (cart) {
             const cartAmount = cart.querySelector('span');
+
             const cartWarning = document.querySelector('.cart-warning');
 
             if (cartAmount && cartWarning) {
                 const crossButton = cartWarning.querySelector('.btn-cross_warning');
                 if (crossButton) crossButton.addEventListener('click', () => cartWarning.classList.add('hidden'));
                 const newAmount = +cartAmount.innerHTML + 1;
+
                 if (newAmount > 20) {
                     cartWarning.classList.remove('hidden');
                 } else {
@@ -33,7 +35,6 @@ class Cart {
     public removeFromCart(e: Event) {
         const cart = document.querySelector('.cart');
         const removeBtn = e.target as HTMLElement;
-        console.log(removeBtn);
 
         let product;
         if (removeBtn) {
@@ -49,6 +50,7 @@ class Cart {
             const cartAmount = cart.querySelector('span');
             if (cartAmount) {
                 const newAmount = +cartAmount.innerHTML - 1;
+
                 if (newAmount < 0) {
                     return;
                 } else {
