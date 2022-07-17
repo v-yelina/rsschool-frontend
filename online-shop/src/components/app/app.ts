@@ -7,6 +7,7 @@ import Slider from '../view/slider/slider';
 import Popup from '../view/popup/popup';
 import Favorites from '../view/favorites/favorites';
 import Cart from '../view/cart/cart';
+import done from './done';
 
 class App {
     priceSlider: Slider;
@@ -55,15 +56,33 @@ class App {
         filterCheckboxes.forEach((checkbox) =>
             checkbox.addEventListener('change', (e: Event) => {
                 const selectedOption = e.target as HTMLOptionElement;
-                if (checkbox.checked) {
-                    const prevValue = localStorage.getItem('filters');
-                    if (prevValue) {
-                        localStorage.setItem('filters', prevValue + '-' + selectedOption.value);
+                const checkboxParent = selectedOption.parentElement?.parentElement;
+                let filterType: string;
+                if (checkboxParent) {
+                    filterType = checkboxParent.classList.value;
+
+                    if (checkbox.checked) {
+                        const prevValue = localStorage.getItem('filters');
+                        if (prevValue) {
+                            const filtersArr = prevValue.split('-');
+
+                            let presentFilter = filtersArr.filter((item) => item.startsWith(filterType))[0];
+                            let filterInd: number;
+                            if (presentFilter) {
+                                filterInd = filtersArr.indexOf(presentFilter);
+                                const newFilterValue = `${presentFilter}*${selectedOption.value}`;
+                                filtersArr[filterInd] = newFilterValue;
+                            } else {
+                                filtersArr.push(`${filterType}*${selectedOption.value}`);
+                            }
+
+                            localStorage.setItem('filters', filtersArr.join('-'));
+                        } else {
+                            localStorage.setItem('filters', `${filterType}*${selectedOption.value}`);
+                        }
                     } else {
-                        localStorage.setItem('filters', selectedOption.value);
+                        filter.removeFilter(`${filterType}*${selectedOption.value}`);
                     }
-                } else {
-                    filter.removeFilter(selectedOption.value);
                 }
                 filter.filterProducts();
                 this.sort.sortProducts();
@@ -106,7 +125,6 @@ class App {
                 }
 
                 filter.filterProducts();
-                console.log('hi');
                 this.sort.sortProducts();
             });
         }
@@ -151,6 +169,7 @@ class App {
 
         filter.filterProducts();
         this.sort.sortProducts();
+        // done();
     }
 }
 

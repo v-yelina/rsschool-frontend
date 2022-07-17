@@ -1,14 +1,20 @@
+import { picturesList } from '../../../pictures-list';
+import Card from '../card/card';
 import Favorites from '../favorites/favorites';
 
 class Filter {
     allProducts: Element[];
     filteredProducts: Element[];
     favorites: Favorites;
+    productsWrapper: HTMLDivElement;
+    card: Card;
 
     constructor() {
         this.allProducts = Array.from(document.querySelectorAll('.card__item'));
         this.filteredProducts = [];
         this.favorites = new Favorites();
+        this.productsWrapper = document.querySelector('.products') as HTMLDivElement;
+        this.card = new Card();
     }
 
     public removeFilter(filter: string) {
@@ -16,97 +22,171 @@ class Filter {
 
         if (filters) {
             const filtersArr = filters.split('-');
-            const regFilter = new RegExp(`^${filter}`);
-            for (const ind in filtersArr) {
-                if (regFilter.test(filtersArr[ind])) {
-                    filtersArr.splice(+ind, 1);
-                    localStorage.setItem('filters', filtersArr.join('-'));
+            if (filter.startsWith('color') || filter.startsWith('brush') || filter.startsWith('author')) {
+                const filterToRemove = filter.split('*');
+                const regFilter = new RegExp(`^${filterToRemove[0]}`);
+                for (const ind in filtersArr) {
+                    if (regFilter.test(filtersArr[ind])) {
+                        const presentFilter = filtersArr[ind].split('*');
+                        if (presentFilter.length > 2) {
+                            presentFilter.splice(presentFilter.indexOf(filterToRemove[1]), 1);
+                            filtersArr[ind] = presentFilter.join('*');
+                        } else {
+                            filtersArr.splice(+ind, 1);
+                        }
+                    }
+                }
+            } else {
+                const regFilter = new RegExp(`^${filter}`);
+                for (const ind in filtersArr) {
+                    if (regFilter.test(filtersArr[ind])) {
+                        filtersArr.splice(+ind, 1);
+                    }
                 }
             }
+            localStorage.setItem('filters', filtersArr.join('-'));
         }
     }
 
     public filterProducts() {
-        const productsWrapper = document.querySelector('.products') as HTMLDivElement;
+        const filtersStr = localStorage.getItem('filters');
+        let filtersArr: string[];
+        if (filtersStr) {
+            filtersArr = filtersStr.split('-');
 
-        const filters = localStorage.getItem('filters');
-
-        if (filters) {
-            const filtersArr = filters.split('-');
-
-            productsWrapper.innerHTML = '';
-
-            filtersArr.forEach((filter) => {
-                if (filter.startsWith('price') || filter.startsWith('year')) {
-                    const tempFiltersArr = [...filtersArr];
-                    const regFilter = new RegExp(`^price|year`);
-                    for (const ind in tempFiltersArr) {
-                        if (regFilter.test(tempFiltersArr[ind])) {
-                            tempFiltersArr.splice(+ind, 1);
-                        }
+            if (filtersArr.length === 0 || filtersArr[0] === '') {
+                this.card.draw(picturesList);
+            } else {
+                filtersArr.forEach((filter: string) => {
+                    if (filter.startsWith('price') || filter.startsWith('year')) {
+                        this.filterByPriceAndYear(filter);
+                    } else if (filter.startsWith('sale') || filter.startsWith('favorite')) {
+                        this.filterBySaleAndFavorite(filter);
+                    } else {
+                        this.filterByProperty(filter);
                     }
+                });
+            }
+            this.drawProducts();
+            this.filteredProducts = [];
+        } else {
+            this.productsWrapper.innerHTML = '';
+            for (const product of this.allProducts) {
+                this.productsWrapper.appendChild(product);
+            }
+        }
+    }
 
-                    const currentProducts =
-                        tempFiltersArr.length > 1
-                            ? Array.from(document.querySelectorAll('.card__item'))
-                            : this.allProducts;
-                    productsWrapper.innerHTML = '';
+    private filterByPriceAndYear(filter: string) {
+        const currentProducts = this.filteredProducts.length >= 1 ? [...this.filteredProducts] : [...this.allProducts];
+        const rangeArr = filter.split('*');
+        const className = `.${rangeArr[0]}-slider`;
 
-                    const rangeArr = filter.split('*');
+        const newFiltered: Element[] = currentProducts.reduce((filtered: Element[], item: Element) => {
+            const itemValue = item.querySelector(`.card__item-${rangeArr[0]}`);
+            if (
+                itemValue &&
+                parseInt(itemValue.innerHTML) >= +rangeArr[1] &&
+                parseInt(itemValue.innerHTML) <= +rangeArr[2]
+            ) {
+                filtered.push(item);
+            }
+            return filtered;
+        }, []);
+        this.filteredProducts = [...newFiltered];
+        const sliders = Array.from(document.querySelectorAll(className)) as HTMLInputElement[];
 
-                    const filteredProducts = currentProducts.reduce((filtered: Element[], item: Element) => {
-                        const itemValue = item.querySelector(`.card__item-${rangeArr[0]}`);
+        if (sliders) {
+            sliders[0].value = rangeArr[1];
+            sliders[1].value = rangeArr[2];
+        }
+        const sliderContainer = document.querySelector(`${className}__container`);
+        if (sliderContainer) {
+            const startFrom = sliderContainer.querySelector('.from');
+            const endWith = sliderContainer.querySelector('.to');
+            if (startFrom && endWith) {
+                startFrom.innerHTML = sliders[0].value;
+                endWith.innerHTML = sliders[1].value;
+            }
+        }
+    }
 
-                        if (
-                            itemValue &&
-                            parseInt(itemValue.innerHTML) >= +rangeArr[1] &&
-                            parseInt(itemValue.innerHTML) <= +rangeArr[2]
-                        ) {
-                            filtered.push(item);
-                        }
-                        return filtered;
-                    }, []);
-                    filteredProducts.forEach((product) => {
-                        const productTitleEL = product.querySelector('.card__item-title');
-                        let productTitle: string;
-                        if (productTitleEL) {
-                            productTitle = productTitleEL.innerHTML.toLowerCase();
-                            console.log(productTitle);
+    private filterBySaleAndFavorite(filter: string) {
+        const currentProducts = this.filteredProducts.length >= 1 ? [...this.filteredProducts] : [...this.allProducts];
+        const newFiltered: Element[] = [];
 
-                            let isFav: boolean = this.favorites.checkFav(productTitle);
-                            const favBtn = product.querySelector('.fav-btn img');
-                            console.log(isFav && favBtn);
+        const filterClass = filter === 'sale' ? '.onsale' : '.isfavorite';
+        const filterCheckbox = document.querySelector(filterClass) as HTMLInputElement;
+        if (filterCheckbox) filterCheckbox.checked = true;
 
-                            if (isFav && favBtn) {
-                                favBtn.setAttribute('src', '../../../assets/svg/like-black.svg');
-                            }
-                        }
-                        productsWrapper.appendChild(product);
-                    });
-                } else {
-                    const checkboxFilter = document.querySelector(`#${filter}`) as HTMLInputElement;
-                    if (checkboxFilter) {
-                        checkboxFilter.checked = true;
-                    }
+        for (const product of currentProducts) {
+            const productElement = product as HTMLElement;
+            const productProperties = productElement.dataset.filters;
 
-                    for (const product of this.allProducts) {
-                        const productElement = product as HTMLElement;
-                        const productProperties = productElement.dataset.filters;
+            let productPropertiesArr: string[];
+            if (productProperties) {
+                productPropertiesArr = productProperties.split('-');
+                if (productPropertiesArr.includes(filter)) {
+                    newFiltered.push(product);
+                }
+            }
+        }
+        this.filteredProducts = [...newFiltered];
+    }
 
-                        let productPropertiesArr: string[];
-                        if (productProperties) {
-                            productPropertiesArr = productProperties.split('-');
-                            if (productPropertiesArr.includes(filter)) {
-                                productsWrapper.appendChild(product);
-                            }
-                        }
+    private filterByProperty(filter: string) {
+        const currentProducts = this.filteredProducts.length >= 1 ? [...this.filteredProducts] : [...this.allProducts];
+        const newFiltered: Element[] = [];
+
+        const filterArr = filter.split('*');
+        const filters = filterArr.slice(1);
+
+        filters.forEach((filter) => {
+            const checkboxFilter = document.querySelector(`#${filter}`) as HTMLInputElement;
+            if (checkboxFilter) {
+                checkboxFilter.checked = true;
+            }
+
+            for (const product of currentProducts) {
+                const productElement = product as HTMLElement;
+                const productProperties = productElement.dataset.filters;
+
+                let productPropertiesArr: string[];
+                if (productProperties) {
+                    productPropertiesArr = productProperties.split('-');
+
+                    if (productPropertiesArr.includes(filter)) {
+                        newFiltered.push(product);
                     }
                 }
-            });
-        } else {
-            for (const product of this.allProducts) {
-                productsWrapper.appendChild(product);
             }
+        });
+        this.filteredProducts = [...newFiltered];
+    }
+
+    private drawProducts() {
+        this.productsWrapper.innerHTML = '';
+        if (this.filteredProducts.length) {
+            for (const product of this.filteredProducts) {
+                const productTitleEL = product.querySelector('.card__item-title');
+                let productTitle: string;
+                if (productTitleEL) {
+                    productTitle = productTitleEL.innerHTML.toLowerCase();
+
+                    let isFav: boolean = this.favorites.checkFav(productTitle);
+                    const favBtn = product.querySelector('.fav-btn img');
+
+                    if (isFav && favBtn) {
+                        favBtn.setAttribute('src', '../../../assets/svg/like-black.svg');
+                    }
+                }
+                this.productsWrapper.appendChild(product);
+            }
+        } else {
+            const errorMessage = document.createElement('div');
+            errorMessage.classList.add('error');
+            errorMessage.innerHTML = 'Sorry, nothing could be found. You can try another search request.';
+            this.productsWrapper.appendChild(errorMessage);
         }
     }
 }

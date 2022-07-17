@@ -1,8 +1,6 @@
 import Card from '../card/card';
 import './favorites.scss';
 import { picturesList } from '../../../pictures-list';
-import Filter from '../filter/filter';
-import Sort from '../sort/sort';
 
 class Favorites {
     public toggle(e: Event) {
@@ -20,8 +18,10 @@ class Favorites {
                     itemTitle = targetTitle.innerHTML.toLowerCase();
                     if (prevValue.includes(itemTitle)) {
                         prevValue.splice(prevValue.indexOf(itemTitle), 1);
+                        element.dataset.filters?.replace('-favorite', '');
                     } else {
                         prevValue.push(itemTitle);
+                        element.dataset.filters += '-favorite';
                     }
                     localStorage.setItem('favorites', prevValue.join('-'));
                 }
