@@ -66,7 +66,7 @@ class App {
                         if (prevValue) {
                             const filtersArr = prevValue.split('-');
 
-                            let presentFilter = filtersArr.filter((item) => item.startsWith(filterType))[0];
+                            const presentFilter = filtersArr.filter((item) => item.startsWith(filterType))[0];
                             let filterInd: number;
                             if (presentFilter) {
                                 filterInd = filtersArr.indexOf(presentFilter);

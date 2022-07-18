@@ -173,7 +173,7 @@ class Filter {
                 if (productTitleEL) {
                     productTitle = productTitleEL.innerHTML.toLowerCase();
 
-                    let isFav: boolean = this.favorites.checkFav(productTitle);
+                    const isFav: boolean = this.favorites.checkFav(productTitle);
                     const favBtn = product.querySelector('.fav-btn img');
 
                     if (isFav && favBtn) {

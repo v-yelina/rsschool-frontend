@@ -24,7 +24,7 @@ class Card {
 
                 if (cardClone) {
                     const cardItemTitle = cardClone.querySelector('.card__item-title');
-                    let isFav: boolean = this.favorites.checkFav(item.title.toLowerCase());
+                    const isFav: boolean = this.favorites.checkFav(item.title.toLowerCase());
                     const favBtn = cardClone.querySelector('.fav-btn img');
                     if (isFav && favBtn) {
                         favBtn.setAttribute('src', '../../../assets/svg/like-black.svg');

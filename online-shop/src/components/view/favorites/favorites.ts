@@ -5,7 +5,7 @@ import { picturesList } from '../../../pictures-list';
 class Favorites {
     public toggle(e: Event) {
         const favStorage = localStorage.getItem('favorites');
-        let prevValue: string[] = favStorage ? favStorage.split('-') : [];
+        const prevValue: string[] = favStorage ? favStorage.split('-') : [];
 
         let itemTitle: string;
         if (e.target) {
@@ -35,7 +35,7 @@ class Favorites {
 
     public checkFav(title: string): boolean {
         const favStorage = localStorage.getItem('favorites');
-        let prevValue: string[] = favStorage ? favStorage.split('-') : [];
+        const prevValue: string[] = favStorage ? favStorage.split('-') : [];
         if (prevValue.includes(title)) {
             return true;
         }
