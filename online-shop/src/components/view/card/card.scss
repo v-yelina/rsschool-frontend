@@ -97,15 +97,6 @@
 .card__item-img {
     max-width: 15vw;
     transition: 0.3s;
-
-    &:hover {
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-        cursor: pointer;
-    }
-
-    &:active {
-        transform: translateY(2px);
-    }
 }
 
 .card__item-btn--cart,
