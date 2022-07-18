@@ -13,13 +13,15 @@ export type ColorType =
     | 'purple'
     | 'rose';
 
+export type AuthorType = 'Valiantsina' | 'Veranika' | 'Vasilisa';
+
 export interface Picture {
     title: string;
     year: number;
     price: number;
     salePrice?: number;
     onsale: boolean;
-    author: string;
+    author: AuthorType;
     brush: BrushType;
     description: string;
     amount: number;
