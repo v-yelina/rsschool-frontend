@@ -3,7 +3,7 @@ import Card from '../card/card';
 import Favorites from '../favorites/favorites';
 
 class Filter {
-    allProducts: Element[];
+    readonly allProducts: Element[];
     filteredProducts: Element[];
     favorites: Favorites;
     productsWrapper: HTMLDivElement;

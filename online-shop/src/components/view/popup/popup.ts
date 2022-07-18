@@ -3,8 +3,8 @@ import './popup.scss';
 
 class Popup {
     public createPopup = (e: Event) => {
-        const productImg = e.target as HTMLElement;
-        const product = productImg.parentElement;
+        const productBtn = e.target as HTMLElement;
+        const product = productBtn.parentElement;
         if (product) {
             const productTitleEl = product.querySelector('.card__item-title');
 

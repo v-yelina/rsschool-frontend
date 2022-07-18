@@ -135,11 +135,11 @@ class App {
                 const element = e.target as HTMLElement;
 
                 if (element && element.classList.contains('price-slider')) {
-                    this.priceSlider.draw();
                     this.priceSlider.setRangeFilter();
+                    this.priceSlider.draw();
                 } else {
-                    this.yearSlider.draw();
                     this.yearSlider.setRangeFilter();
+                    this.yearSlider.draw();
                 }
 
                 filter.filterProducts();
@@ -157,6 +157,7 @@ class App {
                 } else if (buttonEl.classList.contains('remove-filters-button')) {
                     localStorage.removeItem('filters');
                 }
+
                 filter.filterProducts();
                 this.sort.sortProducts();
             });

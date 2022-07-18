@@ -1,3 +1,6 @@
+type filter = 'price' | 'title' | 'year';
+type direction = 'ascending' | 'descending';
+
 class Sort {
     public sortProducts(): void {
         const sortBy = localStorage.getItem('sortBy');
@@ -26,7 +29,7 @@ class Sort {
         }
     }
 
-    private sort(filter: string, direction: string): void {
+    private sort(filter: filter, direction: direction): void {
         const products = Array.from(document.querySelectorAll('.card__item'));
 
         const filterClass =
