@@ -169,7 +169,7 @@ class App {
 
         filter.filterProducts();
         this.sort.sortProducts();
-        // done();
+        done();
     }
 }
 

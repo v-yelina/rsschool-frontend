@@ -3,8 +3,6 @@ import './popup.scss';
 
 class Popup {
     public createPopup = (e: Event) => {
-        console.log('hi');
-
         const productImg = e.target as HTMLElement;
         const product = productImg.parentElement;
         if (product) {
