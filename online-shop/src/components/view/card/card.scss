@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Mingzat&family=Raleway:wght@400;700&display=swap');
 
-
 .products {
     display: flex;
     flex-direction: row;
@@ -97,15 +96,4 @@
 .card__item-img {
     max-width: 15vw;
     transition: 0.3s;
-}
-
-.card__item-btn--cart,
-.card__item-btn--more,
-.card__item-btn--remove {
-    background-color: #8da9c4;
-
-    &:hover {
-        background-color: darken($color: #8da9c4, $amount: 10%);
-    }
-
 }

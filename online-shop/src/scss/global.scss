@@ -94,9 +94,11 @@ aside {
     border: none;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
     transition: 0.3s;
+    background-color: #8da9c4;
 
     &:hover {
         cursor: pointer;
+        background-color: darken($color: #8da9c4, $amount: 10%);
     }
 
     &:active {
@@ -128,7 +130,6 @@ main {
         }
 
         @media (max-width: 520px) {
-            
             width: 90%;
         }
 }
