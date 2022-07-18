@@ -1,7 +1,7 @@
 {
-    "name": "Christmas task",
+    "name": "@rsschool/onlinestore",
     "version": "1.0.0",
-    "description": "",
+    "description": "Project from Rolling Scopes School Front-End Course.",
     "main": "webpack.base.config.js",
     "scripts": {
         "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
@@ -10,12 +10,11 @@
     },
     "repository": {
         "type": "module",
-        "url": ""
+        "url": "https://github.com/rolling-scopes-school/v-yelina-JSFE2022Q1"
     },
-    "keywords": [],
     "author": "Valiantsina Yelina",
     "license": "ISC",
-    "homepage": "",
+    "homepage": "https://rolling-scopes-school.github.io/v-yelina-JSFE2022Q1/online-shop/",
     "devDependencies": {
         "@types/node": "^18.0.1",
         "@typescript-eslint/eslint-plugin": "^5.29.0",
