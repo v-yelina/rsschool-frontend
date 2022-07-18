@@ -20,13 +20,14 @@
     width: max-content;
 
     @media (max-width: 750px) {
-           flex-direction: column;
-           max-height: 100vh;
-        }
+        flex-direction: column;
+        max-height: 100vh;
+    }
 }
 
 .popup__item-img {
     max-width: 50%;
+    
     @media (max-width: 750px) {
         max-width: 80%;
     }
