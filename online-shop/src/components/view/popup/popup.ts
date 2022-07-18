@@ -74,14 +74,6 @@ class Popup {
                 }
             }
         }
-
-        // popup.onmouseover = (e) => {
-        //     if (e.target === e.currentTarget) popupBtn.classList.add('hovered');
-        // };
-
-        // popup.onmouseout = (e) => {
-        //     if (e.target === e.currentTarget) popupBtn.classList.remove('hovered');
-        // };
     };
 
     public closePopup = () => {
