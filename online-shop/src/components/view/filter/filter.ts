@@ -1,6 +1,9 @@
+import { PictureKeys } from '../../../picture.inteface';
 import { picturesList } from '../../../pictures-list';
 import Card from '../card/card';
 import Favorites from '../favorites/favorites';
+
+type filterToRemoveT = [type: PictureKeys, ...filters: string[]];
 
 class Filter {
     readonly allProducts: Element[];
@@ -19,7 +22,6 @@ class Filter {
 
     public uncheckFilters() {
         const checkboxes = document.querySelectorAll('input[type=checkbox]');
-        console.log(checkboxes);
 
         checkboxes.forEach((checkbox) => ((<HTMLInputElement>checkbox).checked = false));
     }
@@ -30,8 +32,9 @@ class Filter {
         if (filters) {
             const filtersArr = filters.split('-');
             if (filter.startsWith('color') || filter.startsWith('brush') || filter.startsWith('author')) {
-                const filterToRemove = filter.split('*');
-                const regFilter = new RegExp(`^${filterToRemove[0]}`);
+                const filterToRemove = filter.split('*') as filterToRemoveT;
+                const filterToRemoveType = filterToRemove[0];
+                const regFilter = new RegExp(`^${filterToRemoveType}`);
                 for (const ind in filtersArr) {
                     if (regFilter.test(filtersArr[ind])) {
                         const presentFilter = filtersArr[ind].split('*');
@@ -86,7 +89,7 @@ class Filter {
 
     private filterByPriceAndYear(filter: string) {
         const currentProducts = this.filteredProducts.length >= 1 ? [...this.filteredProducts] : [...this.allProducts];
-        const rangeArr = filter.split('*');
+        const rangeArr = filter.split('*') as filterToRemoveT;
         const className = `.${rangeArr[0]}-slider`;
 
         const newFiltered: Element[] = currentProducts.reduce((filtered: Element[], item: Element) => {
@@ -145,7 +148,7 @@ class Filter {
         const currentProducts = this.filteredProducts.length >= 1 ? [...this.filteredProducts] : [...this.allProducts];
         const newFiltered: Element[] = [];
 
-        const filterArr = filter.split('*');
+        const filterArr = filter.split('*') as filterToRemoveT;
         const filters = filterArr.slice(1);
 
         filters.forEach((filter) => {

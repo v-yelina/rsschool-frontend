@@ -28,3 +28,6 @@ export interface Picture {
     color: ColorType;
     url: string;
 }
+
+type ObjectKey<Obj> = keyof Obj;
+export type PictureKeys = ObjectKey<Picture>;
