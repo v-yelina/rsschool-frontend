@@ -17,6 +17,13 @@ class Filter {
         this.card = new Card();
     }
 
+    public uncheckFilters() {
+        const checkboxes = document.querySelectorAll('input[type=checkbox]');
+        console.log(checkboxes);
+
+        checkboxes.forEach((checkbox) => ((<HTMLInputElement>checkbox).checked = false));
+    }
+
     public removeFilter(filter: string) {
         const filters = localStorage.getItem('filters');
 

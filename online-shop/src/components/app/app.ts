@@ -89,7 +89,7 @@ class App {
             })
         );
 
-        const saleRadio = document.querySelector('.onsale');
+        const saleRadio = document.querySelector('.onsale') as HTMLInputElement;
         if (saleRadio) {
             saleRadio.addEventListener('change', () => {
                 const saleRadioElement = saleRadio as HTMLInputElement;
@@ -109,7 +109,7 @@ class App {
             });
         }
 
-        const favoriteRadio = document.querySelector('.isfavorite');
+        const favoriteRadio = document.querySelector('.isfavorite') as HTMLInputElement;
         if (favoriteRadio) {
             favoriteRadio.addEventListener('change', () => {
                 const favoriteRadioElement = favoriteRadio as HTMLInputElement;
@@ -157,7 +157,9 @@ class App {
                 } else if (buttonEl.classList.contains('remove-filters-button')) {
                     localStorage.removeItem('filters');
                 }
-
+                this.priceSlider.clearFilter();
+                this.yearSlider.clearFilter();
+                filter.uncheckFilters();
                 filter.filterProducts();
                 this.sort.sortProducts();
             });
