@@ -2,3 +2,15 @@
 
 @import 'layout/header';
 @import 'layout/footer';
+@import 'layout/update';
+
+@import 'components/buttons';
+
+
+header,
+main,
+footer {
+    width: 90%;
+    padding: 1%;
+    margin: 0 auto;
+}
