@@ -1,3 +1,5 @@
+import Events from '../eventListeners/events';
+import Update from '../updateGarage/update';
 import { Color, ICar } from './car.interface';
 
 class Cars {
@@ -13,26 +15,15 @@ class Cars {
     private drawCar(car: ICar) {
         const carContainer = document.createElement('div');
         carContainer.className = 'cars-list__item car';
-        const carHeader = document.createElement('div');
-        carHeader.classList.add('car__header');
-        const carname = document.createElement('h3');
-        carname.innerHTML = car.name;
-        const selectBtn = document.createElement('button');
-        selectBtn.innerHTML = 'Select';
-        selectBtn.className = 'car__btn car__btn--select';
-        const removeBtn = document.createElement('button');
-        removeBtn.innerHTML = 'Remove';
-        removeBtn.className = 'car__btn car__btn--remove';
-        carHeader.appendChild(carname);
-        carHeader.appendChild(selectBtn);
-        carHeader.appendChild(removeBtn);
+        carContainer.setAttribute('data-id', String(car.id));
+
         const startBtn = document.createElement('button');
         startBtn.className = 'car__btn car__btn--start';
         startBtn.innerHTML = 'Start';
         const stopBtn = document.createElement('button');
         stopBtn.innerHTML = 'Stop';
         stopBtn.className = 'car__btn car__btn--stop';
-        carContainer.appendChild(carHeader);
+        carContainer.appendChild(this.createCarHeader(car.name));
         carContainer.appendChild(this.drawCarRace(car));
         carContainer.appendChild(startBtn);
         carContainer.appendChild(stopBtn);
@@ -48,6 +39,33 @@ class Cars {
         finish.setAttribute('src', '../../assets/svg/finish.svg');
         carRace.appendChild(finish);
         return carRace;
+    }
+
+    private createCarHeader(name: string) {
+        const update = new Update();
+        const events = new Events();
+        const carHeader = document.createElement('div');
+        carHeader.classList.add('car__header');
+        const carname = document.createElement('h3');
+        carname.innerHTML = name;
+        const selectBtn = document.createElement('button');
+        selectBtn.innerHTML = 'Select';
+        selectBtn.className = 'car__btn car__btn--select';
+        const removeBtn = document.createElement('button');
+        removeBtn.innerHTML = 'Remove';
+        removeBtn.className = 'car__btn car__btn--remove';
+
+        removeBtn.addEventListener('click', (e) => {
+            const id = update.deleteCar(e);
+            if (id) {
+                events.deleteCar(id);
+            }
+        });
+
+        carHeader.appendChild(carname);
+        carHeader.appendChild(selectBtn);
+        carHeader.appendChild(removeBtn);
+        return carHeader;
     }
 
     private createSvg(color: Color): string {

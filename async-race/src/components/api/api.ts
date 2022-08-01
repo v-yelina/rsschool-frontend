@@ -17,3 +17,11 @@ export const addCars = async (data: Partial<ICar>): Promise<ICar> => {
     });
     return await response.json();
 };
+
+export const removeCars = async (id: string): Promise<ICar> => {
+    const response = await fetch(`${ENV.API_ROOT}${ENV.GARAGE}/${id}`, {
+        method: 'DELETE',
+    });
+
+    return await response.json();
+};

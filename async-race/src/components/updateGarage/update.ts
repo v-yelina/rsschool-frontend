@@ -35,13 +35,27 @@ class Update {
 
     public createCar(): Partial<ICar> | undefined {
         const createInput = document.querySelector('.update-form--create');
-
         if (createInput) {
             const nameInput = createInput.querySelector('.input-name') as HTMLInputElement;
             const colorInput = createInput.querySelector('.input-color') as HTMLInputElement;
             if (nameInput && colorInput) {
-                return { name: nameInput.value.trim(), color: colorInput.value.trim() as Color };
+                const name = nameInput.value.trim();
+                const color = colorInput.value.trim() as Color;
+                nameInput.value = '';
+                return { name, color };
             }
+        }
+    }
+
+    public deleteCar(e: Event): string | undefined {
+        const button = e.target as HTMLElement;
+        const carHeader = button.parentNode as HTMLElement;
+        const car = carHeader.parentNode as HTMLElement;
+
+        const carID = car.dataset.id;
+
+        if (carID) {
+            return carID;
         }
     }
 
