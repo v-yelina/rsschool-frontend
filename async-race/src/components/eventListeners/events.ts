@@ -1,4 +1,4 @@
-import { addCars } from '../api/api';
+import { addCars, removeCars } from '../api/api';
 import { ICar } from '../car/car.interface';
 import Garage from '../garage/garage';
 import Update from '../updateGarage/update';
@@ -15,13 +15,11 @@ class Events {
         const headerBtn = document.querySelectorAll('.btn--header');
         headerBtn.forEach((btn) => btn.addEventListener('click', (e) => this.changeTab(e)));
         const createBtn = document.querySelector('.update-form--create button');
-
         if (createBtn) {
             createBtn.addEventListener('click', () => {
                 const data = this.update.createCar();
                 if (data) {
                     this.addCar(data);
-                    this.garage.draw();
                 }
             });
         }
@@ -40,16 +38,24 @@ class Events {
         }
     }
 
-    private async addCar(data: Partial<ICar>) {
+    private addCar(data: Partial<ICar>) {
+        addCars(data);
+        this.updateGarage();
+    }
+
+    public deleteCar(id: string) {
+        removeCars(id);
+        this.updateGarage();
+    }
+
+    private async updateGarage() {
         const main = document.querySelector('main');
 
-        addCars(data);
-        const garage = document.querySelector('.garage');
-        if (garage) {
-            const list = garage.lastChild;
-            if (list) {
-                garage.removeChild(list);
-                main!.appendChild(await this.garage.draw());
+        if (main) {
+            const garage = main.querySelector('.garage');
+            if (garage) {
+                main.removeChild(garage);
+                main.appendChild(await this.garage.draw());
             }
         }
     }
