@@ -1,3 +1,4 @@
+const Dotenv = require('dotenv-webpack');
 const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -57,6 +58,7 @@ const baseConfig = {
         new CopyPlugin({
             patterns: [{ from: './src/assets', to: './assets' }],
         }),
+        new Dotenv(),
     ],
 };
 
