@@ -12,7 +12,7 @@ class Main {
         this.garage = new Garage();
         this.winners = new Winners();
     }
-    public draw(): void {
+    public async draw(): Promise<void> {
         const main = document.createElement('main');
 
         const body = document.querySelector('body');
@@ -20,7 +20,7 @@ class Main {
             body.appendChild(main);
         }
         main.appendChild(this.update.draw());
-        main.appendChild(this.garage.draw());
+        main.appendChild(await this.garage.draw());
         main.appendChild(this.winners.draw());
     }
 }
