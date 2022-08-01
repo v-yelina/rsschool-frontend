@@ -5,12 +5,12 @@ class Cars {
         const carsList = document.createElement('section');
         carsList.classList.add('cars-list');
         cars.forEach((car) => {
-            carsList.appendChild(this.createCar(car));
+            carsList.appendChild(this.drawCar(car));
         });
         return carsList;
     }
 
-    private createCar(car: ICar) {
+    private drawCar(car: ICar) {
         const carContainer = document.createElement('div');
         carContainer.className = 'cars-list__item car';
         const carHeader = document.createElement('div');

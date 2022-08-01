@@ -1,20 +1,13 @@
+import { Color, ICar } from '../car/car.interface';
+
 class Update {
-    draw() {
+    public draw() {
         const updateForm = document.createElement('section');
         updateForm.classList.add('update-form');
-        const inputContainer = document.createElement('div');
-        const input = document.createElement('input');
-        input.setAttribute('type', 'text');
-        const color = document.createElement('input');
-        color.setAttribute('type', 'color');
-        const btn = document.createElement('button');
-        inputContainer.appendChild(input);
-        inputContainer.appendChild(color);
-        inputContainer.appendChild(btn);
-        const createInput = inputContainer.cloneNode(true) as HTMLDivElement;
+        const createInput = this.createInputForm();
         createInput.className = 'update-form--create';
         updateForm.appendChild(createInput);
-        const updateInput = inputContainer.cloneNode(true) as HTMLDivElement;
+        const updateInput = this.createInputForm();
         updateInput.className = 'update-form--update';
         updateForm.appendChild(updateInput);
         const createBtn = updateForm.querySelector('.update-form--create button');
@@ -38,6 +31,33 @@ class Update {
         buttons.appendChild(generateBtn);
         updateForm.appendChild(buttons);
         return updateForm;
+    }
+
+    public createCar(): Partial<ICar> | undefined {
+        const createInput = document.querySelector('.update-form--create');
+
+        if (createInput) {
+            const nameInput = createInput.querySelector('.input-name') as HTMLInputElement;
+            const colorInput = createInput.querySelector('.input-color') as HTMLInputElement;
+            if (nameInput && colorInput) {
+                return { name: nameInput.value.trim(), color: colorInput.value.trim() as Color };
+            }
+        }
+    }
+
+    private createInputForm() {
+        const inputContainer = document.createElement('div');
+        const input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.classList.add('input-name');
+        const color = document.createElement('input');
+        color.setAttribute('type', 'color');
+        color.classList.add('input-color');
+        const btn = document.createElement('button');
+        inputContainer.appendChild(input);
+        inputContainer.appendChild(color);
+        inputContainer.appendChild(btn);
+        return inputContainer;
     }
 }
 
