@@ -1,15 +1,19 @@
+import { GeneratePrimeOptions } from 'crypto';
 import { addCars, removeCars } from '../api/api';
 import { ICar } from '../car/car.interface';
 import Garage from '../garage/garage';
+import Generate from '../generateCars/generate';
 import Update from '../updateGarage/update';
 
 class Events {
     update: Update;
     garage: Garage;
+    generate: Generate;
 
     constructor() {
         this.update = new Update();
         this.garage = new Garage();
+        this.generate = new Generate();
     }
     public create(): void {
         const headerBtn = document.querySelectorAll('.btn--header');
@@ -21,6 +25,13 @@ class Events {
                 if (data) {
                     this.addCar(data);
                 }
+            });
+        }
+        const generateBtn = document.querySelector('.generate-btn');
+        if (generateBtn) {
+            generateBtn.addEventListener('click', () => {
+                this.generate.start();
+                this.updateGarage();
             });
         }
     }

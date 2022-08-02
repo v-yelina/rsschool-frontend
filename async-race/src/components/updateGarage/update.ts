@@ -22,9 +22,12 @@ class Update {
         buttons.classList.add('update-form__buttons');
         const raceBtn = document.createElement('button');
         raceBtn.innerHTML = 'Race';
+        raceBtn.classList.add('race-btn');
         const resetBtn = document.createElement('button');
+        resetBtn.classList.add('reset-btn');
         resetBtn.innerHTML = 'Reset';
         const generateBtn = document.createElement('button');
+        generateBtn.classList.add('generate-btn');
         generateBtn.innerHTML = 'Generate Cars';
         buttons.appendChild(raceBtn);
         buttons.appendChild(resetBtn);
