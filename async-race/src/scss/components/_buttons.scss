@@ -3,6 +3,16 @@ button {
     border-radius: 5px;
     padding: 10px 15px;
     text-transform: uppercase;
+    transition: 0.3s;
+
+    &:hover {
+        cursor: pointer;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0 0);
+    }
+
+    &:active {
+        transform: translateY(4px);
+    }
 }
 
 .btn--header {
