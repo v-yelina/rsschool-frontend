@@ -50,18 +50,6 @@ class Update {
         }
     }
 
-    public deleteCar(e: Event): string | undefined {
-        const button = e.target as HTMLElement;
-        const carHeader = button.parentNode as HTMLElement;
-        const car = carHeader.parentNode as HTMLElement;
-
-        const carID = car.dataset.id;
-
-        if (carID) {
-            return carID;
-        }
-    }
-
     private createInputForm() {
         const inputContainer = document.createElement('div');
         const input = document.createElement('input');

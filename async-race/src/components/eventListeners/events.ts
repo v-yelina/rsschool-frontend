@@ -1,4 +1,4 @@
-import { addCars, removeCars } from '../api/api';
+import { addCars, getOneCar, removeCars } from '../api/api';
 import { state } from '../app/state';
 import { ICar } from '../car/car.interface';
 import Garage from '../garage/garage';
@@ -49,6 +49,18 @@ class Events {
         }
     }
 
+    public getCarId(e: Event): string | undefined {
+        const button = e.target as HTMLElement;
+        const carHeader = button.parentNode as HTMLElement;
+        const car = carHeader.parentNode as HTMLElement;
+
+        const carID = car.dataset.id;
+
+        if (carID) {
+            return carID;
+        }
+    }
+
     private addCar(data: Partial<ICar>) {
         addCars(data);
         this.updateGarage();
@@ -57,6 +69,19 @@ class Events {
     public deleteCar(id: string) {
         removeCars(id);
         this.updateGarage();
+    }
+
+    public async selectCar(e: Event) {
+        const carId = this.getCarId(e);
+        const updateContainer = document.querySelector('.update-form--update');
+        const name = updateContainer?.querySelector('.input-name') as HTMLInputElement;
+        const color = updateContainer?.querySelector('.input-color') as HTMLInputElement;
+        if (name && color && carId) {
+            name.setAttribute('data-id', carId);
+            const car = await getOneCar(carId);
+            name.value = car.name;
+            color.value = car.color;
+        }
     }
 
     public async updateGarage(page = state.page) {

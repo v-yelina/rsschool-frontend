@@ -1,5 +1,4 @@
 import Events from '../eventListeners/events';
-import Update from '../updateGarage/update';
 import { Color, ICar } from './car.interface';
 
 class Cars {
@@ -42,7 +41,6 @@ class Cars {
     }
 
     private createCarHeader(name: string) {
-        const update = new Update();
         const events = new Events();
         const carHeader = document.createElement('div');
         carHeader.classList.add('car__header');
@@ -51,12 +49,13 @@ class Cars {
         const selectBtn = document.createElement('button');
         selectBtn.innerHTML = 'Select';
         selectBtn.className = 'car__btn car__btn--select';
+        selectBtn.addEventListener('click', (e) => events.selectCar(e));
         const removeBtn = document.createElement('button');
         removeBtn.innerHTML = 'Remove';
         removeBtn.className = 'car__btn car__btn--remove';
 
         removeBtn.addEventListener('click', (e) => {
-            const id = update.deleteCar(e);
+            const id = events.getCarId(e);
             if (id) {
                 events.deleteCar(id);
             }
