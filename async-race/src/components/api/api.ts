@@ -28,6 +28,17 @@ export const addCars = async (data: Partial<ICar>): Promise<ICar> => {
     return await response.json();
 };
 
+export const updateCars = async (data: ICar): Promise<ICar> => {
+    const response = await fetch(`${ENV.API_ROOT}${ENV.GARAGE}/${data.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    return await response.json();
+};
+
 export const removeCars = async (id: string): Promise<ICar> => {
     const response = await fetch(`${ENV.API_ROOT}${ENV.GARAGE}/${id}`, {
         method: 'DELETE',

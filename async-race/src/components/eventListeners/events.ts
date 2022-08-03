@@ -1,6 +1,6 @@
-import { addCars, getOneCar, removeCars } from '../api/api';
+import { addCars, getOneCar, removeCars, updateCars } from '../api/api';
 import { state } from '../app/state';
-import { ICar } from '../car/car.interface';
+import { Color, ICar } from '../car/car.interface';
 import Garage from '../garage/garage';
 import Generate from '../generateCars/generate';
 import Update from '../updateGarage/update';
@@ -71,7 +71,7 @@ class Events {
         this.updateGarage();
     }
 
-    public async selectCar(e: Event) {
+    public async selectCar(e: Event): Promise<void> {
         const carId = this.getCarId(e);
         const updateContainer = document.querySelector('.update-form--update');
         const name = updateContainer?.querySelector('.input-name') as HTMLInputElement;
@@ -84,7 +84,22 @@ class Events {
         }
     }
 
-    public async updateGarage(page = state.page) {
+    public async updateCar(): Promise<void> {
+        const updateContainer = document.querySelector('.update-form--update');
+        const name = updateContainer?.querySelector('.input-name') as HTMLInputElement;
+        const color = updateContainer?.querySelector('.input-color') as HTMLInputElement;
+        const carId = name.dataset.id;
+
+        if (name && color && carId) {
+            await updateCars({ id: +carId, name: name.value, color: color.value as Color });
+            this.updateGarage();
+            name.value = '';
+            color.value = '';
+            name.dataset.id = '';
+        }
+    }
+
+    public async updateGarage(page = state.page): Promise<void> {
         const main = document.querySelector('main');
 
         if (main) {

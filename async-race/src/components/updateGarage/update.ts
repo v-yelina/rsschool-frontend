@@ -1,7 +1,9 @@
 import { Color, ICar } from '../car/car.interface';
+import Events from '../eventListeners/events';
 
 class Update {
     public draw() {
+        const events = new Events();
         const updateForm = document.createElement('section');
         updateForm.classList.add('update-form');
         const createInput = this.createInputForm();
@@ -17,6 +19,9 @@ class Update {
         const updateBtn = updateForm.querySelector('.update-form--update button');
         if (updateBtn) {
             updateBtn.innerHTML = 'Update';
+            updateBtn.addEventListener('click', () => {
+                events.updateCar();
+            });
         }
         const buttons = document.createElement('div');
         buttons.classList.add('update-form__buttons');
