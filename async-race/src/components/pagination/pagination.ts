@@ -22,8 +22,10 @@ class Pagination {
         paginationBtns.forEach((btn) =>
             btn.addEventListener('click', (e) => {
                 this.changePage(e);
-                const page = localStorage.getItem('page')!;
-                events.updateGarage(page);
+                const page = localStorage.getItem('page');
+                if (page) {
+                    events.updateGarage(page);
+                }
             })
         );
         return pagination;
