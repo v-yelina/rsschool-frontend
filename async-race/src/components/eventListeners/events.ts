@@ -1,5 +1,5 @@
-import { GeneratePrimeOptions } from 'crypto';
 import { addCars, removeCars } from '../api/api';
+import { state } from '../app/state';
 import { ICar } from '../car/car.interface';
 import Garage from '../garage/garage';
 import Generate from '../generateCars/generate';
@@ -59,14 +59,14 @@ class Events {
         this.updateGarage();
     }
 
-    private async updateGarage() {
+    public async updateGarage(page = state.page) {
         const main = document.querySelector('main');
 
         if (main) {
             const garage = main.querySelector('.garage');
             if (garage) {
                 main.removeChild(garage);
-                main.appendChild(await this.garage.draw());
+                main.appendChild(await this.garage.draw(page));
             }
         }
     }

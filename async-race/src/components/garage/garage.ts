@@ -1,23 +1,32 @@
 import { getCars } from '../api/api';
+import { state } from '../app/state';
 import Cars from '../car/cars';
+import Pagination from '../pagination/pagination';
 
 class Garage {
     cars: Cars;
+    pagination: Pagination;
 
     constructor() {
         this.cars = new Cars();
+        this.pagination = new Pagination();
     }
-    public async draw(): Promise<HTMLElement> {
+    public async draw(page = state.page): Promise<HTMLElement> {
         const garage = document.createElement('section');
-        const availableCars = await getCars();
+        const availableCars = await getCars(page);
         garage.classList.add('garage');
         const garageTitle = document.createElement('h2');
-        garageTitle.innerHTML = `Garage (${availableCars.count})`;
-        const page = document.createElement('h3');
-        page.innerHTML = `Page: ${availableCars.page}`;
+        const allCarsCount = document.createElement('span');
+        allCarsCount.classList.add('cars-count');
+        allCarsCount.innerHTML = ` (${availableCars.count})`;
+        garageTitle.innerHTML = `Garage`;
+        garageTitle.appendChild(allCarsCount);
+        const pageNum = document.createElement('h3');
+        pageNum.innerHTML = `Page: ${availableCars.page}`;
         garage.appendChild(garageTitle);
-        garage.appendChild(page);
+        garage.appendChild(pageNum);
         garage.appendChild(this.cars.draw(availableCars.data));
+        garage.appendChild(this.pagination.createButtons(String(page)));
         return garage;
     }
 }

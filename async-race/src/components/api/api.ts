@@ -1,7 +1,8 @@
+import { state } from '../app/state';
 import { ICar } from '../car/car.interface';
 import ENV from '../common/config';
 
-export const getCars = async (page = 1, limit = 7): Promise<{ page: number; count: string; data: ICar[] }> => {
+export const getCars = async (page = state.page, limit = 7): Promise<{ page: string; count: string; data: ICar[] }> => {
     const response = await fetch(`${ENV.API_ROOT}${ENV.GARAGE}?_limit=${limit}&_page=${page}`);
 
     const data: ICar[] = await response.json();
