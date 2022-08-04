@@ -1,6 +1,7 @@
 import { state } from '../app/state';
 import { ICar } from '../car/car.interface';
 import ENV from '../common/config';
+import { EngineMode, IEngine } from '../drive/drive.interface';
 import { IWinner } from '../winners/winners.interface';
 
 export const getCars = async (page = state.page, limit = 7): Promise<{ page: string; count: string; data: ICar[] }> => {
@@ -45,4 +46,13 @@ export const removeCars = async (id: string): Promise<ICar> => {
     });
 
     return await response.json();
+};
+
+export const startStopDriveEngine = async (id: string, status: EngineMode): Promise<IEngine | { success: boolean }> => {
+    const response = await fetch(`${ENV.API_ROOT}${ENV.ENGINE}/?id=${id}&status=${status}`);
+    if (status === 'drive' && response.status !== 200) {
+        return { success: false };
+    } else {
+        return await response.json();
+    }
 };
