@@ -3,9 +3,9 @@ import Events from '../eventListeners/events';
 import { EngineMode } from './drive.interface';
 
 class Drive {
-    public async engine(e: Event, status: EngineMode) {
+    public async engine(e: Event, status: EngineMode, carId?: string) {
         const events = new Events();
-        const carID = events.getCarId(e);
+        const carID = carId || events.getCarId(e);
 
         if (carID) {
             const carSettings = await startStopDriveEngine(carID, status);
@@ -21,7 +21,7 @@ class Drive {
                         this.drive(carID, time);
                         const width = car.clientWidth;
                         carImg.style.transform = `translateX(${width - 50}px)`;
-                        carImg.style.transition = `${time}ms`;
+                        carImg.style.transition = `${time + 5000}ms`;
                         startButton.disabled = true;
                         stopButton.disabled = false;
                     } else if (status === 'stopped') {
@@ -40,7 +40,15 @@ class Drive {
             await startStopDriveEngine(carID, 'drive');
             console.log('drive');
         } catch (e) {
-            console.log(e);
+            console.log('oops');
+
+            const car = document.querySelector(`.car${carID}`);
+            if (car) {
+                const carImg = car.querySelector('.car__img') as SVGElement;
+                if (carImg) {
+                    carImg.style.animationPlayState = 'paused';
+                }
+            }
         }
     }
 }

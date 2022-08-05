@@ -1,6 +1,7 @@
 import { addCars, getOneCar, removeCars, updateCars } from '../api/api';
 import { state } from '../app/state';
 import { Color, ICar } from '../car/car.interface';
+import Drive from '../drive/drive';
 import Garage from '../garage/garage';
 import Generate from '../generateCars/generate';
 import Update from '../updateGarage/update';
@@ -33,6 +34,10 @@ class Events {
                 this.generate.start();
                 this.updateGarage();
             });
+        }
+        const raceBtn = document.querySelector('.race-btn');
+        if (raceBtn) {
+            raceBtn.addEventListener('click', this.startRace);
         }
     }
 
@@ -100,6 +105,16 @@ class Events {
             color.value = '';
             name.dataset.id = '';
         }
+    }
+
+    private startRace(e: Event) {
+        const drive = new Drive();
+        const cars = document.querySelectorAll('.car');
+        cars.forEach(async (car) => {
+            const carWrapper = car as HTMLElement;
+            const carID = carWrapper.dataset.id;
+            await drive.engine(e, 'started', carID);
+        });
     }
 
     public async updateGarage(page = state.page): Promise<void> {
