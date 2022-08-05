@@ -48,11 +48,9 @@ export const removeCars = async (id: string): Promise<ICar> => {
     return await response.json();
 };
 
-export const startStopDriveEngine = async (id: string, status: EngineMode): Promise<IEngine | { success: boolean }> => {
-    const response = await fetch(`${ENV.API_ROOT}${ENV.ENGINE}/?id=${id}&status=${status}`);
-    if (status === 'drive' && response.status !== 200) {
-        return { success: false };
-    } else {
-        return await response.json();
-    }
+export const startStopDriveEngine = async (id: string, status: EngineMode): Promise<Partial<IEngine>> => {
+    const response = await fetch(`${ENV.API_ROOT}${ENV.ENGINE}?id=${id}&status=${status}`, {
+        method: 'PATCH',
+    });
+    return await response.json();
 };

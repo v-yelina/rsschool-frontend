@@ -51,8 +51,11 @@ class Events {
 
     public getCarId(e: Event): string | undefined {
         const button = e.target as HTMLElement;
-        const carHeader = button.parentNode as HTMLElement;
-        const car = carHeader.parentNode as HTMLElement;
+        const buttonParent = button.parentNode as HTMLElement;
+        const car =
+            button.classList.contains('car__btn--start') || button.classList.contains('car__btn--stop')
+                ? buttonParent
+                : (buttonParent.parentNode as HTMLElement);
 
         const carID = car.dataset.id;
 

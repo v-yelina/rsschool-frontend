@@ -5,12 +5,12 @@ button {
     text-transform: uppercase;
     transition: 0.3s;
 
-    &:hover {
+    &:hover:enabled {
         cursor: pointer;
         background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0 0);
     }
 
-    &:active {
+    &:active:enabled {
         transform: translateY(4px);
     }
 }

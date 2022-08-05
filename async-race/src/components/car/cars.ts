@@ -1,3 +1,4 @@
+import Drive from '../drive/drive';
 import Events from '../eventListeners/events';
 import { Color, ICar } from './car.interface';
 
@@ -12,16 +13,24 @@ class Cars {
     }
 
     private drawCar(car: ICar) {
+        const drive = new Drive();
         const carContainer = document.createElement('div');
-        carContainer.className = 'cars-list__item car';
+        carContainer.className = `cars-list__item car car${car.id}`;
         carContainer.setAttribute('data-id', String(car.id));
 
         const startBtn = document.createElement('button');
         startBtn.className = 'car__btn car__btn--start';
         startBtn.innerHTML = 'Start';
+        startBtn.addEventListener('click', (e) => {
+            drive.engine(e, 'started');
+        });
         const stopBtn = document.createElement('button');
         stopBtn.innerHTML = 'Stop';
+        stopBtn.disabled = true;
         stopBtn.className = 'car__btn car__btn--stop';
+        stopBtn.addEventListener('click', (e) => {
+            drive.engine(e, 'stopped');
+        });
         carContainer.appendChild(this.createCarHeader(car.name));
         carContainer.appendChild(this.drawCarRace(car));
         carContainer.appendChild(startBtn);
@@ -74,8 +83,7 @@ class Cars {
 <metadata>
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
-<g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)"
-fill="${color}" stroke="none">
+<g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)" fill="${color}" stroke="none" class='car-svg'>
 <path d="M4880 5759 c-586 -51 -1428 -339 -2345 -803 l-260 -131 -140 1 c-169
 1 -245 18 -565 124 -359 119 -514 150 -653 131 -136 -19 -222 -65 -319 -170
 -74 -79 -106 -149 -120 -259 -27 -223 33 -771 172 -1557 51 -286 98 -526 104
