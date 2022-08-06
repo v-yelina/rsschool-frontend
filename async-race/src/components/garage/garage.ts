@@ -13,6 +13,9 @@ class Garage {
     }
     public async draw(page = state.garagePage): Promise<HTMLElement> {
         const garage = document.createElement('section');
+        if (localStorage.getItem('tab') === 'winners') {
+            garage.classList.add('hidden');
+        }
         const availableCars = await getCars(page);
         garage.classList.add('garage');
         const garageTitle = document.createElement('h2');

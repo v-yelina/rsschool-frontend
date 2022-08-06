@@ -43,15 +43,12 @@ class Pagination {
     }
 
     private changePage(e: Event, tab: Tabs) {
-        console.log(tab);
-
         const button = e.target as HTMLElement;
         const pageNum = localStorage.getItem(`${tab}Page`) || '1';
 
         const allCarsCount = document.querySelector('.cars-count');
         const winnersCount = document.querySelector('.winners-count');
         const all = tab === 'garage' ? allCarsCount : winnersCount;
-        console.log(all);
 
         if (all) {
             const itemsLimit = tab === 'garage' ? 7 : 10;

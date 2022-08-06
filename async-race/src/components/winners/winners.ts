@@ -13,7 +13,10 @@ class Winners {
     public async draw(page = state.winnersPage): Promise<HTMLElement> {
         const winners = document.createElement('section');
         const availableWinners = await getWinners(page);
-        winners.className = 'winners hidden';
+        winners.className = 'winners';
+        if (localStorage.getItem('tab') === 'garage' || !localStorage.getItem('tab')) {
+            winners.classList.add('hidden');
+        }
         const winnersTitle = document.createElement('h2');
         const allWinnersCount = document.createElement('span');
         allWinnersCount.classList.add('winners-count');

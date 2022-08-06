@@ -48,12 +48,23 @@ class Events {
 
     private changeTab(e: Event): void {
         const targetButton = e.target as HTMLButtonElement;
+        if (targetButton.classList.contains('btn--garage')) {
+            localStorage.setItem('tab', 'garage');
+            this.updateTab('garage');
+        } else if (targetButton.classList.contains('btn--winners')) {
+            localStorage.setItem('tab', 'winners');
+            this.updateTab('winners');
+        }
+    }
+
+    private updateTab(tab: string) {
         const garage = document.querySelector('.garage');
         const winners = document.querySelector('.winners');
-        if (targetButton.classList.contains('btn--garage') && garage && winners) {
+
+        if (tab === 'garage' && garage && winners) {
             garage.classList.remove('hidden');
             winners.classList.add('hidden');
-        } else if (targetButton.classList.contains('btn--winners') && garage && winners) {
+        } else if (tab === 'winners' && garage && winners) {
             garage.classList.add('hidden');
             winners.classList.remove('hidden');
         }
