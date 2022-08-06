@@ -11,7 +11,7 @@ class Garage {
         this.cars = new Cars();
         this.pagination = new Pagination();
     }
-    public async draw(page = state.page): Promise<HTMLElement> {
+    public async draw(page = state.garagePage): Promise<HTMLElement> {
         const garage = document.createElement('section');
         const availableCars = await getCars(page);
         garage.classList.add('garage');
@@ -26,7 +26,7 @@ class Garage {
         garage.appendChild(garageTitle);
         garage.appendChild(pageNum);
         garage.appendChild(this.cars.draw(availableCars.data));
-        garage.appendChild(this.pagination.createButtons(String(page)));
+        garage.appendChild(this.pagination.createButtons('garage', String(page)));
         return garage;
     }
 }

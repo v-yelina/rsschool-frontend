@@ -1,8 +1,10 @@
 import { state } from '../app/state';
 import Events from '../eventListeners/events';
 
+type Tabs = 'winners' | 'garage';
+
 class Pagination {
-    public createButtons(page: string = state.page) {
+    public createButtons(tab: Tabs, page: string = tab === 'winners' ? state.winnersPage : state.garagePage) {
         const events = new Events();
         const pagination = document.createElement('div');
         pagination.classList.add('pagination');
@@ -21,10 +23,12 @@ class Pagination {
         const paginationBtns = pagination.querySelectorAll('.pagination__btn');
         paginationBtns.forEach((btn) =>
             btn.addEventListener('click', (e) => {
-                this.changePage(e);
-                const page = localStorage.getItem('page');
+                this.changePage(e, tab);
+                const page = localStorage.getItem(`${tab}Page`);
                 if (page) {
-                    events.updateGarage(page);
+                    if (tab === 'garage') {
+                        events.updateGarage(page);
+                    }
                 }
             })
         );
@@ -38,24 +42,33 @@ class Pagination {
         return button;
     }
 
-    private changePage(e: Event) {
+    private changePage(e: Event, tab: Tabs) {
+        console.log(tab);
+
         const button = e.target as HTMLElement;
-        const pageNum = localStorage.getItem('page') || '1';
+        const pageNum = localStorage.getItem(`${tab}Page`) || '1';
+
         const allCarsCount = document.querySelector('.cars-count');
-        if (button.classList.contains('first-btn')) {
-            localStorage.setItem('page', '1');
-        } else if (button.classList.contains('prev-btn')) {
-            if (+pageNum > 1) {
-                localStorage.setItem('page', `${+pageNum - 1}`);
+        const winnersCount = document.querySelector('.winners-count');
+        const all = tab === 'garage' ? allCarsCount : winnersCount;
+        console.log(all);
+
+        if (all) {
+            const itemsLimit = tab === 'garage' ? 7 : 10;
+            const maxPage = Math.ceil(+all.innerHTML.trim().split('(').join('').split(')')[0] / itemsLimit);
+            if (button.classList.contains('first-btn')) {
+                localStorage.setItem(`${tab}Page`, '1');
+            } else if (button.classList.contains('prev-btn')) {
+                if (+pageNum > 1) {
+                    localStorage.setItem(`${tab}Page`, `${+pageNum - 1}`);
+                }
+            } else if (button.classList.contains('next-btn')) {
+                if (+pageNum < maxPage) {
+                    localStorage.setItem(`${tab}Page`, `${+pageNum + 1}`);
+                }
+            } else if (button.classList.contains('last-btn')) {
+                localStorage.setItem(`${tab}Page`, String(maxPage));
             }
-        } else if (button.classList.contains('next-btn') && allCarsCount) {
-            const maxPage = Math.ceil(+allCarsCount.innerHTML.trim().split('(').join('').split(')')[0] / 7);
-            if (+pageNum < maxPage) {
-                localStorage.setItem('page', `${+pageNum + 1}`);
-            }
-        } else if (button.classList.contains('last-btn') && allCarsCount) {
-            const maxPage = Math.ceil(+allCarsCount.innerHTML.trim().split('(').join('').split(')')[0] / 7);
-            localStorage.setItem('page', String(maxPage));
         }
     }
 }

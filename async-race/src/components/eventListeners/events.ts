@@ -122,7 +122,7 @@ class Events {
         });
     }
 
-    public async updateGarage(page = state.page): Promise<void> {
+    public async updateGarage(page = state.garagePage): Promise<void> {
         const main = document.querySelector('main');
 
         if (main) {

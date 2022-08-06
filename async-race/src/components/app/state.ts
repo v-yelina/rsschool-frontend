@@ -1,3 +1,4 @@
 export const state = {
-    page: localStorage.getItem('page') || '1',
+    garagePage: localStorage.getItem('garagePage') || '1',
+    winnersPage: localStorage.getItem('winnersPage') || '1',
 };

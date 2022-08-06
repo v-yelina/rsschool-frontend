@@ -76,7 +76,7 @@ class Cars {
         return carHeader;
     }
 
-    private createSvg(color: Color): string {
+    public createSvg(color: Color): string {
         return `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"  class="car__img"
  width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
  preserveAspectRatio="xMidYMid meet">

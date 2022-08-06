@@ -4,7 +4,10 @@ import ENV from '../common/config';
 import { EngineMode, IEngine } from '../drive/drive.interface';
 import { IWinner } from '../winners/winners.interface';
 
-export const getCars = async (page = state.page, limit = 7): Promise<{ page: string; count: string; data: ICar[] }> => {
+export const getCars = async (
+    page = state.garagePage,
+    limit = 7
+): Promise<{ page: string; count: string; data: ICar[] }> => {
     const response = await fetch(`${ENV.API_ROOT}${ENV.GARAGE}?_limit=${limit}&_page=${page}`);
 
     const data: ICar[] = await response.json();
@@ -53,4 +56,14 @@ export const startStopDriveEngine = async (id: string, status: EngineMode): Prom
         method: 'PATCH',
     });
     return await response.json();
+};
+
+export const getWinners = async (
+    page = state.winnersPage,
+    limit = 10
+): Promise<{ page: string; count: string; data: IWinner[] }> => {
+    const response = await fetch(`${ENV.API_ROOT}${ENV.WINNERS}?_limit=${limit}&_page=${page}`);
+
+    const data: IWinner[] = await response.json();
+    return { page: page, count: response.headers.get('X-Total-Count') || '0', data };
 };

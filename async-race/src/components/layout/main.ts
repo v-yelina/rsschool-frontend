@@ -21,7 +21,7 @@ class Main {
         }
         main.appendChild(this.update.draw());
         main.appendChild(await this.garage.draw());
-        main.appendChild(this.winners.draw());
+        main.appendChild(await this.winners.draw());
     }
 }
 
