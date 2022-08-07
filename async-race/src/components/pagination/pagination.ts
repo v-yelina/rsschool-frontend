@@ -28,6 +28,8 @@ class Pagination {
                 if (page) {
                     if (tab === 'garage') {
                         events.updateGarage(page);
+                    } else if (tab === 'winners') {
+                        events.updateWinners(page);
                     }
                 }
             })
