@@ -67,3 +67,40 @@ export const getWinners = async (
     const data: IWinner[] = await response.json();
     return { page: page, count: response.headers.get('X-Total-Count') || '0', data };
 };
+
+export const getOneWinner = async (id: number): Promise<IWinner> => {
+    const response = await fetch(`${ENV.API_ROOT}${ENV.WINNERS}/${id}`);
+
+    const data: IWinner = await response.json();
+    return data;
+};
+
+export const addWinners = async (data: Partial<IWinner>): Promise<IWinner> => {
+    const response = await fetch(`${ENV.API_ROOT}${ENV.WINNERS}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    return await response.json();
+};
+
+export const updateWinners = async (data: IWinner): Promise<IWinner> => {
+    const response = await fetch(`${ENV.API_ROOT}${ENV.WINNERS}/${data.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    return await response.json();
+};
+
+export const removeWinners = async (id: string): Promise<IWinner> => {
+    const response = await fetch(`${ENV.API_ROOT}${ENV.WINNERS}/${id}`, {
+        method: 'DELETE',
+    });
+
+    return await response.json();
+};

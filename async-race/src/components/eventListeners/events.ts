@@ -1,4 +1,4 @@
-import { addCars, getOneCar, removeCars, updateCars } from '../api/api';
+import { addCars, getOneCar, removeCars, removeWinners, updateCars } from '../api/api';
 import { state } from '../app/state';
 import { Color, ICar } from '../car/car.interface';
 import Drive from '../drive/drive';
@@ -6,15 +6,18 @@ import { EngineMode } from '../drive/drive.interface';
 import Garage from '../garage/garage';
 import Generate from '../generateCars/generate';
 import Update from '../updateGarage/update';
+import Winners from '../winners/winners';
 
 class Events {
     update: Update;
     garage: Garage;
     generate: Generate;
+    winners: Winners;
 
     constructor() {
         this.update = new Update();
         this.garage = new Garage();
+        this.winners = new Winners();
         this.generate = new Generate();
     }
     public create(): void {
@@ -92,7 +95,9 @@ class Events {
 
     public deleteCar(id: string) {
         removeCars(id);
+        removeWinners(id);
         this.updateGarage();
+        this.updateWinners();
     }
 
     public async selectCar(e: Event): Promise<void> {
@@ -123,14 +128,19 @@ class Events {
         }
     }
 
-    private startStopRace(e: Event, status: EngineMode) {
+    private async startStopRace(e: Event, status: EngineMode) {
         const drive = new Drive();
-        const cars = document.querySelectorAll('.car');
-        cars.forEach(async (car) => {
+        const cars = Array.from(document.querySelectorAll('.car'));
+
+        const race = cars.map(async (car) => {
             const carWrapper = car as HTMLElement;
             const carID = carWrapper.dataset.id;
             await drive.engine(e, status, carID);
         });
+
+        await Promise.all(race);
+        this.winners.addWinnerResult(drive.chooseWinner());
+        this.updateWinners();
     }
 
     public async updateGarage(page = state.garagePage): Promise<void> {
@@ -141,6 +151,22 @@ class Events {
             if (garage) {
                 main.removeChild(garage);
                 main.appendChild(await this.garage.draw(page));
+            }
+        }
+    }
+
+    public async updateWinners(page = state.winnersPage): Promise<void> {
+        const main = document.querySelector('main');
+
+        if (main) {
+            const winners = main.querySelector('#winners');
+            console.log(winners);
+
+            if (winners) {
+                main.removeChild(winners);
+                const newWinners = await this.winners.draw(page);
+                main.appendChild(newWinners);
+                document.location.reload();
             }
         }
     }

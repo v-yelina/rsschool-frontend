@@ -1,4 +1,4 @@
-import { getOneCar, getWinners } from '../api/api';
+import { addCars, addWinners, getOneCar, getOneWinner, getWinners, updateWinners } from '../api/api';
 import { state } from '../app/state';
 import Cars from '../car/cars';
 import Pagination from '../pagination/pagination';
@@ -14,6 +14,7 @@ class Winners {
         const winners = document.createElement('section');
         const availableWinners = await getWinners(page);
         winners.className = 'winners';
+        winners.id = 'winners';
         if (localStorage.getItem('tab') === 'garage' || !localStorage.getItem('tab')) {
             winners.classList.add('hidden');
         }
@@ -32,6 +33,25 @@ class Winners {
         winners.appendChild(this.pagination.createButtons('winners', String(page)));
 
         return winners;
+    }
+
+    public async addWinnerResult(winner: Partial<IWinner>) {
+        if (winner.id) {
+            const existedWinner = await getOneWinner(winner.id);
+            console.log(existedWinner);
+
+            if (!existedWinner) {
+                await addWinners({ ...winner, wins: 1 });
+            } else {
+                if (winner.time) {
+                    await updateWinners({
+                        wins: (existedWinner.wins += 1),
+                        id: existedWinner.id,
+                        time: winner.time < existedWinner.time ? winner.time : existedWinner.time,
+                    });
+                }
+            }
+        }
     }
 
     private drawWinnersTable(data: IWinner[]) {
@@ -69,7 +89,9 @@ class Winners {
         const carName = document.createElement('td');
         carName.innerHTML += car.name;
         const winsNum = document.createElement('td');
+        winsNum.innerHTML += data.wins;
         const bestTime = document.createElement('td');
+        bestTime.innerHTML += (data.time / 1000).toFixed(2);
         winnerContainer.appendChild(carImg);
         winnerContainer.appendChild(carName);
         winnerContainer.appendChild(winsNum);
