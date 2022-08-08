@@ -70,7 +70,9 @@ export const getWinners = async (
 
 export const getOneWinner = async (id: number): Promise<IWinner> => {
     const response = await fetch(`${ENV.API_ROOT}${ENV.WINNERS}/${id}`);
-
+    if (response.status !== 200) {
+        console.log(response.statusText);
+    }
     const data: IWinner = await response.json();
     return data;
 };

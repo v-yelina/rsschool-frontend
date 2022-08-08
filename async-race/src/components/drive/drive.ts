@@ -30,6 +30,7 @@ class Drive {
                         stopButton.disabled = false;
                         if (animationId) {
                             await this.drive(carID, time, animationId);
+                            return { id: +carID, time };
                         }
                     } else if (status === 'stopped') {
                         carImg.style.transform = `translateX(0px)`;
@@ -54,9 +55,6 @@ class Drive {
     public chooseWinner() {
         const raceResults = this.raceResults;
         raceResults.sort((a, b) => a.time - b.time);
-        console.log(raceResults);
-        console.log(raceResults[0]);
-
         this.raceResults = [];
         return raceResults[0];
     }

@@ -5,6 +5,7 @@ import Drive from '../drive/drive';
 import { EngineMode } from '../drive/drive.interface';
 import Garage from '../garage/garage';
 import Generate from '../generateCars/generate';
+import Popup from '../popup/popup';
 import Update from '../updateGarage/update';
 import Winners from '../winners/winners';
 
@@ -13,12 +14,14 @@ class Events {
     garage: Garage;
     generate: Generate;
     winners: Winners;
+    popup: Popup;
 
     constructor() {
         this.update = new Update();
         this.garage = new Garage();
         this.winners = new Winners();
         this.generate = new Generate();
+        this.popup = new Popup();
     }
     public create(): void {
         const headerBtn = document.querySelectorAll('.btn--header');
@@ -135,12 +138,23 @@ class Events {
         const race = cars.map(async (car) => {
             const carWrapper = car as HTMLElement;
             const carID = carWrapper.dataset.id;
-            await drive.engine(e, status, carID);
+            return await drive.engine(e, status, carID);
         });
+        const winner = await Promise.any(race);
+        const main = document.querySelector('main');
 
-        await Promise.all(race);
-        this.winners.addWinnerResult(drive.chooseWinner());
-        this.updateWinners();
+        if (main && winner) {
+            main.appendChild(await this.popup.createPopup(winner));
+            const popup = main.querySelector('.popup');
+            if (popup) {
+                setTimeout(() => {
+                    main.removeChild(popup);
+                }, 3000);
+            }
+
+            this.winners.addWinnerResult(winner);
+            this.updateWinners();
+        }
     }
 
     public async updateGarage(page = state.garagePage): Promise<void> {
@@ -160,13 +174,11 @@ class Events {
 
         if (main) {
             const winners = main.querySelector('#winners');
-            console.log(winners);
 
             if (winners) {
                 main.removeChild(winners);
                 const newWinners = await this.winners.draw(page);
                 main.appendChild(newWinners);
-                document.location.reload();
             }
         }
     }
