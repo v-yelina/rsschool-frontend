@@ -7,6 +7,13 @@ Your customer has an idea to spend his money. He has hired some engineers who in
 
 Each radio-contorller has an HTTP-compatible interface. It's let you to start or stop engine of the car and of course enable "driving" mode.
 
+## Run 
+1. clone and run server: https://github.com/mikhama/async-race-api
+2. `git clone git@github.com:rolling-scopes-school/v-yelina-JSFE2022Q1.git`
+3. `git checkout async-race`
+4. `cd async-race`
+5. `npm start`
+
 ## Key skills
 - Сommunication with a server (fetch, REST API)
 - Async coding / Promises
