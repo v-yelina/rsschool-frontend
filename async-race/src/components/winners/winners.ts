@@ -29,7 +29,7 @@ class Winners {
 
         winners.appendChild(winnersTitle);
         winners.appendChild(pageNum);
-        winners.appendChild(this.drawWinnersTable(availableWinners.data));
+        winners.appendChild(await this.drawWinnersTable(availableWinners.data, +availableWinners.page));
         winners.appendChild(this.pagination.createButtons('winners', String(page)));
 
         return winners;
@@ -51,10 +51,14 @@ class Winners {
         }
     }
 
-    private drawWinnersTable(data: IWinner[]) {
+    private async drawWinnersTable(data: IWinner[], page: number) {
+        let ind = 1;
         const winnersTable = document.createElement('table');
         winnersTable.appendChild(this.drawWinnersTableHeader());
-        data.forEach(async (winner, index) => winnersTable.appendChild(await this.drawWinner(winner, index)));
+        for (const winner of data) {
+            winnersTable.appendChild(await this.drawWinner(winner, ind, page));
+            ind += 1;
+        }
         return winnersTable;
     }
 
@@ -78,14 +82,14 @@ class Winners {
         return winnerHeader;
     }
 
-    private async drawWinner(data: IWinner, index: number) {
+    private async drawWinner(data: IWinner, index: number, page: number) {
         const carFunc = new Cars();
         const car = await this.getWinner(String(data.id));
         const winnerContainer = document.createElement('tr');
         winnerContainer.className = `winner-list__item winner winner${data.id}`;
         winnerContainer.setAttribute('data-id', String(data.id));
         const num = document.createElement('td');
-        num.innerHTML += index + 1;
+        num.innerHTML += (page - 1) * 10 + index;
         const carImg = document.createElement('td');
         carImg.innerHTML += carFunc.createSvg(car.color);
         const carName = document.createElement('td');
