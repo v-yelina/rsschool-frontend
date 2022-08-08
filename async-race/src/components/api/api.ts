@@ -4,7 +4,7 @@ import ENV from '../common/config';
 import { EngineMode, IEngine } from '../drive/drive.interface';
 import { IWinner } from '../winners/winners.interface';
 
-enum Limits {
+export enum Limits {
     cars = 7,
     winners = 10,
 }
@@ -65,9 +65,13 @@ export const startStopDriveEngine = async (id: string, status: EngineMode): Prom
 
 export const getWinners = async (
     page = state.winnersPage,
-    limit = Limits.winners
+    limit = Limits.winners,
+    sort = state.sortBy,
+    order = state.sortOrder
 ): Promise<{ page: string; count: string; data: IWinner[] }> => {
-    const response = await fetch(`${ENV.API_ROOT}${ENV.WINNERS}?_limit=${limit}&_page=${page}`);
+    const response = await fetch(
+        `${ENV.API_ROOT}${ENV.WINNERS}?_limit=${limit}&_page=${page}&_sort=${sort}&_order=${order}`
+    );
 
     const data: IWinner[] = await response.json();
     return { page: page, count: response.headers.get('X-Total-Count') || '0', data };

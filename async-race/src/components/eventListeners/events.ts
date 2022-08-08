@@ -173,7 +173,7 @@ class Events {
         const main = document.querySelector('main');
 
         if (main) {
-            const winners = main.querySelector('#winners');
+            const winners = main.querySelector('.winners');
 
             if (winners) {
                 main.removeChild(winners);
@@ -181,6 +181,7 @@ class Events {
                 main.appendChild(newWinners);
             }
         }
+        location.reload();
     }
 }
 

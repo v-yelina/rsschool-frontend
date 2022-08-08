@@ -1,6 +1,7 @@
 import { addWinners, getOneCar, getOneWinner, getWinners, updateWinners } from '../api/api';
-import { state } from '../app/state';
+import { SortBy, SortOrder, state } from '../app/state';
 import Cars from '../car/cars';
+import Events from '../eventListeners/events';
 import Pagination from '../pagination/pagination';
 import { IWinner } from './winners.interface';
 
@@ -14,7 +15,6 @@ class Winners {
         const winners = document.createElement('section');
         const availableWinners = await getWinners(page);
         winners.className = 'winners';
-        winners.id = 'winners';
         if (localStorage.getItem('tab') === 'garage' || !localStorage.getItem('tab')) {
             winners.classList.add('hidden');
         }
@@ -29,6 +29,7 @@ class Winners {
 
         winners.appendChild(winnersTitle);
         winners.appendChild(pageNum);
+        winners.appendChild(this.renderSortButtons());
         winners.appendChild(await this.drawWinnersTable(availableWinners.data, +availableWinners.page));
         winners.appendChild(this.pagination.createButtons('winners', String(page)));
 
@@ -108,6 +109,51 @@ class Winners {
 
     private getWinner(winnerID: string) {
         return getOneCar(winnerID);
+    }
+
+    private renderSortButtons() {
+        const events = new Events();
+        const sortBtn = document.createElement('div');
+        const sortHeader = document.createElement('p');
+        sortHeader.innerHTML = 'Sort by: ';
+        const winAsc = document.createElement('button');
+        winAsc.innerHTML = 'wins ascending';
+        winAsc.classList.add('wins-asc');
+        winAsc.addEventListener('click', () => {
+            localStorage.setItem('sortBy', SortBy.wins);
+            localStorage.setItem('sortOrder', SortOrder.ASC);
+            events.updateWinners();
+        });
+        const winDesc = document.createElement('button');
+        winDesc.innerHTML = 'wins descending';
+        winDesc.classList.add('wins-desc');
+        winDesc.addEventListener('click', () => {
+            localStorage.setItem('sortBy', SortBy.wins);
+            localStorage.setItem('sortOrder', SortOrder.DESC);
+            events.updateWinners();
+        });
+        const timeAsc = document.createElement('button');
+        timeAsc.innerHTML = 'time ascending';
+        timeAsc.classList.add('time-asc');
+        timeAsc.addEventListener('click', () => {
+            localStorage.setItem('sortBy', SortBy.time);
+            localStorage.setItem('sortOrder', SortOrder.ASC);
+            events.updateWinners();
+        });
+        const timeDesc = document.createElement('button');
+        timeDesc.innerHTML = 'time descending';
+        timeDesc.classList.add('time-desc');
+        timeDesc.addEventListener('click', () => {
+            localStorage.setItem('sortBy', SortBy.time);
+            localStorage.setItem('sortOrder', SortOrder.DESC);
+            events.updateWinners();
+        });
+        sortBtn.appendChild(sortHeader);
+        sortBtn.appendChild(winAsc);
+        sortBtn.appendChild(winDesc);
+        sortBtn.appendChild(timeAsc);
+        sortBtn.appendChild(timeDesc);
+        return sortBtn;
     }
 }
 
