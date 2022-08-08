@@ -8,9 +8,20 @@ export enum SortOrder {
     DESC = 'DESC',
 }
 
+export enum Pages {
+    garage = 'garagePage',
+    winners = 'winnersPage',
+    firstPage = '1',
+}
+
+export enum SortSettings {
+    by = 'sortBy',
+    order = 'sortOrder',
+}
+
 export const state = {
-    garagePage: localStorage.getItem('garagePage') || '1',
-    winnersPage: localStorage.getItem('winnersPage') || '1',
-    sortBy: localStorage.getItem('sortBy') || SortBy.time,
-    sortOrder: localStorage.getItem('sortOrder') || SortOrder.ASC,
+    garagePage: localStorage.getItem(Pages.garage) || Pages.firstPage,
+    winnersPage: localStorage.getItem(Pages.winners) || Pages.firstPage,
+    sortBy: localStorage.getItem(SortSettings.by) || SortBy.time,
+    sortOrder: localStorage.getItem(SortSettings.order) || SortOrder.ASC,
 };
