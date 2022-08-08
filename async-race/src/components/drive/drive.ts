@@ -25,11 +25,16 @@ class Drive {
                 if (carImg && startButton && stopButton) {
                     if (status === 'started' && carSettings) {
                         const time = (carSettings.distance as number) / (carSettings.velocity as number);
-                        const animationId = this.animation(carImg, time);
                         startButton.disabled = true;
                         stopButton.disabled = false;
+
+                        const animationId = this.animation(carImg, time);
+
+                        const status = await this.drive(carID, time);
                         if (animationId) {
-                            await this.drive(carID, time, animationId);
+                            if (status === false) {
+                                window.cancelAnimationFrame(animationId.id);
+                            }
                             return { id: +carID, time };
                         }
                     } else if (status === 'stopped') {
@@ -43,12 +48,12 @@ class Drive {
         }
     }
 
-    private async drive(carID: string, time: number, animationId: number) {
+    private async drive(carID: string, time: number) {
         try {
             await startStopDriveEngine(carID, 'drive');
             this.raceResults.push({ id: +carID, time });
         } catch (e) {
-            window.cancelAnimationFrame(animationId);
+            return false;
         }
     }
 
@@ -59,9 +64,18 @@ class Drive {
         return raceResults[0];
     }
 
-    private animation = (car: SVGElement, animationTime: number): number | undefined => {
+    private animation = (
+        car: SVGElement,
+        animationTime: number
+    ): {
+        id: number;
+    } => {
         let start: number | null = null;
+        const state: {
+            id: number;
+        } = { id: 1 };
         const raceWrapper = car.parentElement;
+
         if (raceWrapper) {
             const width = raceWrapper.clientWidth - 50;
 
@@ -74,12 +88,13 @@ class Drive {
                 car.style.transform = `translateX(${Math.min(passed, width)}px`;
 
                 if (passed < width) {
-                    return window.requestAnimationFrame(step);
+                    state.id = window.requestAnimationFrame(step);
                 }
             };
 
-            return window.requestAnimationFrame(step);
+            state.id = window.requestAnimationFrame(step);
         }
+        return state;
     };
 }
 

@@ -149,11 +149,10 @@ class Events {
             if (popup) {
                 setTimeout(() => {
                     main.removeChild(popup);
+                    this.winners.addWinnerResult(winner);
+                    this.updateWinners();
                 }, 3000);
             }
-
-            this.winners.addWinnerResult(winner);
-            this.updateWinners();
         }
     }
 
@@ -177,11 +176,12 @@ class Events {
 
             if (winners) {
                 main.removeChild(winners);
-                const newWinners = await this.winners.draw(page);
-                main.appendChild(newWinners);
+                const removedWinners = main.querySelector('.winners');
+                if (!removedWinners) {
+                    main.appendChild(await this.winners.draw(page));
+                }
             }
         }
-        location.reload();
     }
 }
 
