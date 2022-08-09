@@ -1,4 +1,3 @@
-import { rejects } from 'assert';
 import { startStopDriveEngine } from '../api/api';
 import Events from '../eventListeners/events';
 import { EngineMode } from './drive.interface';
