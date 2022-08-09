@@ -65,6 +65,7 @@ class Winners {
 
     private drawWinnersTableHeader() {
         const winnerHeader = document.createElement('tr');
+        winnerHeader.classList.add('table-header');
         const num = document.createElement('th');
         num.innerHTML += '#';
         const carImg = document.createElement('th');
@@ -114,8 +115,6 @@ class Winners {
     private renderSortButtons() {
         const events = new Events();
         const sortBtn = document.createElement('div');
-        const sortHeader = document.createElement('p');
-        sortHeader.innerHTML = 'Sort by: ';
         const winAsc = document.createElement('button');
         winAsc.innerHTML = 'wins ascending';
         winAsc.classList.add('wins-asc');
@@ -148,7 +147,6 @@ class Winners {
             localStorage.setItem('sortOrder', SortOrder.DESC);
             events.updateWinners();
         });
-        sortBtn.appendChild(sortHeader);
         sortBtn.appendChild(winAsc);
         sortBtn.appendChild(winDesc);
         sortBtn.appendChild(timeAsc);
