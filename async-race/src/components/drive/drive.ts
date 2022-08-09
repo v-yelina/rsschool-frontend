@@ -1,3 +1,4 @@
+import { rejects } from 'assert';
 import { startStopDriveEngine } from '../api/api';
 import Events from '../eventListeners/events';
 import { EngineMode } from './drive.interface';
@@ -30,12 +31,11 @@ class Drive {
 
                         const animationId = this.animation(carImg, time);
 
-                        const status = await this.drive(carID, time);
                         if (animationId) {
-                            if (status === false) {
-                                window.cancelAnimationFrame(animationId.id);
+                            const status = await this.drive(carID, time, animationId);
+                            if (status) {
+                                return { id: +carID, time };
                             }
-                            return { id: +carID, time };
                         }
                     } else if (status === 'stopped') {
                         carImg.style.transform = `translateX(0px)`;
@@ -48,12 +48,14 @@ class Drive {
         }
     }
 
-    private async drive(carID: string, time: number) {
+    private async drive(carID: string, time: number, animationId: { id: number }) {
         try {
             await startStopDriveEngine(carID, 'drive');
             this.raceResults.push({ id: +carID, time });
+            return true;
         } catch (e) {
-            return false;
+            window.cancelAnimationFrame(animationId.id);
+            throw { status: 500, message: e };
         }
     }
 
