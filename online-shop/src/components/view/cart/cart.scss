@@ -1,0 +1,40 @@
+.cart {
+    span {
+        letter-spacing: normal;
+    }
+}
+
+
+.cart-warning {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(41, 41, 41, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.cart-warning__container {
+    position: relative;
+    background-color: #fff;
+    padding: 3%;
+    border-radius: 5px;
+
+    .btn-cross {
+        top: 5px;
+        right: -10px;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.card__item-btn--remove {
+    padding: 5%;
+    font-size: smaller;
+}

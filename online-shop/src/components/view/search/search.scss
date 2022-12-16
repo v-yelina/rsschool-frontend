@@ -1,0 +1,45 @@
+.search {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 10px;
+    min-width: 300px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    @media (max-width: 750px) {
+        min-width: 250px;
+    }
+
+    img {
+        max-width: 24px;
+    }
+
+}
+
+.search-input {
+    border: none;
+    padding: 5px;
+
+    @media (max-width: 750px) {
+        max-width: 170px;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.search-remove {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.error {
+    margin-top: 2%;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 2rem;
+}
