@@ -1,0 +1,41 @@
+.sources {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 90%;
+    margin: 0 auto;
+    max-height: 200px;
+    overflow: auto;
+    align-items: flex-start;
+    font: 300 1em 'Fira Sans', sans-serif;
+}
+
+.source__item {
+    background: none;
+    border: 2px solid #5158bb;
+    font: inherit;
+    line-height: 1;
+    margin: 0.3em;
+    padding: 0.5em 1em;
+    color: #5158bb;
+    transition: 0.25s;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.source__item:hover,
+.source__item:focus {
+    border-color: #eb4b98;
+    color: #eb4b98;
+    box-shadow: 0 0.5em 0.5em -0.4em #eb4b98;
+    transform: translateY(-0.25em);
+}
+
+.source__item:active {
+    transform: translateY(5px) scale(0.98);
+}
+
+.source__item-name {
+    font-weight: 400;
+    white-space: nowrap;
+}
