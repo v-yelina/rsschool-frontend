@@ -1,0 +1,65 @@
+.cars-list__item {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    border-bottom: 3px solid #283618;
+    padding: 15px 0;
+
+    button {
+        height: max-content;
+    }
+}
+
+.car__btn {
+    color: #f0ead2;
+}
+
+.car__btn--select {
+    background-color: #b0c4b1;
+}
+
+.car__btn--remove {
+    background-color: #edafb8;
+}
+
+.car__btn--start {
+    background-color: #4f772d;
+}
+
+.car__btn--stop {
+    background-color: #540b0e;
+}
+
+.car__header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+
+    h3 {
+        font-size: 1.5rem;
+        line-height: 1rem;
+        margin: 0;
+    }
+}
+
+.car__race {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px dashed #283618;
+    margin-top: -10px;
+
+}
+
+.car__img {
+    width: 52px;
+    height: auto;
+}
+
+.finish {
+    max-height: 45px;
+    margin-right: 60px;
+}

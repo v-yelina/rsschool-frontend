@@ -1,0 +1,17 @@
+.update-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.update-form--create,
+.update-form--update {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.update-form__buttons {
+    display: flex;
+    gap: 10px;
+}

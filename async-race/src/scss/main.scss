@@ -1,0 +1,30 @@
+@import 'base/normalize';
+
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/update';
+@import 'layout/pagination';
+@import 'layout/winners';
+
+@import 'components/buttons';
+@import 'components/car';
+@import 'components/popup';
+
+
+
+header,
+main,
+footer {
+    width: 90%;
+    padding: 1%;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+}
+
+.hidden {
+    display: none;
+}
